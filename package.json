@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
     "commit": "git-cz",
-    "postinstall": "git config commit.template ./.committemplate"
+    "postinstall": "git config commit.template ./.committemplate",
+    "ios": "react-native run-ios --simulator='iPhone 14'"
   },
   "dependencies": {
     "react": "18.2.0",
