@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "lint": "eslint .",
+    "prettier": "prettier --write \"*.{ts,tsx,json,md}\"",
     "start": "react-native start",
     "test": "jest",
     "commit": "git-cz",
@@ -15,11 +16,11 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npm run lint -- --fix",
-      "npm run prettier -- --write"
+      "eslint . --fix",
+      "prettier --write"
     ],
     "*.{json,md}": [
-      "npm run prettier -- --write"
+      "prettier --write"
     ]
   },
   "dependencies": {
