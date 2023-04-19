@@ -8,6 +8,11 @@
 2. (Required) Run `npm install` to install all dependencies
 3. (Recommended) Install other recommended VSCode extensions in the repository after cloning
 
+## Running the App
+
+1. Run `npm start` to start the metro bundler
+2. Run `npm run ios` or `npm run android` to run the app on iOS or Android respectively
+
 ## Contribution Conventions
 
 1. Before contributing make sure a ticket exists in the project board for the work you are doing
