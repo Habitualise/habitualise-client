@@ -1,4 +1,5 @@
 # Habitualise App
+![Main CI Status](https://github.com/Habitualise/habitualise-client/actions/workflows/ci.yml/badge.svg?branch=main)
 
 ## Project Setup
 
