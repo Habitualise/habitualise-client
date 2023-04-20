@@ -1,18 +1,19 @@
+# This workflow will inspect a pull request to ensure there is a linked issue or a
+# valid issue is mentioned in the body. If neither is present it fails the check and adds
+# a comment alerting users of this missing requirement.
 name: PR Linked Issue
+
 on:
   pull_request:
-    types: [opened, edited, reopened, synchronize]
+    types: [edited, synchronize, opened, reopened]
+  check_run:
 
 jobs:
   check_linked_issues:
     runs-on: ubuntu-latest
-    name: Check linked issues
+    name: Ensure Pull Request has a linked issue.
     steps:
-      - uses: nearform/github-action-check-linked-issues@v1
-        id: check-linked-issues
-        with:
-          exclude-labels: 'renovate'
-          exclude-branches: 'renovate/**'
-      # OPTIONAL: Use the output from the `check-linked-issues` step
-      - name: Get the output
-        run: echo "How many linked issues? ${{ steps.check-linked-issues.outputs.linked_issues_count }}"
+      - name: Verify Linked Issue
+        uses: hattan/verify-linked-issue-action@v1.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
