@@ -13,5 +13,11 @@ module.exports = {
         inlineRequires: true,
       },
     }),
+    babelTransformerPath: require.resolve(
+      'metro-react-native-babel-transformer',
+    ),
+  },
+  resolver: {
+    sourceExts: ['js', 'json', 'jsx', 'ts', 'tsx'],
   },
 };

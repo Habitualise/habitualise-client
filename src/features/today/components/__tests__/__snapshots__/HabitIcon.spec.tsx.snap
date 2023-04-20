@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HabitIcon should match snapshot 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(0, 0, 0",
+      "borderRadius": 50,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "marginRight": 16,
+      "padding": 5,
+    }
+  }
+>
+  <Text
+    allowFontScaling={false}
+    selectable={false}
+    style={
+      [
+        {
+          "color": "rgb(0, 0, 0",
+          "fontSize": 32,
+        },
+        undefined,
+        {
+          "fontFamily": "Material Design Icons",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        {},
+      ]
+    }
+  >
+    󰄬
+  </Text>
+</View>
+`;
