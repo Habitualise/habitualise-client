@@ -14,6 +14,8 @@ import App from '@app/App';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID} from '@env';
 import {name as appName} from './app.json';
 
+interface IProps {}
+
 const theme = {
   ...DefaultTheme,
   colors: {
@@ -23,7 +25,7 @@ const theme = {
   },
 };
 
-export default function Main() {
+const Main: React.FC<IProps> = (): JSX.Element => {
   return (
     <PaperProvider theme={theme}>
       <SafeAreaProvider>
@@ -33,6 +35,6 @@ export default function Main() {
       </SafeAreaProvider>
     </PaperProvider>
   );
-}
+};
 
 AppRegistry.registerComponent(appName, () => Main);
