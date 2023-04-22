@@ -13,4 +13,5 @@ export const LABEL = {
   SIGN_UP: 'Sign Up',
   ALREADY_HAVE_ACCOUNT: 'I already have an account',
   TODAY: 'Today',
+  TODAY_HEADER: "Today's Habits",
 };
