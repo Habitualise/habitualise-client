@@ -14,7 +14,7 @@ export const mockHabits = [
     completionPercentage: 67,
     status: 'active',
     daysDue: [1, 2, 3, 4, 5, 6, 7],
-    lastWeekCompletions: [
+    completionHistory: [
       'DONE',
       'DONE',
       'DONE',
@@ -33,7 +33,7 @@ export const mockHabits = [
     completionPercentage: 0,
     status: 'active',
     daysDue: [1, 2, 3, 4, 7],
-    lastWeekCompletions: ['MISSED', 'MISSED', 'MISSED', 'MISSED', 'MISSED'],
+    completionHistory: ['MISSED', 'MISSED', 'MISSED', 'MISSED', 'MISSED'],
   },
   {
     id: 3,
@@ -44,14 +44,6 @@ export const mockHabits = [
     completionPercentage: 99,
     status: 'active',
     daysDue: [1, 2, 3, 4, 5, 6, 7],
-    lastWeekCompletions: [
-      'DONE',
-      'DONE',
-      'DONE',
-      'DONE',
-      'DONE',
-      'DONE',
-      'DONE',
-    ],
+    completionHistory: ['DONE', 'DONE', 'DONE', 'DONE', 'DONE', 'DONE', 'DONE'],
   },
 ];

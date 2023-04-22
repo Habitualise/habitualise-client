@@ -5,7 +5,7 @@ import {HabitIcon} from '@app/components/HabitIcon';
 import {StyleSheet, View} from 'react-native';
 import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
-// import {WeekView} from './WeekView';
+import {DotHistory} from './DotHistory';
 
 interface HabitProps {
   id: string;
@@ -26,7 +26,7 @@ export const Habit = (props: HabitProps) => {
     colour,
     completionPercentage,
     // status,
-    // completionHistory,
+    completionHistory,
     // daysDue,
   } = props;
 
@@ -45,7 +45,7 @@ export const Habit = (props: HabitProps) => {
           onPress={() => console.log('three dots pressed')}
         />
       </View>
-      {/* <WeekView lastSevenCompletions={lastSevenCompletions} daysDue={daysDue} /> */}
+      <DotHistory completionHistory={completionHistory} colour={colour} />
       <Divider />
     </>
   );
