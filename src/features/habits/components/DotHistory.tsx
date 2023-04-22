@@ -46,7 +46,9 @@ export const DotHistory = (props: HistoryDotViewProps) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.row}>{renderDots().slice(0, 14)}</View>
+      <View style={[styles.row, styles.firstRow]}>
+        {renderDots().slice(0, 14)}
+      </View>
       <View style={styles.row}>{renderDots().slice(14)}</View>
     </View>
   );
@@ -62,5 +64,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  firstRow: {
+    paddingBottom: 10,
   },
 });

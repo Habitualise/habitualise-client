@@ -45,7 +45,9 @@ export const Habit = (props: HabitProps) => {
           onPress={() => console.log('three dots pressed')}
         />
       </View>
-      <DotHistory completionHistory={completionHistory} colour={colour} />
+      <View style={styles.dotHistoryContainer}>
+        <DotHistory completionHistory={completionHistory} colour={colour} />
+      </View>
       <Divider />
     </>
   );
@@ -64,5 +66,9 @@ const styles = StyleSheet.create({
   },
   habitDaysDue: {
     color: themeColors.grey[500],
+  },
+  dotHistoryContainer: {
+    paddingHorizontal: 16,
+    paddingBottom: 20,
   },
 });

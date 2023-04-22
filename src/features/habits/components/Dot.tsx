@@ -21,8 +21,8 @@ export const Dot = (props: DotProps) => {
 
 const styles = StyleSheet.create({
   dot: {
-    width: 10,
-    height: 10,
+    width: 13,
+    height: 13,
     borderRadius: 5,
   },
 });
