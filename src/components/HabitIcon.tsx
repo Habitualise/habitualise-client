@@ -4,13 +4,13 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {getBackgroundIconColour} from './utils/getBackgroundIconColour';
 
-interface HabiticonProps {
+interface HabitIconProps {
   iconName: string;
   colour: string;
   style?: ViewStyle;
 }
 
-export const HabitIcon = (props: HabiticonProps) => {
+export const HabitIcon = (props: HabitIconProps) => {
   const {iconName, colour} = props;
   return (
     <View
