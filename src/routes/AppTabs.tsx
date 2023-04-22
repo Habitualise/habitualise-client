@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {ColorValue} from 'react-native';
 
 import {TodayScreen} from '@app/features/today';
 import {LABEL} from '@app/language';
@@ -28,7 +29,7 @@ export const AppTabs = () => {
         component={TodayScreen}
         options={{
           tabBarLabel: LABEL.TODAY,
-          tabBarIcon: ({color}: {color: String}) => (
+          tabBarIcon: ({color}: {color: ColorValue}) => (
             <MaterialIcons name="event" color={color} size={26} />
           ),
         }}

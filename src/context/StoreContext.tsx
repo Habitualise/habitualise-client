@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {State} from './reducer';
 
 export * from './reducer';
 
