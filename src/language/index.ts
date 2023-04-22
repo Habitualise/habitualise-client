@@ -8,8 +8,8 @@ export const LABEL = {
   HABITS_SCREEN: 'Habits Screen',
   LOGGED_IN_AS: (username: string) => `Logged in as ${username}`,
   LOGIN_SCREEN: 'Login Screen',
-  WELCOME_HEADER: 'Ready to\nbecome giga?',
-  WELCOME_SUBHEADER: 'Start your journey with us\ntoday on project habits.',
+  WELCOME_HEADER: 'Ready to reach\nyour full potential?',
+  WELCOME_SUBHEADER: 'Start your journey with us\ntoday on Habitualise.',
   SIGN_UP: 'Sign Up',
   ALREADY_HAVE_ACCOUNT: 'I already have an account',
 };

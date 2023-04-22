@@ -27,7 +27,7 @@ export const WelcomeScreen = () => {
           source={require('@app/assets/googleLogo.png')}
           style={styles.logo}
         />
-        <Text variant="displayMedium" style={styles.header}>
+        <Text variant="displaySmall" style={styles.header}>
           {LABEL.WELCOME_HEADER}
         </Text>
         <Text variant="titleLarge" style={styles.subHeader}>
