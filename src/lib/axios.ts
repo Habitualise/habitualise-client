@@ -44,11 +44,11 @@ mock.onGet('/api/health').reply(function (config) {
     200,
     {
       status: 'ok',
-      tokenReceived: config.headers.Authorization,
+      tokenReceived: config.headers!.Authorization,
     },
   ];
 });
 
-mock.onGet('/api/habits').reply(function (config) {
+mock.onGet('/api/habits').reply(function () {
   return [200, mockHabits];
 });

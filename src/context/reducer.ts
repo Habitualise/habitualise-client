@@ -1,10 +1,21 @@
+import {Habit} from './types';
+
 export const ACTIONS = {
   SET_ALL_HABITS: 'SET_ALL_HABITS',
   TOGGLE_HABIT_IS_COMPLETED: 'TOGGLE_HABIT_IS_COMPLETED',
   HANDLE_LOGOUT: 'HANDLE_LOGOUT',
+} as const;
+
+type Action = {
+  type: keyof typeof ACTIONS;
+  payload: any;
 };
 
-export const reducer = (state, action) => {
+export interface State {
+  habits: Habit[];
+}
+
+export const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case ACTIONS.SET_ALL_HABITS:
       // action.payload should be an array of habits

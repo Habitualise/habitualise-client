@@ -2,14 +2,29 @@ import * as React from 'react';
 
 export * from './reducer';
 
-// TODO: Add types to state
-const StoreContext = React.createContext({state: null, dispatch: null});
+interface HabitsStore {
+  state: State;
+  dispatch: React.Dispatch<any>;
+}
+
+const StoreContext = React.createContext<HabitsStore>({
+  state: {habits: []},
+  dispatch: () => {},
+});
 
 const initState = {
   habits: [],
 };
 
-export const StoreContextProvider = ({children, reducer}) => {
+interface StoreContextProviderProps {
+  children: React.ReactNode;
+  reducer: React.Reducer<any, any>;
+}
+
+export const StoreContextProvider = ({
+  children,
+  reducer,
+}: StoreContextProviderProps) => {
   const [state, dispatch] = React.useReducer(reducer, initState);
   const memoizedValue = React.useMemo(() => ({state, dispatch}), [state]);
   return (
