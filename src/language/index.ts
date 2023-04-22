@@ -12,4 +12,5 @@ export const LABEL = {
   WELCOME_SUBHEADER: 'Start your journey with us\ntoday on Habitualise.',
   SIGN_UP: 'Sign Up',
   ALREADY_HAVE_ACCOUNT: 'I already have an account',
+  TODAY: 'Today',
 };
