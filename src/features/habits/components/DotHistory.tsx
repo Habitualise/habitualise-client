@@ -16,7 +16,18 @@ export const DotHistory = (props: HistoryDotViewProps) => {
     if (!completionHistory) {
       return [];
     }
-    return completionHistory.map((state, index) => {
+
+    let paddedHistory = completionHistory;
+    // if < 28 days, pad the start with 'SKIPPED' states
+    // if > 28 days, trim the start
+    if (paddedHistory.length < 28) {
+      const padding = new Array(28 - paddedHistory.length).fill('SKIPPED');
+      paddedHistory = [...padding, ...paddedHistory];
+    } else if (paddedHistory.length > 28) {
+      paddedHistory = paddedHistory.slice(paddedHistory.length - 28);
+    }
+
+    return paddedHistory.map((state, index) => {
       if (state === 'DONE') {
         streak += 1;
       } else if (state === 'MISSED') {

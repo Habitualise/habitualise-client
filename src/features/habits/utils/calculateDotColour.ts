@@ -1,13 +1,15 @@
+import {themeColors} from '@app/theme';
+
 export const calculateDotColour = (
   baseColour: string,
   state: string,
   consecutiveDaysCompleted: number,
 ): string => {
   if (state === 'MISSED') {
-    return 'red';
+    return themeColors.red[200];
   }
   if (state === 'SKIPPED') {
-    return 'gray';
+    return themeColors.grey[300];
   }
 
   // validate that baseColour is a valid rgb string
