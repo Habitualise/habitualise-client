@@ -1,14 +1,39 @@
-import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React, {useEffect} from 'react';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {ColorValue} from 'react-native';
+
 import {TodayScreen} from '@app/features/today';
 import {LABEL} from '@app/language';
+import {useStore, ACTIONS} from '@app/context/StoreContext';
+import {getHabits} from './api/getHabits';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 export const AppTabs = () => {
+  const {dispatch} = useStore();
+
+  // fetch habits from server and set them in the store
+  useEffect(() => {
+    const fetchHabits = async () => {
+      const habits = await getHabits();
+      dispatch({type: ACTIONS.SET_ALL_HABITS, payload: habits});
+    };
+    fetchHabits();
+  }, [dispatch]);
+
   return (
-    <Tab.Navigator>
-      <Tab.Screen name={LABEL.TODAY_SCREEN} component={TodayScreen} />
+    <Tab.Navigator shifting={true}>
+      <Tab.Screen
+        name={LABEL.TODAY_SCREEN}
+        component={TodayScreen}
+        options={{
+          tabBarLabel: LABEL.TODAY,
+          tabBarIcon: ({color}: {color: ColorValue}) => (
+            <MaterialIcons name="event" color={color} size={26} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
