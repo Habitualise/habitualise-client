@@ -7,4 +7,9 @@ export const LABEL = {
   TODAY_SCREEN: 'Today Screen',
   HABITS_SCREEN: 'Habits Screen',
   LOGGED_IN_AS: (username: string) => `Logged in as ${username}`,
+  LOGIN_SCREEN: 'Login Screen',
+  WELCOME_HEADER: 'Ready to\nbecome giga?',
+  WELCOME_SUBHEADER: 'Start your journey with us\ntoday on project habits.',
+  SIGN_UP: 'Sign Up',
+  ALREADY_HAVE_ACCOUNT: 'I already have an account',
 };

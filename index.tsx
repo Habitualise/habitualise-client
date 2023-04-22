@@ -3,10 +3,6 @@
  */
 import React from 'react';
 import {AppRegistry} from 'react-native';
-import {
-  MD3LightTheme as DefaultTheme,
-  Provider as PaperProvider,
-} from 'react-native-paper';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Auth0Provider} from 'react-native-auth0';
 
@@ -16,24 +12,13 @@ import {name as appName} from './app.json';
 
 interface IProps {}
 
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    // primary: 'tomato', // placeholder for future changes
-    // secondary: 'yellow',
-  },
-};
-
 const Main: React.FC<IProps> = (): JSX.Element => {
   return (
-    <PaperProvider theme={theme}>
-      <SafeAreaProvider>
-        <Auth0Provider domain={AUTH0_DOMAIN} clientId={AUTH0_CLIENT_ID}>
-          <App />
-        </Auth0Provider>
-      </SafeAreaProvider>
-    </PaperProvider>
+    <SafeAreaProvider>
+      <Auth0Provider domain={AUTH0_DOMAIN} clientId={AUTH0_CLIENT_ID}>
+        <App />
+      </Auth0Provider>
+    </SafeAreaProvider>
   );
 };
 
