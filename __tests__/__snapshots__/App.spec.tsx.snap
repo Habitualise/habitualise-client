@@ -12,148 +12,484 @@ exports[`App renders correctly 1`] = `
     ]
   }
 >
-  <RNSScreenStack
+  <View
+    collapsable={false}
+    pointerEvents="box-none"
     style={
       {
         "flex": 1,
       }
     }
   >
-    <RNSScreen
-      collapsable={false}
-      forwardedRef={[Function]}
-      gestureResponseDistance={
-        {
-          "bottom": -1,
-          "end": -1,
-          "start": -1,
-          "top": -1,
-        }
-      }
-      nativeBackButtonDismissalEnabled={false}
-      onAppear={[Function]}
-      onDisappear={[Function]}
-      onDismissed={[Function]}
-      onHeaderBackButtonClicked={[Function]}
-      onNativeDismissCancelled={[Function]}
-      onTransitionProgress={[Function]}
-      onWillDisappear={[Function]}
-      replaceAnimation="push"
-      stackPresentation="push"
+    <View
       style={
-        {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
+        [
+          {
+            "flex": 1,
+          },
+          undefined,
+        ]
       }
-      swipeDirection="horizontal"
     >
-      <RNSScreenStackHeaderConfig
-        backButtonInCustomView={false}
-        backgroundColor="rgb(255, 255, 255)"
-        color="rgb(0, 122, 255)"
-        direction="ltr"
-        disableBackButtonMenu={false}
-        hidden={false}
-        hideBackButton={false}
-        largeTitleHideShadow={false}
-        title="Sign In Screen"
-        titleColor="rgb(28, 28, 30)"
-        topInsetEnabled={false}
-        translucent={false}
-      />
-      <View
-        accessibilityElementsHidden={false}
-        importantForAccessibility="auto"
+      <RNSScreenStack
         style={
           {
             "flex": 1,
-            "flexDirection": "column-reverse",
           }
         }
       >
-        <View
+        <RNSScreen
+          collapsable={false}
+          forwardedRef={[Function]}
+          gestureResponseDistance={
+            {
+              "bottom": -1,
+              "end": -1,
+              "start": -1,
+              "top": -1,
+            }
+          }
+          nativeBackButtonDismissalEnabled={false}
+          onAppear={[Function]}
+          onDisappear={[Function]}
+          onDismissed={[Function]}
+          onHeaderBackButtonClicked={[Function]}
+          onNativeDismissCancelled={[Function]}
+          onTransitionProgress={[Function]}
+          onWillDisappear={[Function]}
+          replaceAnimation="push"
+          stackPresentation="push"
           style={
-            [
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+          swipeDirection="horizontal"
+        >
+          <RNSScreenStackHeaderConfig
+            backButtonInCustomView={false}
+            backgroundColor="rgb(255, 255, 255)"
+            color="rgb(0, 122, 255)"
+            direction="ltr"
+            disableBackButtonMenu={false}
+            hidden={true}
+            hideBackButton={false}
+            largeTitleHideShadow={false}
+            title="Login Screen"
+            titleColor="rgb(28, 28, 30)"
+            topInsetEnabled={false}
+            translucent={false}
+          />
+          <View
+            accessibilityElementsHidden={false}
+            importantForAccessibility="auto"
+            style={
               {
                 "flex": 1,
-              },
-              {
-                "backgroundColor": "rgb(242, 242, 242)",
-              },
-              undefined,
-            ]
-          }
-        >
-          <View>
-            <Text>
-              Welcome Screen
-            </Text>
+                "flexDirection": "column-reverse",
+              }
+            }
+          >
             <View
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
               style={
-                {
-                  "opacity": 1,
-                }
+                [
+                  {
+                    "flex": 1,
+                  },
+                  {
+                    "backgroundColor": "rgb(242, 242, 242)",
+                  },
+                  undefined,
+                ]
               }
             >
-              <View
-                style={
+              <RNCSafeAreaView
+                edges={
                   [
-                    {},
+                    "bottom",
+                    "left",
+                    "right",
+                    "top",
                   ]
                 }
+                style={
+                  {
+                    "flex": 1,
+                  }
+                }
               >
-                <Text
+                <View
                   style={
                     [
                       {
-                        "color": "#007AFF",
-                        "fontSize": 18,
-                        "margin": 8,
-                        "textAlign": "center",
+                        "backgroundColor": "rgb(252, 252, 255)",
+                      },
+                      {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 15,
                       },
                     ]
                   }
                 >
-                  Sign In
-                </Text>
-              </View>
+                  <Image
+                    source={
+                      {
+                        "testUri": "../../../src/assets/googleLogo.png",
+                      }
+                    }
+                    style={
+                      {
+                        "height": 150,
+                        "marginBottom": 50,
+                        "resizeMode": "contain",
+                        "width": 150,
+                      }
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "System",
+                          "fontSize": 36,
+                          "fontWeight": "400",
+                          "letterSpacing": 0,
+                          "lineHeight": 44,
+                        },
+                        {
+                          "textAlign": "left",
+                        },
+                        {
+                          "color": "rgb(26, 28, 30)",
+                          "writingDirection": "ltr",
+                        },
+                        {
+                          "color": "rgb(0, 99, 154)",
+                          "fontWeight": "700",
+                          "marginBottom": 15,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Ready to reach
+your full potential?
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "fontFamily": "System",
+                          "fontSize": 22,
+                          "fontWeight": "400",
+                          "letterSpacing": 0,
+                          "lineHeight": 28,
+                        },
+                        {
+                          "textAlign": "left",
+                        },
+                        {
+                          "color": "rgb(26, 28, 30)",
+                          "writingDirection": "ltr",
+                        },
+                        {
+                          "color": "rgb(0, 99, 154)",
+                          "lineHeight": 30,
+                          "marginBottom": 60,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Start your journey with us
+today on Habitualise.
+                  </Text>
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "rgb(0, 99, 154)",
+                        },
+                        {
+                          "borderRadius": 10,
+                          "marginBottom": 10,
+                          "paddingHorizontal": 120,
+                          "paddingVertical": 10,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "fontFamily": "System",
+                            "fontSize": 16,
+                            "fontWeight": "400",
+                            "letterSpacing": 0.15,
+                            "lineHeight": 24,
+                          },
+                          {
+                            "textAlign": "left",
+                          },
+                          {
+                            "color": "rgb(26, 28, 30)",
+                            "writingDirection": "ltr",
+                          },
+                          {
+                            "color": "white",
+                            "fontWeight": "500",
+                          },
+                        ]
+                      }
+                    >
+                      Sign Up
+                    </Text>
+                  </View>
+                  <View
+                    collapsable={false}
+                    style={
+                      {
+                        "alignSelf": undefined,
+                        "backgroundColor": "transparent",
+                        "borderRadius": 20,
+                        "bottom": undefined,
+                        "end": undefined,
+                        "flex": undefined,
+                        "height": undefined,
+                        "left": undefined,
+                        "opacity": undefined,
+                        "position": undefined,
+                        "right": undefined,
+                        "shadowColor": "#000",
+                        "shadowOffset": {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0,
+                        "shadowRadius": 0,
+                        "start": undefined,
+                        "top": undefined,
+                        "transform": undefined,
+                        "width": undefined,
+                      }
+                    }
+                    testID="button-container-outer-layer"
+                  >
+                    <View
+                      collapsable={false}
+                      style={
+                        {
+                          "backgroundColor": "transparent",
+                          "borderColor": "transparent",
+                          "borderRadius": 20,
+                          "borderStyle": "solid",
+                          "borderWidth": 0,
+                          "flex": undefined,
+                          "minWidth": 64,
+                          "shadowColor": "#000",
+                          "shadowOffset": {
+                            "height": 0,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0,
+                          "shadowRadius": 0,
+                        }
+                      }
+                      testID="button-container"
+                    >
+                      <View
+                        accessibilityRole="button"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": false,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
+                        accessible={true}
+                        collapsable={false}
+                        focusable={true}
+                        onBlur={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          [
+                            {
+                              "overflow": "hidden",
+                            },
+                            false,
+                            {
+                              "borderRadius": 20,
+                            },
+                          ]
+                        }
+                        testID="button"
+                      >
+                        <View
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "justifyContent": "center",
+                              },
+                              {
+                                "flexDirection": "row-reverse",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "marginLeft": -4,
+                                  "marginRight": 12,
+                                },
+                                {
+                                  "marginLeft": -16,
+                                  "marginRight": 16,
+                                },
+                                {
+                                  "marginLeft": -8,
+                                  "marginRight": 12,
+                                },
+                              ]
+                            }
+                            testID="button-icon-container"
+                          >
+                            <Text
+                              allowFontScaling={false}
+                              selectable={false}
+                              style={
+                                [
+                                  {
+                                    "color": "rgb(0, 99, 154)",
+                                    "fontSize": 20,
+                                  },
+                                  undefined,
+                                  {
+                                    "fontFamily": "Material Icons",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                  {},
+                                ]
+                              }
+                            >
+                              
+                            </Text>
+                          </View>
+                          <Text
+                            numberOfLines={1}
+                            selectable={false}
+                            style={
+                              [
+                                {
+                                  "fontFamily": "System",
+                                  "fontSize": 14,
+                                  "fontWeight": "500",
+                                  "letterSpacing": 0.1,
+                                  "lineHeight": 20,
+                                },
+                                {
+                                  "textAlign": "left",
+                                },
+                                {
+                                  "color": "rgb(26, 28, 30)",
+                                  "writingDirection": "ltr",
+                                },
+                                [
+                                  {
+                                    "marginHorizontal": 16,
+                                    "marginVertical": 9,
+                                    "textAlign": "center",
+                                  },
+                                  false,
+                                  {
+                                    "marginHorizontal": 16,
+                                  },
+                                  undefined,
+                                  false,
+                                  {
+                                    "color": "rgb(0, 99, 154)",
+                                    "fontFamily": "System",
+                                    "fontSize": 14,
+                                    "fontWeight": "500",
+                                    "letterSpacing": 0.1,
+                                    "lineHeight": 20,
+                                  },
+                                  undefined,
+                                ],
+                              ]
+                            }
+                            testID="button-text"
+                          >
+                            I already have an account
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </RNCSafeAreaView>
             </View>
           </View>
-        </View>
-      </View>
-    </RNSScreen>
-  </RNSScreenStack>
+        </RNSScreen>
+      </RNSScreenStack>
+    </View>
+  </View>
 </RNCSafeAreaProvider>
 `;
