@@ -126,7 +126,7 @@ exports[`App renders correctly 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "rgb(252, 252, 255)",
+                        "backgroundColor": "rgb(254, 251, 255)",
                       },
                       {
                         "alignItems": "center",
@@ -166,11 +166,11 @@ exports[`App renders correctly 1`] = `
                           "textAlign": "left",
                         },
                         {
-                          "color": "rgb(26, 28, 30)",
+                          "color": "rgb(27, 27, 31)",
                           "writingDirection": "ltr",
                         },
                         {
-                          "color": "rgb(0, 99, 154)",
+                          "color": "rgb(0, 90, 193)",
                           "fontWeight": "700",
                           "marginBottom": 15,
                           "textAlign": "center",
@@ -195,11 +195,11 @@ your full potential?
                           "textAlign": "left",
                         },
                         {
-                          "color": "rgb(26, 28, 30)",
+                          "color": "rgb(27, 27, 31)",
                           "writingDirection": "ltr",
                         },
                         {
-                          "color": "rgb(0, 99, 154)",
+                          "color": "rgb(0, 90, 193)",
                           "lineHeight": 30,
                           "marginBottom": 60,
                           "textAlign": "center",
@@ -243,7 +243,7 @@ today on Habitualise.
                     style={
                       [
                         {
-                          "backgroundColor": "rgb(0, 99, 154)",
+                          "backgroundColor": "rgb(0, 90, 193)",
                         },
                         {
                           "borderRadius": 10,
@@ -268,7 +268,7 @@ today on Habitualise.
                             "textAlign": "left",
                           },
                           {
-                            "color": "rgb(26, 28, 30)",
+                            "color": "rgb(27, 27, 31)",
                             "writingDirection": "ltr",
                           },
                           {
@@ -416,7 +416,7 @@ today on Habitualise.
                               style={
                                 [
                                   {
-                                    "color": "rgb(0, 99, 154)",
+                                    "color": "rgb(0, 90, 193)",
                                     "fontSize": 20,
                                   },
                                   undefined,
@@ -448,7 +448,7 @@ today on Habitualise.
                                   "textAlign": "left",
                                 },
                                 {
-                                  "color": "rgb(26, 28, 30)",
+                                  "color": "rgb(27, 27, 31)",
                                   "writingDirection": "ltr",
                                 },
                                 [
@@ -464,7 +464,7 @@ today on Habitualise.
                                   undefined,
                                   false,
                                   {
-                                    "color": "rgb(0, 99, 154)",
+                                    "color": "rgb(0, 90, 193)",
                                     "fontFamily": "System",
                                     "fontSize": 14,
                                     "fontWeight": "500",
