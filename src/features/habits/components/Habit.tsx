@@ -20,14 +20,14 @@ interface HabitProps {
 
 export const Habit = (props: HabitProps) => {
   const {
-    id,
+    // id,
     name,
     iconName,
     colour,
     completionPercentage,
-    status,
-    completionHistory,
-    daysDue,
+    // status,
+    // completionHistory,
+    // daysDue,
   } = props;
 
   return (
