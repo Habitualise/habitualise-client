@@ -10,6 +10,7 @@ export const LABEL = {
   TODAY_HEADER: "Today's Habits",
   HABITS_STACK: 'Habits Stack',
   ADD_HABIT_MODAL: 'Add Habit Modal',
+  PICK_ICON_MODAL: 'Pick Icon Modal',
   HABITS_SCREEN: 'Habits Screen',
   HABITS: 'Habits',
   HABITS_HEADER: 'My Habits',
