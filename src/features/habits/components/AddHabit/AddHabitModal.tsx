@@ -1,17 +1,11 @@
 import React, {useCallback, useState} from 'react';
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  TextInput,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, TextInput} from 'react-native';
 import {Text, IconButton} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {WeekdayPicker} from './WeekdayPicker';
 import {useFocusEffect} from '@react-navigation/native';
 import {LABEL} from '@app/language';
+import {themeColors} from '@app/theme';
 
 interface AddHabitModalProps {
   navigation: any;
@@ -61,10 +55,12 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.pop()}>
-          <MaterialIcons name="close" size={24} color="black" />
+          <Text style={styles.discard}>Discard</Text>
         </TouchableOpacity>
         <Text variant="titleMedium">Add Habit</Text>
-        <View style={{width: 24}} />
+        <TouchableOpacity onPress={handleCreateHabit}>
+          <Text style={styles.create}>Create</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.content}>
         <View style={styles.row}>
@@ -86,16 +82,6 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             });
           }}
         />
-        <View style={styles.footer}>
-          <TouchableWithoutFeedback onPress={() => navigation.pop()}>
-            <Text style={styles.discard}>Discard</Text>
-          </TouchableWithoutFeedback>
-          <TouchableOpacity
-            style={styles.createHabitButton}
-            onPress={handleCreateHabit}>
-            <Text style={styles.createHabitButtonText}>Create Habit</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     </SafeAreaView>
   );
@@ -134,24 +120,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingLeft: 8,
   },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
   discard: {
     fontSize: 16,
-    color: 'red',
+    color: themeColors.red[600],
   },
-  createHabitButton: {
-    backgroundColor: 'blue',
-    paddingHorizontal: 24,
-    paddingVertical: 8,
-    borderRadius: 5,
-  },
-  createHabitButtonText: {
+  create: {
     fontSize: 16,
-    color: 'white',
+    color: themeColors.blue[600],
   },
 });
