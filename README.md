@@ -2,6 +2,9 @@
 
 ![Main CI Status](https://github.com/Habitualise/habitualise-client/actions/workflows/ci.yml/badge.svg?branch=main)
 
+<img width="342" alt="image" src="https://user-images.githubusercontent.com/64414639/233824502-c2ee7496-e8c3-4336-8ff9-fb7f7799636a.png">
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/64414639/233824548-10df0d90-90e7-4217-b62c-e2926d6166d7.png">
+
 ## Project Setup
 
 1. (Required) Complete all **React Native CLI Quickstart** setup steps for Android and iOS before running the app: https://reactnative.dev/docs/environment-setup
