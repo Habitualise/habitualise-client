@@ -8,6 +8,8 @@ export const LABEL = {
   ALREADY_HAVE_ACCOUNT: 'I already have an account',
   TODAY: 'Today',
   TODAY_HEADER: "Today's Habits",
+  HABITS_STACK: 'Habits Stack',
+  ADD_HABIT_MODAL: 'Add Habit Modal',
   HABITS_SCREEN: 'Habits Screen',
   HABITS: 'Habits',
   HABITS_HEADER: 'My Habits',

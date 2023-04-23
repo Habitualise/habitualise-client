@@ -8,17 +8,17 @@ import {LABEL} from '@app/language';
 import {useStore} from '@app/context/StoreContext';
 import {Habit} from './Habit';
 import {themeColors} from '@app/theme';
-// import {AddHabit} from './AddHabit';
-// import {ShadowModal} from '@app/components/ShadowModal';
 
-export const HabitsScreen = () => {
+interface HabitScreenProps {
+  navigation: any;
+}
+
+export const HabitsScreen = ({navigation}: HabitScreenProps) => {
   const [habitsStatus, setHabitsStatus] = useState<'active' | 'archived'>(
     'active',
   );
   const {state} = useStore();
   const {habits} = state;
-
-  //   const [modalVisible, setModalVisible] = useState(false);
 
   const setActive = () => {
     setHabitsStatus('active');
@@ -34,12 +34,6 @@ export const HabitsScreen = () => {
         flex: 1,
       }}
       edges={['top', 'left', 'right']}>
-      {/* <ShadowModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}>
-        <AddHabit setModalVisible={setModalVisible} />
-      </ShadowModal> */}
-
       <PaperView style={{flex: 1}}>
         <View style={styles.headerContainer}>
           <Text variant="headlineLarge" style={styles.heading}>
@@ -66,7 +60,7 @@ export const HabitsScreen = () => {
             <IconButton
               icon="plus"
               iconColor={themeColors.primary}
-              onPress={() => console.log('add habit pressed')}
+              onPress={() => navigation.navigate(LABEL.ADD_HABIT_MODAL)}
             />
           </View>
         </View>
