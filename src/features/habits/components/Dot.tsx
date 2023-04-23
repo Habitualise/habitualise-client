@@ -1,7 +1,8 @@
 import React, {useMemo} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ColorValue} from 'react-native';
 
 import {calculateDotColour} from '../utils/calculateDotColour';
+import {themeColors} from '@app/theme';
 
 interface DotProps {
   baseColour: string;
@@ -16,13 +17,31 @@ export const Dot = (props: DotProps) => {
     [baseColour, state, consecutiveDaysCompleted],
   );
 
-  return <View style={[styles.dot, {backgroundColor: dotColour}]} />;
+  return (
+    <View
+      style={[
+        styles(dotColour).dot,
+        state === 'SKIPPED' && styles(dotColour).skippedDot,
+        state === 'MISSED' && styles(dotColour).missedDot,
+      ]}
+    />
+  );
 };
 
-const styles = StyleSheet.create({
-  dot: {
-    width: 13,
-    height: 13,
-    borderRadius: 5,
-  },
-});
+const styles = (dotColour: ColorValue) =>
+  StyleSheet.create({
+    dot: {
+      width: 13,
+      height: 13,
+      borderRadius: 5,
+      backgroundColor: dotColour,
+    },
+    skippedDot: {
+      borderWidth: 3,
+      borderColor: dotColour,
+      backgroundColor: 'transparent',
+    },
+    missedDot: {
+      backgroundColor: themeColors.grey[300],
+    },
+  });

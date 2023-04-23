@@ -21,7 +21,7 @@ export const DotHistory = (props: HistoryDotViewProps) => {
     // if < 28 days, pad the start with 'SKIPPED' states
     // if > 28 days, trim the start
     if (paddedHistory.length < 28) {
-      const padding = new Array(28 - paddedHistory.length).fill('SKIPPED');
+      const padding = new Array(28 - paddedHistory.length).fill('MISSED');
       paddedHistory = [...padding, ...paddedHistory];
     } else if (paddedHistory.length > 28) {
       paddedHistory = paddedHistory.slice(paddedHistory.length - 28);

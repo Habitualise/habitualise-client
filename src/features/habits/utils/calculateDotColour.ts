@@ -1,4 +1,3 @@
-import {themeColors} from '@app/theme';
 import rgbToHSL from 'rgb-to-hsl';
 
 export const calculateDotColour = (
@@ -6,13 +5,6 @@ export const calculateDotColour = (
   state: string,
   consecutiveDaysCompleted: number,
 ): string => {
-  if (state === 'MISSED') {
-    return themeColors.red[200];
-  }
-  if (state === 'SKIPPED') {
-    return themeColors.grey[300];
-  }
-
   // validate that baseColour is a valid rgb string
   if (!baseColour.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)) {
     console.error('Invalid rgb string');
