@@ -1,4 +1,5 @@
 import {themeColors} from '@app/theme';
+import rgbToHSL from 'rgb-to-hsl';
 
 export const calculateDotColour = (
   baseColour: string,
@@ -18,12 +19,15 @@ export const calculateDotColour = (
     return 'rgb(0, 0, 0)';
   }
 
-  const [r, g, b] = baseColour.match(/\d+/g)!.map(Number);
-  const maxDarkness = 0.9;
-  const darkness = Math.min(1 - consecutiveDaysCompleted * 0.1, maxDarkness);
-  const newR = Math.round(r * darkness);
-  const newG = Math.round(g * darkness);
-  const newB = Math.round(b * darkness);
+  let [r, g, b] = baseColour.match(/\d+/g)!.map(Number);
+  let [h, s, l] = rgbToHSL(r, g, b); // extract the hue value from rgb
 
-  return `rgb(${newR}, ${newG}, ${newB})`;
+  // Start at a pale colour to begin with
+  s = 80;
+  l = 80;
+
+  const newS = s + consecutiveDaysCompleted * 2;
+  const newL = Math.max(l - consecutiveDaysCompleted * 1.5, 40);
+
+  return `hsl(${h}, ${newS}%, ${newL}%)`;
 };
