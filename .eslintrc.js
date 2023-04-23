@@ -8,5 +8,11 @@ module.exports = {
         patterns: ['@/features/*/*'],
       },
     ],
+    'no-console': [
+      'warn',
+      {
+        allow: ['error'],
+      },
+    ],
   },
 };
