@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
 import {HabitsScreen} from './HabitsScreen';
-import {AddHabitModal} from './AddHabitModal';
+import {AddHabitModal} from './AddHabit/AddHabitModal';
 import {LABEL} from '@app/language';
 
 const Stack = createStackNavigator();
@@ -15,7 +15,6 @@ export const HabitsStack = () => {
         ...TransitionPresets.ModalPresentationIOS,
         headerShown: false,
         cardOverlayEnabled: true,
-        headerMode: 'screen',
       }}>
       <Stack.Screen name={LABEL.HABITS_SCREEN} component={HabitsScreen} />
       <Stack.Screen

@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -14,7 +15,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({navigation}) => {
         <TouchableOpacity onPress={() => navigation.pop()}>
           <MaterialIcons name="close" size={24} color="black" />
         </TouchableOpacity>
-        <Text style={styles.title}>Add Habit</Text>
+        <Text variant="titleMedium">Add Habit</Text>
         <View style={{width: 24}} />
       </View>
       <View style={styles.content}>{/* Add content here */}</View>
@@ -37,10 +38,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderBottomColor: 'lightgray',
     borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 18,
   },
   content: {
     flex: 1,
