@@ -17,4 +17,6 @@ export const LABEL = {
   ACTIVE: 'Active',
   ARCHIVED: 'Archived',
   DAYS_COMPLETED: (percentage: number) => `${percentage}% of days completed`,
+  HABIT_REQUIRED: 'Habit name is required.',
+  CHOOSE_ICON: 'Please choose an icon.',
 };

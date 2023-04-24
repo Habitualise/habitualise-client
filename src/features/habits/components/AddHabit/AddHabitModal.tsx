@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Text, IconButton, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -18,6 +18,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
   navigation,
   route,
 }) => {
+  const [submitAttempted, setSubmitAttempted] = useState(false);
   const [name, setName] = useState('');
   const [icon, setIcon] = useState('image'); // default icon is image
   const [selectedDays, setSelectedDays] = useState([
@@ -30,11 +31,32 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     true,
   ]);
 
+  const [nameError, setNameError] = useState('');
+  const [iconError, setIconError] = useState('');
+
   const {state, dispatch} = useStore();
   const {habits} = state;
 
-  // when this modal is focused again, check if iconName is passed in params
-  // if it is, set the icon to the iconName
+  const validateForm = useCallback(() => {
+    let isValid = true;
+
+    if (!name) {
+      setNameError(LABEL.HABIT_REQUIRED);
+      isValid = false;
+    } else {
+      setNameError('');
+    }
+
+    if (icon === 'image') {
+      setIconError(LABEL.CHOOSE_ICON);
+      isValid = false;
+    } else {
+      setIconError('');
+    }
+
+    return isValid;
+  }, [name, icon]);
+
   useFocusEffect(
     useCallback(() => {
       const iconName = route.params?.iconName;
@@ -44,11 +66,23 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     }, [route]),
   );
 
+  useEffect(() => {
+    if (submitAttempted) {
+      validateForm();
+    }
+  }, [submitAttempted, name, icon, validateForm]);
+
   const handleIconPress = () => {
     navigation.navigate(LABEL.HABITS_STACK, {screen: LABEL.PICK_ICON_MODAL});
   };
 
   const handleCreateHabit = () => {
+    setSubmitAttempted(true);
+
+    if (!validateForm()) {
+      return;
+    }
+
     const newHabit = {
       id: habits.length + 1,
       name,
@@ -91,14 +125,18 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
           <IconButton
             style={styles.iconButton}
             icon={icon}
-            onPress={handleIconPress}
+            onPress={() => {
+              handleIconPress();
+            }}
             mode={'contained'}
             size={42}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Habit name"
-            onChangeText={setName}
+            onChangeText={text => {
+              setName(text);
+            }}
             value={name}
           />
         </View>
@@ -112,6 +150,8 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             });
           }}
         />
+        {nameError ? <Text style={styles.error}>{nameError}</Text> : null}
+        {iconError ? <Text style={styles.error}>{iconError}</Text> : null}
       </View>
     </SafeAreaView>
   );
@@ -160,5 +200,13 @@ const styles = StyleSheet.create({
   create: {
     fontSize: 16,
     color: themeColors.blue[600],
+  },
+  createDisabled: {
+    fontSize: 16,
+    color: themeColors.grey[500],
+  },
+  error: {
+    color: themeColors.red[600],
+    marginBottom: 16,
   },
 });
