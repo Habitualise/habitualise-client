@@ -4,6 +4,7 @@ export const ACTIONS = {
   SET_ALL_HABITS: 'SET_ALL_HABITS',
   TOGGLE_HABIT_IS_COMPLETED: 'TOGGLE_HABIT_IS_COMPLETED',
   HANDLE_LOGOUT: 'HANDLE_LOGOUT',
+  ADD_HABIT: 'ADD_HABIT',
 } as const;
 
 type Action = {
@@ -21,6 +22,9 @@ export const reducer = (state: State, action: Action) => {
       // action.payload should be an array of habits
       // TODO: add some validation here
       return {...state, habits: action.payload};
+    case ACTIONS.ADD_HABIT:
+      // action.payload should be a habit
+      return {...state, habits: [...state.habits, action.payload]};
     case ACTIONS.HANDLE_LOGOUT:
       return {...state, habits: []};
     case ACTIONS.TOGGLE_HABIT_IS_COMPLETED: {

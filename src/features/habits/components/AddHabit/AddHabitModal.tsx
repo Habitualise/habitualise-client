@@ -2,10 +2,12 @@ import React, {useCallback, useState} from 'react';
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import {Text, IconButton, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {WeekdayPicker} from './WeekdayPicker';
 import {useFocusEffect} from '@react-navigation/native';
+
+import {WeekdayPicker} from './WeekdayPicker';
 import {LABEL} from '@app/language';
 import {themeColors} from '@app/theme';
+import {useStore, ACTIONS} from '@app/context/StoreContext';
 
 interface AddHabitModalProps {
   navigation: any;
@@ -28,6 +30,9 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     true,
   ]);
 
+  const {state, dispatch} = useStore();
+  const {habits} = state;
+
   // when this modal is focused again, check if iconName is passed in params
   // if it is, set the icon to the iconName
   useFocusEffect(
@@ -44,11 +49,30 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
   };
 
   const handleCreateHabit = () => {
-    console.log({
+    const newHabit = {
+      id: habits.length + 1,
       name,
-      icon,
-      selectedDays,
+      iconName: icon,
+      colour: 'rgb(66, 135, 245)',
+      isCompleted: false,
+      completionPercentage: 0,
+      status: 'active',
+      daysDue: selectedDays
+        .map((day, index) => {
+          if (day) {
+            return index + 1;
+          }
+        })
+        .filter(day => day !== undefined),
+      completionHistory: [],
+    };
+
+    dispatch({
+      type: ACTIONS.ADD_HABIT,
+      payload: newHabit,
     });
+
+    navigation.pop();
   };
 
   return (
