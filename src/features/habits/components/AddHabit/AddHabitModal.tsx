@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
-import {StyleSheet, View, TouchableOpacity, TextInput} from 'react-native';
-import {Text, IconButton} from 'react-native-paper';
+import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {Text, IconButton, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {WeekdayPicker} from './WeekdayPicker';
 import {useFocusEffect} from '@react-navigation/native';
@@ -64,7 +64,13 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       </View>
       <View style={styles.content}>
         <View style={styles.row}>
-          <IconButton icon={icon} onPress={handleIconPress} />
+          <IconButton
+            style={styles.iconButton}
+            icon={icon}
+            onPress={handleIconPress}
+            mode={'contained'}
+            size={42}
+          />
           <TextInput
             style={styles.textInput}
             placeholder="Habit name"
@@ -106,19 +112,22 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingVertical: 16,
+  },
+  iconButton: {
+    marginRight: 16,
+    marginLeft: 0,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
+    justifyContent: 'space-between',
+    marginTop: 16,
+    marginBottom: 32,
   },
   textInput: {
     flex: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: 'gray',
     fontSize: 16,
-    paddingLeft: 8,
   },
   discard: {
     fontSize: 16,

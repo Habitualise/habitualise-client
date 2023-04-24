@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {LABEL} from '@app/language';
+import {themeColors} from '@app/theme';
 
 const icons = ['run', 'water', 'fire', 'music', 'soccer'];
 
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
   },
   select: {
     fontSize: 16,
-    color: 'blue',
+    color: themeColors.blue[600],
   },
   iconContainer: {
     flexDirection: 'row',
