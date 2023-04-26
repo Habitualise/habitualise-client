@@ -19,4 +19,9 @@ export const LABEL = {
   DAYS_COMPLETED: (percentage: number) => `${percentage}% of days completed`,
   HABIT_REQUIRED: 'Habit name is required.',
   CHOOSE_ICON: 'Please choose an icon.',
+  DISCARD: 'Discard',
+  CREATE: 'Create',
+  CREATE_HABIT: 'Create Habit',
+  HABIT_NAME: 'Habit Name',
+  REPEAT: 'REPEAT',
 };

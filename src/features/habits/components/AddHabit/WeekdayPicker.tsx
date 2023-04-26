@@ -1,9 +1,10 @@
+import {LABEL} from '@app/language';
 import {themeColors} from '@app/theme';
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from 'react-native-paper';
 
-const daysOfWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 interface WeekdayPickerProps {
   selectedDays: boolean[];
@@ -16,7 +17,9 @@ export const WeekdayPicker: React.FC<WeekdayPickerProps> = ({
 }) => {
   return (
     <>
-      <Text style={styles.repeatLabel}>REPEAT</Text>
+      <Text variant="labelMedium" style={styles.repeatLabel}>
+        {LABEL.REPEAT}
+      </Text>
       <View style={styles.container}>
         {daysOfWeek.map((day, index) => (
           <TouchableOpacity
@@ -26,7 +29,12 @@ export const WeekdayPicker: React.FC<WeekdayPickerProps> = ({
               selectedDays[index] && styles.dayButtonSelected,
             ]}
             onPress={() => onDayPress(index)}>
-            <Text style={selectedDays[index] && styles.dayButtonTextSelected}>
+            <Text
+              variant="labelSmall"
+              style={[
+                styles.dayButtonText,
+                selectedDays[index] && styles.dayButtonTextSelected,
+              ]}>
               {day}
             </Text>
           </TouchableOpacity>
@@ -42,7 +50,8 @@ const styles = StyleSheet.create({
   },
   repeatLabel: {
     marginLeft: 4,
-    marginBottom: 4,
+    marginBottom: 8,
+    fontWeight: '300',
   },
   container: {
     flexDirection: 'row',
@@ -50,17 +59,23 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   dayButton: {
-    padding: 10,
+    borderWidth: 1.5,
+    borderColor: themeColors.grey[400],
+    paddingVertical: 11,
     flex: 1,
     marginHorizontal: 4,
     alignItems: 'center',
-    backgroundColor: themeColors.grey[200],
+    // backgroundColor: themeColors.grey[200],
     borderRadius: 8,
   },
   dayButtonSelected: {
-    backgroundColor: themeColors.primary,
+    borderColor: themeColors.primary,
+    backgroundColor: themeColors.primaryContainer,
+  },
+  dayButtonText: {
+    color: themeColors.grey[600],
   },
   dayButtonTextSelected: {
-    color: 'white',
+    color: themeColors.primary,
   },
 });

@@ -113,11 +113,11 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.pop()}>
-          <Text style={styles.discard}>Discard</Text>
+          <Text style={styles.discard}>{LABEL.DISCARD}</Text>
         </TouchableOpacity>
-        <Text variant="titleMedium">Add Habit</Text>
+        <Text variant="titleMedium">{LABEL.CREATE_HABIT}</Text>
         <TouchableOpacity onPress={handleCreateHabit}>
-          <Text style={styles.create}>Create</Text>
+          <Text style={styles.create}>{LABEL.CREATE}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
@@ -133,7 +133,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
           />
           <TextInput
             style={styles.textInput}
-            placeholder="Habit name"
+            placeholder={LABEL.HABIT_NAME}
             onChangeText={text => {
               setName(text);
             }}
