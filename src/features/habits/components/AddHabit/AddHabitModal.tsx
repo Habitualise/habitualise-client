@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {useFocusEffect} from '@react-navigation/native';
 
 import {WeekdayPicker} from './WeekdayPicker';
+import {ColorSwatchSelector} from './ColorSwatchSelector';
 import {LABEL} from '@app/language';
 import {themeColors} from '@app/theme';
 import {useStore, ACTIONS} from '@app/context/StoreContext';
@@ -30,6 +31,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     true,
     true,
   ]);
+  const [selectedColor, setSelectedColor] = useState('');
 
   const [nameError, setNameError] = useState('');
   const [iconError, setIconError] = useState('');
@@ -141,6 +143,16 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             underlineColor="transparent"
           />
         </View>
+        <Text variant="labelMedium" style={styles.repeatLabel}>
+          {LABEL.COLOUR}
+        </Text>
+        <ColorSwatchSelector
+          selectedColor={selectedColor}
+          onColorPress={setSelectedColor}
+        />
+        <Text variant="labelMedium" style={styles.repeatLabel}>
+          {LABEL.REPEAT}
+        </Text>
         <WeekdayPicker
           selectedDays={selectedDays}
           onDayPress={index => {
@@ -209,5 +221,10 @@ const styles = StyleSheet.create({
   error: {
     color: themeColors.red[600],
     marginBottom: 16,
+  },
+  repeatLabel: {
+    marginLeft: 4,
+    marginBottom: 8,
+    fontWeight: '300',
   },
 });
