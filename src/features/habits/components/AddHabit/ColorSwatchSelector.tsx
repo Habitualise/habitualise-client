@@ -14,13 +14,13 @@ export const ColorSwatchSelector: React.FC<ColorSwatchSelectorProps> = ({
 }) => {
   const colors = useMemo(
     () => [
-      'rgb(66, 135, 245)',
-      'rgb(244, 67, 54)',
-      'rgb(139, 195, 74)',
-      'rgb(255, 152, 0)',
+      'rgb(40, 96, 245)', //40	96	246
+      'rgb(9, 158, 76)',
+      'rgb(255, 190, 0)',
+      'rgb(235, 131, 8)',
+      'rgb(237, 0, 0)',
       'rgb(156, 39, 176)',
-      'rgb(96, 125, 139)',
-      'rgb(33, 150, 243)',
+      'rgb(97, 97, 97)',
     ],
     [],
   );
