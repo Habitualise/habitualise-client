@@ -4,7 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {ColorValue} from 'react-native';
 
 import {TodayScreen} from '@app/features/today';
-import {HabitsScreen} from '@app/features/habits';
+import {HabitsStack} from '@app/features/habits';
 import {LABEL} from '@app/language';
 import {useStore, ACTIONS} from '@app/context/StoreContext';
 import {getHabits} from './api/getHabits';
@@ -36,8 +36,8 @@ export const AppTabs = () => {
         }}
       />
       <Tab.Screen
-        name={LABEL.HABITS_SCREEN}
-        component={HabitsScreen}
+        name={LABEL.HABITS_STACK}
+        component={HabitsStack}
         options={{
           tabBarLabel: LABEL.HABITS,
           tabBarIcon: ({color}) => (
