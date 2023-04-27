@@ -34,7 +34,6 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
   const [selectedColor, setSelectedColor] = useState('');
 
   const [nameError, setNameError] = useState('');
-  const [iconError, setIconError] = useState('');
 
   const {state, dispatch} = useStore();
   const {habits} = state;
@@ -49,15 +48,8 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       setNameError('');
     }
 
-    if (icon === 'image') {
-      setIconError(LABEL.CHOOSE_ICON);
-      isValid = false;
-    } else {
-      setIconError('');
-    }
-
     return isValid;
-  }, [name, icon]);
+  }, [name]);
 
   useFocusEffect(
     useCallback(() => {
@@ -100,7 +92,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
           }
         })
         .filter(day => day !== undefined),
-      completionHistory: [],
+      completionHistory: Array(28).fill('DONE'),
     };
 
     dispatch({
@@ -165,7 +157,6 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
           }}
         />
         {nameError ? <Text style={styles.error}>{nameError}</Text> : null}
-        {iconError ? <Text style={styles.error}>{iconError}</Text> : null}
       </View>
     </SafeAreaView>
   );
