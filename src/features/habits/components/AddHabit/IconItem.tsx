@@ -1,3 +1,4 @@
+import {themeColors} from '@app/theme';
 import React from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -30,9 +31,9 @@ const styles = StyleSheet.create({
     margin: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '23%',
+    flex: 1,
   },
   iconButtonSelected: {
-    backgroundColor: 'blue',
+    backgroundColor: themeColors.blue[600],
   },
 });

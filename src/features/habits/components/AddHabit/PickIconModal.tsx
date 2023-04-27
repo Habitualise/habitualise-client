@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  FlatList,
-  TextInput,
-} from 'react-native';
-import {Text} from 'react-native-paper';
+import {StyleSheet, View, TouchableOpacity, FlatList} from 'react-native';
+import {Text, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {LABEL} from '@app/language';
@@ -53,10 +47,10 @@ export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <TextInput
-        style={styles.filterInput}
         placeholder="Filter icons"
         onChangeText={setFilterText}
         value={filterText}
+        underlineColor={themeColors.grey[400]}
       />
       <FlatList
         style={styles.iconContainer}
@@ -90,23 +84,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderBottomColor: 'lightgray',
+    borderBottomColor: themeColors.grey[400],
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   select: {
     fontSize: 16,
     color: themeColors.blue[600],
   },
-  filterInput: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderBottomColor: 'lightgray',
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   iconContainer: {
     flex: 1,
   },
   iconContentContainer: {
+    padding: 8,
     justifyContent: 'space-evenly',
   },
 });

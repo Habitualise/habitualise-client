@@ -138,6 +138,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
               setName(text);
             }}
             value={name}
+            underlineColor="transparent"
           />
         </View>
         <WeekdayPicker
