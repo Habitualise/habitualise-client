@@ -1,5 +1,7 @@
 // ColorSwatchSelector.tsx
-import React, {useEffect, useMemo} from 'react';
+import {HabitColor} from '@app/context/types';
+import {habitColors} from '@app/theme';
+import React, {useEffect} from 'react';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -12,33 +14,25 @@ export const ColorSwatchSelector: React.FC<ColorSwatchSelectorProps> = ({
   selectedColor,
   onColorPress,
 }) => {
-  const colors = useMemo(
-    () => [
-      'rgb(40, 96, 245)',
-      'rgb(9, 158, 76)',
-      'rgb(255, 190, 0)',
-      'rgb(235, 131, 8)',
-      'rgb(237, 0, 0)',
-      'rgb(156, 39, 176)',
-      'rgb(97, 97, 97)',
-    ],
-    [],
-  );
+  const colorTypes = Object.keys(habitColors) as HabitColor[];
 
   useEffect(() => {
     if (!selectedColor) {
-      onColorPress(colors[0]);
+      onColorPress(colorTypes[0]);
     }
-  }, [selectedColor, onColorPress, colors]);
+  }, [colorTypes, onColorPress, selectedColor]);
 
   return (
     <View style={styles.swatchContainer}>
-      {colors.map((color, index) => (
+      {colorTypes.map((colorType, index) => (
         <TouchableOpacity
           key={index}
-          onPress={() => onColorPress(color)}
-          style={[styles.swatch, {backgroundColor: color}]}>
-          {selectedColor === color && (
+          onPress={() => onColorPress(colorType)}
+          style={[
+            styles.swatch,
+            {backgroundColor: habitColors[colorType].middle},
+          ]}>
+          {selectedColor === colorType && (
             <MaterialCommunityIcons name="check" size={24} color="white" />
           )}
         </TouchableOpacity>

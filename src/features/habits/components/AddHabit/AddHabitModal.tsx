@@ -7,8 +7,9 @@ import {useFocusEffect} from '@react-navigation/native';
 import {WeekdayPicker} from './WeekdayPicker';
 import {ColorSwatchSelector} from './ColorSwatchSelector';
 import {LABEL} from '@app/language';
-import {themeColors} from '@app/theme';
+import {habitColors, themeColors} from '@app/theme';
 import {useStore, ACTIONS} from '@app/context/StoreContext';
+import {HabitColor} from '@app/context/types';
 
 interface AddHabitModalProps {
   navigation: any;
@@ -31,7 +32,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     true,
     true,
   ]);
-  const [selectedColor, setSelectedColor] = useState('');
+  const [selectedColor, setSelectedColor] = useState<HabitColor>('blue');
 
   const [nameError, setNameError] = useState('');
 
@@ -124,7 +125,9 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             }}
             mode={'contained'}
             size={42}
-            iconColor={selectedColor || themeColors.grey[600]}
+            iconColor={
+              habitColors[selectedColor].middle || themeColors.grey[600]
+            }
           />
           <TextInput
             style={styles.textInput}
