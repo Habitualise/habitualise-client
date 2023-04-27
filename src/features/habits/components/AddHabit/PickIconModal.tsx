@@ -4,6 +4,7 @@ import {Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {LABEL} from '@app/language';
 import {themeColors} from '@app/theme';
 
@@ -33,9 +34,9 @@ export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
         <TouchableOpacity onPress={() => navigation.pop()}>
           <MaterialIcons name="close" size={24} color="black" />
         </TouchableOpacity>
-        <Text variant="titleMedium">Pick Icon</Text>
+        <Text variant="titleMedium">{LABEL.SELECT_ICON}</Text>
         <TouchableOpacity onPress={onSelectIcon}>
-          <Text style={styles.select}>Select</Text>
+          <Text style={styles.select}>{LABEL.SELECT}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.iconContainer}>
@@ -62,7 +63,7 @@ export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: themeColors.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderBottomColor: 'lightgray',
+    borderBottomColor: themeColors.grey[400],
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   select: {
@@ -88,11 +89,11 @@ const styles = StyleSheet.create({
   },
   iconButton: {
     padding: 8,
-    backgroundColor: 'lightgray',
+    backgroundColor: themeColors.grey[200],
     borderRadius: 5,
     margin: 8,
   },
   iconButtonSelected: {
-    backgroundColor: 'blue',
+    backgroundColor: themeColors.blue[600],
   },
 });

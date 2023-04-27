@@ -81,4 +81,5 @@ export const themeColors = {
     800: 'rgb(21, 101, 192)',
     900: 'rgb(13, 71, 161)',
   },
+  white: 'rgb(255, 255, 255)',
 };

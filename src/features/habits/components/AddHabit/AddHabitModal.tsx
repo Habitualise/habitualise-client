@@ -18,7 +18,6 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
   navigation,
   route,
 }) => {
-  const [submitAttempted, setSubmitAttempted] = useState(false);
   const [name, setName] = useState('');
   const [icon, setIcon] = useState('image'); // default icon is image
   const [selectedDays, setSelectedDays] = useState([
@@ -31,6 +30,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     true,
   ]);
 
+  const [submitAttempted, setSubmitAttempted] = useState(false);
   const [nameError, setNameError] = useState('');
   const [iconError, setIconError] = useState('');
 
@@ -160,7 +160,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: themeColors.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderBottomColor: 'lightgray',
+    borderBottomColor: themeColors.grey[400],
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   content: {
