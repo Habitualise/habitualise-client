@@ -8,12 +8,13 @@ import {HabitIcon} from '@app/components/HabitIcon';
 import {useStore, ACTIONS} from '@app/context/StoreContext';
 import {formatDaysDue} from '../utils/formatDaysDue';
 import {PressableCard} from '@app/components/PressableCard';
+import {HabitColor} from '@app/context/types';
 
 interface TodayHabitProps {
   id: string;
   name: string;
   iconName: string;
-  colour: string;
+  colour: HabitColor;
   isCompleted: boolean;
   daysDue: number[];
 }

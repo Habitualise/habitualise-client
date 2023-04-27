@@ -1,7 +1,8 @@
+import {HabitColor} from '@app/context/types';
 import rgbToHSL from 'rgb-to-hsl';
 
 export const calculateDotColour = (
-  baseColour: string,
+  baseColour: HabitColor,
   state: string,
   consecutiveDaysCompleted: number,
 ): string => {

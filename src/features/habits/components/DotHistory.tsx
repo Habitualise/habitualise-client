@@ -2,10 +2,11 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import {Dot} from './Dot';
+import {HabitColor} from '@app/context/types';
 
 interface HistoryDotViewProps {
   completionHistory: string[];
-  colour: string;
+  colour: HabitColor;
 }
 
 export const DotHistory = (props: HistoryDotViewProps) => {
@@ -36,7 +37,7 @@ export const DotHistory = (props: HistoryDotViewProps) => {
       return (
         <Dot
           key={index}
-          baseColour={colour}
+          colorType={colour}
           state={state}
           consecutiveDaysCompleted={streak}
         />

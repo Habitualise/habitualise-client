@@ -6,12 +6,13 @@ import {StyleSheet, View} from 'react-native';
 import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import {DotHistory} from './DotHistory';
+import {HabitColor} from '@app/context/types';
 
 interface HabitProps {
   id: string;
   name: string;
   iconName: string;
-  colour: string;
+  colour: HabitColor;
   completionPercentage: number;
   status: 'active' | 'archived';
   completionHistory: string[];
