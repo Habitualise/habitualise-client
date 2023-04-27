@@ -89,7 +89,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       id: habits.length + 1,
       name,
       iconName: icon,
-      colour: 'rgb(66, 135, 245)',
+      colour: selectedColor || themeColors.grey[600],
       isCompleted: false,
       completionPercentage: 0,
       status: 'active',
@@ -132,6 +132,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             }}
             mode={'contained'}
             size={42}
+            iconColor={selectedColor || themeColors.grey[600]}
           />
           <TextInput
             style={styles.textInput}
