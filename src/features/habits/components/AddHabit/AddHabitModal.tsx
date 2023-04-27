@@ -161,7 +161,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: themeColors.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderBottomColor: 'lightgray',
+    borderBottomColor: themeColors.grey[400],
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   content: {
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
   },
   create: {
     fontSize: 16,
-    color: themeColors.blue[600],
+    color: themeColors.primary,
   },
   createDisabled: {
     fontSize: 16,

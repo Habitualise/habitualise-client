@@ -74,7 +74,7 @@ export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: themeColors.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   select: {
     fontSize: 16,
-    color: themeColors.blue[600],
+    color: themeColors.primary,
   },
   iconContainer: {
     flex: 1,

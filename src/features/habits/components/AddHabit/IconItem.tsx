@@ -26,7 +26,7 @@ export const IconItem: React.FC<{
 const styles = StyleSheet.create({
   iconButton: {
     padding: 8,
-    backgroundColor: 'lightgray',
+    backgroundColor: themeColors.grey[300],
     borderRadius: 5,
     margin: 8,
     justifyContent: 'center',
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   iconButtonSelected: {
-    backgroundColor: themeColors.blue[600],
+    backgroundColor: themeColors.primary,
   },
 });

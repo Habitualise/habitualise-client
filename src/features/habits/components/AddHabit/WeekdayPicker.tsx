@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 4,
     alignItems: 'center',
-    // backgroundColor: themeColors.grey[200],
     borderRadius: 8,
   },
   dayButtonSelected: {
