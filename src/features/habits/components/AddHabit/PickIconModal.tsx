@@ -1,20 +1,34 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  FlatList,
+  TextInput,
+} from 'react-native';
 import {Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {LABEL} from '@app/language';
 import {themeColors} from '@app/theme';
-
-const icons = ['run', 'water', 'fire', 'music', 'soccer'];
+import {IconItem} from './IconItem';
 
 interface PickIconModalProps {
   navigation: any;
 }
 
+const glyphMap = MaterialCommunityIcons.getRawGlyphMap();
+
 export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
   const [selectedIcon, setSelectedIcon] = useState('');
+  const [filterText, setFilterText] = useState('');
+
+  const filterIcons = () => {
+    const icons = Object.keys(glyphMap);
+    return icons.filter(icon =>
+      icon.toLowerCase().includes(filterText.toLowerCase()),
+    );
+  };
 
   const onIconPress = (icon: string) => {
     setSelectedIcon(icon);
@@ -31,30 +45,34 @@ export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.pop()}>
-          <MaterialIcons name="close" size={24} color="black" />
+          <MaterialCommunityIcons name="close" size={24} color="black" />
         </TouchableOpacity>
         <Text variant="titleMedium">Pick Icon</Text>
         <TouchableOpacity onPress={onSelectIcon}>
           <Text style={styles.select}>Select</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.iconContainer}>
-        {icons.map((icon, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => onIconPress(icon)}
-            style={[
-              styles.iconButton,
-              selectedIcon === icon && styles.iconButtonSelected,
-            ]}>
-            <MaterialCommunityIcons
-              name={icon}
-              size={24}
-              color={selectedIcon === icon ? 'white' : 'black'}
-            />
-          </TouchableOpacity>
-        ))}
-      </View>
+      <TextInput
+        style={styles.filterInput}
+        placeholder="Filter icons"
+        onChangeText={setFilterText}
+        value={filterText}
+      />
+      <FlatList
+        style={styles.iconContainer}
+        contentContainerStyle={styles.iconContentContainer}
+        data={filterIcons()}
+        renderItem={({item}) => (
+          <IconItem
+            icon={item}
+            selectedIcon={selectedIcon}
+            onIconPress={onIconPress}
+          />
+        )}
+        keyExtractor={item => item}
+        numColumns={4}
+        windowSize={5}
+      />
     </SafeAreaView>
   );
 };
@@ -79,20 +97,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: themeColors.blue[600],
   },
-  iconContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-evenly',
+  filterInput: {
     paddingHorizontal: 16,
     paddingVertical: 8,
+    borderBottomColor: 'lightgray',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  iconButton: {
-    padding: 8,
-    backgroundColor: 'lightgray',
-    borderRadius: 5,
-    margin: 8,
+  iconContainer: {
+    flex: 1,
   },
-  iconButtonSelected: {
-    backgroundColor: 'blue',
+  iconContentContainer: {
+    justifyContent: 'space-evenly',
   },
 });
