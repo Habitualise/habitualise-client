@@ -86,9 +86,9 @@ export const themeColors = {
 
 export const habitColors = {
   blue: {
-    start: 'rgb(124, 173, 252)',
-    middle: 'rgb(33, 115, 217)',
-    end: 'rgb(18, 77, 157)',
+    start: 'rgb(161, 203, 255)',
+    middle: 'rgb(30, 122, 235)',
+    end: 'rgb(0, 92, 204)',
   },
   green: {
     start: 'rgb(167, 219, 177)',
