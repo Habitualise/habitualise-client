@@ -86,38 +86,38 @@ export const themeColors = {
 
 export const habitColors = {
   blue: {
-    start: 'rgb(66, 135, 245)',
+    start: 'rgb(124, 173, 252)',
     middle: 'rgb(33, 115, 217)',
     end: 'rgb(18, 77, 157)',
   },
   green: {
-    start: 'rgb(139, 195, 74)',
-    middle: 'rgb(104, 159, 56)',
-    end: 'rgb(66, 102, 38)',
+    start: 'rgb(167, 219, 177)',
+    middle: 'rgb(31, 156, 58)',
+    end: 'rgb(1, 99, 22)',
   },
   yellow: {
-    start: 'rgb(255, 238, 88)',
-    middle: 'rgb(255, 202, 40)',
-    end: 'rgb(212, 161, 10)',
+    start: 'rgb(255, 230, 156)',
+    middle: 'rgb(250, 194, 25)',
+    end: 'rgb(224, 170, 2)',
   },
   orange: {
-    start: 'rgb(255, 152, 0)',
-    middle: 'rgb(230, 126, 34)',
-    end: 'rgb(191, 97, 0)',
+    start: 'rgb(247, 179, 119)',
+    middle: 'rgb(255, 138, 36)',
+    end: 'rgb(196, 93, 2)',
   },
   red: {
-    start: 'rgb(244, 67, 54)',
+    start: 'rgb(250, 159, 152)',
     middle: 'rgb(212, 42, 29)',
-    end: 'rgb(155, 20, 0)',
+    end: 'rgb(138, 18, 0)',
   },
   purple: {
-    start: 'rgb(156, 39, 176)',
-    middle: 'rgb(123, 31, 162)',
+    start: 'rgb(235, 139, 252)',
+    middle: 'rgb(145, 38, 191)',
     end: 'rgb(74, 20, 140)',
   },
   grey: {
-    start: 'rgb(224, 224, 224)',
-    middle: 'rgb(188, 188, 188)',
-    end: 'rgb(128, 128, 128)',
+    start: 'rgb(207, 204, 204)',
+    middle: 'rgb(125, 125, 125)',
+    end: 'rgb(89, 88, 88)',
   },
 };

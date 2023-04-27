@@ -6,8 +6,8 @@ import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 interface ColorSwatchSelectorProps {
-  selectedColor: string;
-  onColorPress: (color: string) => void;
+  selectedColor: HabitColor;
+  onColorPress: (color: HabitColor) => void;
 }
 
 export const ColorSwatchSelector: React.FC<ColorSwatchSelectorProps> = ({
