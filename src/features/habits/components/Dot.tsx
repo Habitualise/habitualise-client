@@ -14,8 +14,8 @@ interface DotProps {
 export const Dot = (props: DotProps) => {
   const {colorType, state, consecutiveDaysCompleted} = props;
   const dotColour = useMemo(
-    () => calculateDotColour(colorType, state, consecutiveDaysCompleted),
-    [colorType, state, consecutiveDaysCompleted],
+    () => calculateDotColour(colorType, consecutiveDaysCompleted),
+    [colorType, consecutiveDaysCompleted],
   );
 
   return (
