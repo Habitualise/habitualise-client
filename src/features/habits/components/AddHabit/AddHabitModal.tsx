@@ -85,7 +85,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       colour: selectedColor || themeColors.grey[600],
       isCompleted: false,
       completionPercentage: 0,
-      status: 'active',
+      active: true,
       daysDue: selectedDays
         .map((day, index) => {
           if (day) {

@@ -12,7 +12,7 @@ export const mockHabits = [
     colour: 'blue',
     isCompleted: false,
     completionPercentage: 67,
-    status: 'active',
+    active: true,
     daysDue: [1, 2, 3, 4, 5, 6, 7],
     completionHistory: [
       'DONE',
@@ -52,7 +52,7 @@ export const mockHabits = [
     colour: 'green',
     isCompleted: false,
     completionPercentage: 0,
-    status: 'active',
+    active: true,
     daysDue: [1, 2, 3, 4, 7],
     completionHistory: [
       'MISSED',
@@ -108,7 +108,7 @@ export const mockHabits = [
     colour: 'yellow',
     isCompleted: false,
     completionPercentage: 99,
-    status: 'active',
+    active: true,
     daysDue: [1, 2, 3, 4, 5, 6, 7],
     completionHistory: [
       'SKIPPED',
@@ -143,7 +143,7 @@ export const mockHabits = [
     colour: 'orange',
     isCompleted: false,
     completionPercentage: 99,
-    status: 'active',
+    active: true,
     daysDue: [1, 2, 3, 4, 5, 6, 7],
     completionHistory: [
       'SKIPPED',
@@ -178,7 +178,7 @@ export const mockHabits = [
     colour: 'red',
     isCompleted: false,
     completionPercentage: 99,
-    status: 'active',
+    active: true,
     daysDue: [1, 2, 3, 4, 5, 6, 7],
     completionHistory: [
       'SKIPPED',
@@ -213,7 +213,7 @@ export const mockHabits = [
     colour: 'purple',
     isCompleted: false,
     completionPercentage: 99,
-    status: 'active',
+    active: true,
     daysDue: [1, 2, 3, 4, 5, 6, 7],
     completionHistory: [
       'SKIPPED',
@@ -248,7 +248,7 @@ export const mockHabits = [
     colour: 'grey',
     isCompleted: false,
     completionPercentage: 99,
-    status: 'active',
+    active: true,
     daysDue: [1, 2, 3, 4, 5, 6, 7],
     completionHistory: [
       'SKIPPED',

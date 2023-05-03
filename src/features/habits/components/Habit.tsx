@@ -6,27 +6,16 @@ import {StyleSheet, View} from 'react-native';
 import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import {DotHistory} from './DotHistory';
-import {HabitColor} from '@app/context/types';
+import {Habit as HabitType} from '@app/context/types';
 
-interface HabitProps {
-  id: string;
-  name: string;
-  iconName: string;
-  colour: HabitColor;
-  completionPercentage: number;
-  status: 'active' | 'archived';
-  completionHistory: string[];
-  daysDue: number[];
-}
-
-export const Habit = (props: HabitProps) => {
+export const Habit = (props: HabitType) => {
   const {
     // id,
     name,
     iconName,
     colour,
     completionPercentage,
-    // status,
+    // active,
     completionHistory,
     // daysDue,
   } = props;
