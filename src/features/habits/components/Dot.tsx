@@ -3,18 +3,19 @@ import {View, StyleSheet, ColorValue} from 'react-native';
 
 import {calculateDotColour} from '../utils/calculateDotColour';
 import {themeColors} from '@app/theme';
+import {HabitColor} from '@app/context/types';
 
 interface DotProps {
-  baseColour: string;
+  colorType: HabitColor;
   state: string;
   consecutiveDaysCompleted: number;
 }
 
 export const Dot = (props: DotProps) => {
-  const {baseColour, state, consecutiveDaysCompleted} = props;
+  const {colorType, state, consecutiveDaysCompleted} = props;
   const dotColour = useMemo(
-    () => calculateDotColour(baseColour, state, consecutiveDaysCompleted),
-    [baseColour, state, consecutiveDaysCompleted],
+    () => calculateDotColour(colorType, consecutiveDaysCompleted),
+    [colorType, consecutiveDaysCompleted],
   );
 
   return (

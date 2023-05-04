@@ -5,9 +5,11 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {useFocusEffect} from '@react-navigation/native';
 
 import {WeekdayPicker} from './WeekdayPicker';
+import {ColorSwatchSelector} from './ColorSwatchSelector';
 import {LABEL} from '@app/language';
-import {themeColors} from '@app/theme';
+import {habitColors, themeColors} from '@app/theme';
 import {useStore, ACTIONS} from '@app/context/StoreContext';
+import {HabitColor} from '@app/context/types';
 
 interface AddHabitModalProps {
   navigation: any;
@@ -30,9 +32,9 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     true,
     true,
   ]);
+  const [selectedColor, setSelectedColor] = useState<HabitColor>('blue');
 
   const [nameError, setNameError] = useState('');
-  const [iconError, setIconError] = useState('');
 
   const {state, dispatch} = useStore();
   const {habits} = state;
@@ -47,15 +49,8 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       setNameError('');
     }
 
-    if (icon === 'image') {
-      setIconError(LABEL.CHOOSE_ICON);
-      isValid = false;
-    } else {
-      setIconError('');
-    }
-
     return isValid;
-  }, [name, icon]);
+  }, [name]);
 
   useFocusEffect(
     useCallback(() => {
@@ -87,10 +82,10 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       id: habits.length + 1,
       name,
       iconName: icon,
-      colour: 'rgb(66, 135, 245)',
+      colour: selectedColor || themeColors.grey[600],
       isCompleted: false,
       completionPercentage: 0,
-      status: 'active',
+      active: true,
       daysDue: selectedDays
         .map((day, index) => {
           if (day) {
@@ -98,7 +93,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
           }
         })
         .filter(day => day !== undefined),
-      completionHistory: [],
+      completionHistory: Array(28).fill('DONE'),
     };
 
     dispatch({
@@ -130,6 +125,9 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             }}
             mode={'contained'}
             size={42}
+            iconColor={
+              habitColors[selectedColor].middle || themeColors.grey[600]
+            }
           />
           <TextInput
             style={styles.textInput}
@@ -138,8 +136,19 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
               setName(text);
             }}
             value={name}
+            underlineColor="transparent"
           />
         </View>
+        <Text variant="labelMedium" style={styles.repeatLabel}>
+          {LABEL.COLOUR}
+        </Text>
+        <ColorSwatchSelector
+          selectedColor={selectedColor}
+          onColorPress={setSelectedColor}
+        />
+        <Text variant="labelMedium" style={styles.repeatLabel}>
+          {LABEL.REPEAT}
+        </Text>
         <WeekdayPicker
           selectedDays={selectedDays}
           onDayPress={index => {
@@ -151,7 +160,6 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
           }}
         />
         {nameError ? <Text style={styles.error}>{nameError}</Text> : null}
-        {iconError ? <Text style={styles.error}>{iconError}</Text> : null}
       </View>
     </SafeAreaView>
   );
@@ -160,7 +168,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: themeColors.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -170,7 +178,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderBottomColor: 'lightgray',
+    borderBottomColor: themeColors.grey[400],
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   content: {
@@ -199,7 +207,7 @@ const styles = StyleSheet.create({
   },
   create: {
     fontSize: 16,
-    color: themeColors.blue[600],
+    color: themeColors.primary,
   },
   createDisabled: {
     fontSize: 16,
@@ -208,5 +216,10 @@ const styles = StyleSheet.create({
   error: {
     color: themeColors.red[600],
     marginBottom: 16,
+  },
+  repeatLabel: {
+    marginLeft: 4,
+    marginBottom: 8,
+    fontWeight: '300',
   },
 });

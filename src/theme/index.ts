@@ -81,4 +81,43 @@ export const themeColors = {
     800: 'rgb(21, 101, 192)',
     900: 'rgb(13, 71, 161)',
   },
+  white: 'rgb(255, 255, 255)',
+};
+
+export const habitColors = {
+  blue: {
+    start: 'rgb(161, 203, 255)',
+    middle: 'rgb(30, 122, 235)',
+    end: 'rgb(0, 92, 204)',
+  },
+  green: {
+    start: 'rgb(167, 219, 177)',
+    middle: 'rgb(31, 156, 58)',
+    end: 'rgb(1, 99, 22)',
+  },
+  yellow: {
+    start: 'rgb(255, 230, 156)',
+    middle: 'rgb(250, 194, 25)',
+    end: 'rgb(224, 170, 2)',
+  },
+  orange: {
+    start: 'rgb(247, 179, 119)',
+    middle: 'rgb(255, 138, 36)',
+    end: 'rgb(196, 93, 2)',
+  },
+  red: {
+    start: 'rgb(250, 159, 152)',
+    middle: 'rgb(212, 42, 29)',
+    end: 'rgb(138, 18, 0)',
+  },
+  purple: {
+    start: 'rgb(235, 139, 252)',
+    middle: 'rgb(145, 38, 191)',
+    end: 'rgb(74, 20, 140)',
+  },
+  grey: {
+    start: 'rgb(207, 204, 204)',
+    middle: 'rgb(125, 125, 125)',
+    end: 'rgb(89, 88, 88)',
+  },
 };

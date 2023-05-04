@@ -2,10 +2,11 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import {Dot} from './Dot';
+import {HabitColor} from '@app/context/types';
 
 interface HistoryDotViewProps {
   completionHistory: string[];
-  colour: string;
+  colour: HabitColor;
 }
 
 export const DotHistory = (props: HistoryDotViewProps) => {
@@ -20,11 +21,11 @@ export const DotHistory = (props: HistoryDotViewProps) => {
     let paddedHistory = completionHistory;
     // if < 28 days, pad the start with 'SKIPPED' states
     // if > 28 days, trim the start
-    if (paddedHistory.length < 28) {
-      const padding = new Array(28 - paddedHistory.length).fill('MISSED');
+    if (paddedHistory.length < 14) {
+      const padding = new Array(14 - paddedHistory.length).fill('MISSED');
       paddedHistory = [...padding, ...paddedHistory];
-    } else if (paddedHistory.length > 28) {
-      paddedHistory = paddedHistory.slice(paddedHistory.length - 28);
+    } else if (paddedHistory.length > 14) {
+      paddedHistory = paddedHistory.slice(paddedHistory.length - 14);
     }
 
     return paddedHistory.map((state, index) => {
@@ -36,7 +37,7 @@ export const DotHistory = (props: HistoryDotViewProps) => {
       return (
         <Dot
           key={index}
-          baseColour={colour}
+          colorType={colour}
           state={state}
           consecutiveDaysCompleted={streak}
         />
@@ -46,10 +47,7 @@ export const DotHistory = (props: HistoryDotViewProps) => {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.row, styles.firstRow]}>
-        {renderDots().slice(0, 14)}
-      </View>
-      <View style={styles.row}>{renderDots().slice(14)}</View>
+      <View style={[styles.row, styles.firstRow]}>{renderDots()}</View>
     </View>
   );
 };

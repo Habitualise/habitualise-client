@@ -14,18 +14,16 @@ interface HabitScreenProps {
 }
 
 export const HabitsScreen = ({navigation}: HabitScreenProps) => {
-  const [habitsStatus, setHabitsStatus] = useState<'active' | 'archived'>(
-    'active',
-  );
+  const [habitActive, setHabitActive] = useState<boolean>(true);
   const {state} = useStore();
   const {habits} = state;
 
   const setActive = () => {
-    setHabitsStatus('active');
+    setHabitActive(true);
   };
 
-  const setArchived = () => {
-    setHabitsStatus('archived');
+  const setInactive = () => {
+    setHabitActive(false);
   };
 
   return (
@@ -42,7 +40,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
           <View style={styles.buttonContainer}>
             <View style={styles.buttonGroup}>
               <Button
-                mode={habitsStatus === 'active' ? 'contained-tonal' : 'text'}
+                mode={habitActive ? 'contained-tonal' : 'text'}
                 textColor={themeColors.primary}
                 onPress={setActive}
                 icon="check"
@@ -50,9 +48,9 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
                 {LABEL.ACTIVE}
               </Button>
               <Button
-                mode={habitsStatus === 'archived' ? 'contained-tonal' : 'text'}
+                mode={habitActive ? 'contained-tonal' : 'text'}
                 textColor={themeColors.primary}
-                onPress={setArchived}
+                onPress={setInactive}
                 icon="archive">
                 {LABEL.ARCHIVED}
               </Button>
@@ -67,7 +65,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
         <Divider />
         <ScrollView>
           {habits
-            .filter(habit => habit.status === habitsStatus)
+            .filter(habit => habit.active === habitActive)
             .map(habit => (
               <Habit
                 key={habit.id}
@@ -75,8 +73,9 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
                 name={habit.name}
                 iconName={habit.iconName}
                 colour={habit.colour}
+                isCompleted={habit.isCompleted}
                 completionPercentage={habit.completionPercentage}
-                status={habit.status}
+                active={habit.active}
                 completionHistory={habit.completionHistory}
                 daysDue={habit.daysDue}
               />

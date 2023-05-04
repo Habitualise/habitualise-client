@@ -1,25 +1,17 @@
-import rgbToHSL from 'rgb-to-hsl';
+import {HabitColor} from '@app/context/types';
+import {habitColors} from '@app/theme';
+import tinygradient from 'tinygradient';
 
 export const calculateDotColour = (
-  baseColour: string,
-  state: string,
+  colorType: HabitColor,
   consecutiveDaysCompleted: number,
 ): string => {
-  // validate that baseColour is a valid rgb string
-  if (!baseColour.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)) {
-    console.error('Invalid rgb string');
-    return 'rgb(0, 0, 0)';
-  }
+  const gradient = tinygradient([
+    habitColors[colorType].start,
+    habitColors[colorType].middle,
+    habitColors[colorType].end,
+  ]);
 
-  let [r, g, b] = baseColour.match(/\d+/g)!.map(Number);
-  let [h, s, l] = rgbToHSL(r, g, b); // extract the hue value from rgb
-
-  // Start at a pale colour to begin with
-  s = 80;
-  l = 80;
-
-  const newS = s + consecutiveDaysCompleted * 2;
-  const newL = Math.max(l - consecutiveDaysCompleted * 1.5, 40);
-
-  return `hsl(${h}, ${newS}%, ${newL}%)`;
+  const color = gradient.rgbAt(consecutiveDaysCompleted / 14);
+  return color.toRgbString();
 };

@@ -24,4 +24,5 @@ export const LABEL = {
   CREATE_HABIT: 'Create Habit',
   HABIT_NAME: 'Habit Name',
   REPEAT: 'REPEAT',
+  COLOUR: 'COLOUR',
 };

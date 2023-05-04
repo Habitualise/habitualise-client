@@ -1,4 +1,3 @@
-import {LABEL} from '@app/language';
 import {themeColors} from '@app/theme';
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
@@ -16,42 +15,32 @@ export const WeekdayPicker: React.FC<WeekdayPickerProps> = ({
   onDayPress,
 }) => {
   return (
-    <>
-      <Text variant="labelMedium" style={styles.repeatLabel}>
-        {LABEL.REPEAT}
-      </Text>
-      <View style={styles.container}>
-        {daysOfWeek.map((day, index) => (
-          <TouchableOpacity
-            key={index}
+    <View style={styles.container}>
+      {daysOfWeek.map((day, index) => (
+        <TouchableOpacity
+          key={index}
+          style={[
+            styles.dayButton,
+            selectedDays[index] && styles.dayButtonSelected,
+          ]}
+          onPress={() => onDayPress(index)}>
+          <Text
+            variant="labelSmall"
             style={[
-              styles.dayButton,
-              selectedDays[index] && styles.dayButtonSelected,
-            ]}
-            onPress={() => onDayPress(index)}>
-            <Text
-              variant="labelSmall"
-              style={[
-                styles.dayButtonText,
-                selectedDays[index] && styles.dayButtonTextSelected,
-              ]}>
-              {day}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-    </>
+              styles.dayButtonText,
+              selectedDays[index] && styles.dayButtonTextSelected,
+            ]}>
+            {day}
+          </Text>
+        </TouchableOpacity>
+      ))}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   fence: {
     paddingVertical: 12,
-  },
-  repeatLabel: {
-    marginLeft: 4,
-    marginBottom: 8,
-    fontWeight: '300',
   },
   container: {
     flexDirection: 'row',
@@ -65,7 +54,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 4,
     alignItems: 'center',
-    // backgroundColor: themeColors.grey[200],
     borderRadius: 8,
   },
   dayButtonSelected: {

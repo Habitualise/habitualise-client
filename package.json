@@ -42,7 +42,7 @@
     "react-native-screens": "^3.20.0",
     "react-native-sensitive-info": "^5.5.8",
     "react-native-vector-icons": "^9.2.0",
-    "rgb-to-hsl": "^0.0.3"
+    "tinygradient": "^1.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
