@@ -1,5 +1,8 @@
 import React from 'react';
-import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from '@react-navigation/stack';
 
 import {HabitsScreen} from './HabitsScreen';
 import {AddHabitModal} from './AddHabit/AddHabitModal';
@@ -13,7 +16,7 @@ export const HabitsStack = () => {
     <Stack.Navigator
       initialRouteName={LABEL.HABITS_SCREEN}
       screenOptions={{
-        ...TransitionPresets.ModalPresentationIOS,
+        // ...TransitionPresets.ModalPresentationIOS,
         headerShown: false,
         cardOverlayEnabled: true,
       }}>
@@ -24,6 +27,8 @@ export const HabitsStack = () => {
         options={() => ({
           cardOverlayEnabled: true,
           gestureDirection: 'vertical',
+          // TODO: interpolator to remove card border radius glitch - try to find a fix later
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
         })}
       />
       <Stack.Screen
@@ -32,6 +37,7 @@ export const HabitsStack = () => {
         options={() => ({
           cardOverlayEnabled: true,
           gestureDirection: 'vertical',
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
         })}
       />
     </Stack.Navigator>
