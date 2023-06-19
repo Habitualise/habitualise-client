@@ -6,6 +6,7 @@ export const ACTIONS = {
   HANDLE_LOGOUT: 'HANDLE_LOGOUT',
   ADD_HABIT: 'ADD_HABIT',
   TOGGLE_HABIT_ACTIVE: 'TOGGLE_HABIT_ACTIVE',
+  DELETE_HABIT: 'DELETE_HABIT',
 } as const;
 
 type Action = {
@@ -42,14 +43,19 @@ export const reducer = (state: State, action: Action) => {
     }
     case ACTIONS.TOGGLE_HABIT_ACTIVE: {
       // action.payload should be the id of the habit
-      // scan through habits and find the one that matches the id
-      // then toggle the active property
       const updatedHabits = state.habits.map(habit => {
         if (habit.id === action.payload) {
           return {...habit, active: !habit.active};
         }
         return habit;
       });
+      return {...state, habits: updatedHabits};
+    }
+    case ACTIONS.DELETE_HABIT: {
+      // action.payload should be the id of the habit
+      const updatedHabits = state.habits.filter(
+        habit => habit.id !== action.payload,
+      );
       return {...state, habits: updatedHabits};
     }
     default:

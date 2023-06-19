@@ -2,7 +2,7 @@ import React from 'react';
 import {Divider, IconButton, Menu, Text} from 'react-native-paper';
 
 import {HabitIcon} from '@app/components/HabitIcon';
-import {StyleSheet, View} from 'react-native';
+import {Alert, StyleSheet, View} from 'react-native';
 import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import {DotHistory} from './DotHistory';
@@ -28,6 +28,24 @@ export const Habit = (props: HabitType) => {
       type: ACTIONS.TOGGLE_HABIT_ACTIVE,
       payload: habitId,
     });
+  };
+
+  const openDeleteHabitConfirmation = (habitId: string) => {
+    Alert.alert(LABEL.DELETE_HABIT, LABEL.DELETE_ARE_YOU_SURE, [
+      {
+        text: LABEL.CANCEL,
+        style: 'cancel',
+      },
+      {
+        text: LABEL.DELETE,
+        onPress: () =>
+          dispatch({
+            type: ACTIONS.DELETE_HABIT,
+            payload: habitId,
+          }),
+        style: 'destructive',
+      },
+    ]);
   };
 
   const [visible, setVisible] = React.useState(false);
@@ -58,7 +76,7 @@ export const Habit = (props: HabitType) => {
           />
           <Menu.Item
             onPress={() => {
-              console.log('Delete Habit pressed');
+              openDeleteHabitConfirmation(id);
             }}
             title={LABEL.DELETE_HABIT}
           />
