@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {View, StyleSheet, ColorValue} from 'react-native';
+import {ColorValue, StyleSheet, View} from 'react-native';
 
 import {calculateDotColour} from '../utils/calculateDotColour';
 import {themeColors} from '@app/theme';
