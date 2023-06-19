@@ -7,18 +7,28 @@ import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import {DotHistory} from './DotHistory';
 import {Habit as HabitType} from '@app/context/types';
+import {ACTIONS, useStore} from '@app/context/StoreContext';
 
 export const Habit = (props: HabitType) => {
   const {
-    // id,
+    id,
     name,
     iconName,
     colour,
     completionPercentage,
-    // active,
+    active,
     completionHistory,
     // daysDue,
   } = props;
+
+  const {dispatch} = useStore();
+
+  const toggleHabitActive = (habitId: string) => {
+    dispatch({
+      type: ACTIONS.TOGGLE_HABIT_ACTIVE,
+      payload: habitId,
+    });
+  };
 
   const [visible, setVisible] = React.useState(false);
   const openContextMenu = () => setVisible(true);
@@ -42,15 +52,15 @@ export const Habit = (props: HabitType) => {
           }>
           <Menu.Item
             onPress={() => {
-              console.log('Archive Habit pressed');
+              toggleHabitActive(id);
             }}
-            title="Archive Habit"
+            title={active ? LABEL.ARCHIVE_HABIT : LABEL.UNARCHIVE_HABIT}
           />
           <Menu.Item
             onPress={() => {
               console.log('Delete Habit pressed');
             }}
-            title="Delete Habit"
+            title={LABEL.DELETE_HABIT}
           />
         </Menu>
       </View>
