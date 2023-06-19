@@ -1,5 +1,5 @@
 import React from 'react';
-import {Divider, IconButton, Text} from 'react-native-paper';
+import {Divider, IconButton, Menu, Text} from 'react-native-paper';
 
 import {HabitIcon} from '@app/components/HabitIcon';
 import {StyleSheet, View} from 'react-native';
@@ -20,6 +20,10 @@ export const Habit = (props: HabitType) => {
     // daysDue,
   } = props;
 
+  const [visible, setVisible] = React.useState(false);
+  const openContextMenu = () => setVisible(true);
+  const closeContextMenu = () => setVisible(false);
+
   return (
     <>
       <View style={styles.cardContainer}>
@@ -30,10 +34,25 @@ export const Habit = (props: HabitType) => {
             {LABEL.DAYS_COMPLETED(completionPercentage)}
           </Text>
         </View>
-        <IconButton
-          icon={'dots-vertical'}
-          onPress={() => console.log('three dots pressed')}
-        />
+        <Menu
+          visible={visible}
+          onDismiss={closeContextMenu}
+          anchor={
+            <IconButton icon={'dots-vertical'} onPress={openContextMenu} />
+          }>
+          <Menu.Item
+            onPress={() => {
+              console.log('Archive Habit pressed');
+            }}
+            title="Archive Habit"
+          />
+          <Menu.Item
+            onPress={() => {
+              console.log('Delete Habit pressed');
+            }}
+            title="Delete Habit"
+          />
+        </Menu>
       </View>
       <View style={styles.dotHistoryContainer}>
         <DotHistory completionHistory={completionHistory} colour={colour} />
