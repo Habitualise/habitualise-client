@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {Divider, Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -8,6 +8,7 @@ import getTodayDateString from '../utils/getTodayDateString';
 import {TodayHabit} from './TodayHabit';
 import {useStore} from '@app/context/StoreContext';
 import PaperView from '@app/components/PaperView';
+import {commonStyles} from '@app/components/styles';
 
 export const TodayScreen = () => {
   const {state} = useStore();
@@ -20,9 +21,9 @@ export const TodayScreen = () => {
       }}
       edges={['top', 'left', 'right']}>
       <PaperView style={{flex: 1}}>
-        <View style={styles.headerContainer}>
+        <View style={commonStyles.headerContainer}>
           <Text variant="bodySmall">{getTodayDateString()}</Text>
-          <Text variant="headlineLarge" style={styles.heading}>
+          <Text variant="headlineLarge" style={commonStyles.heading}>
             {LABEL.TODAY_HEADER}
           </Text>
         </View>
@@ -44,13 +45,3 @@ export const TodayScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  headerContainer: {
-    paddingHorizontal: 16,
-    paddingVertical: 24,
-  },
-  heading: {
-    fontWeight: '600',
-  },
-});

@@ -8,6 +8,7 @@ import {LABEL} from '@app/language';
 import {useStore} from '@app/context/StoreContext';
 import {Habit} from './Habit';
 import {themeColors} from '@app/theme';
+import {commonStyles} from '@app/components/styles';
 
 interface HabitScreenProps {
   navigation: any;
@@ -33,7 +34,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
       }}
       edges={['top', 'left', 'right']}>
       <PaperView style={{flex: 1}}>
-        <View style={styles.headerContainer}>
+        <View style={commonStyles.headerContainer}>
           <Text variant="headlineLarge" style={styles.heading}>
             {LABEL.HABITS_HEADER}
           </Text>
@@ -87,10 +88,6 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
 };
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    paddingHorizontal: 16,
-    paddingVertical: 24,
-  },
   heading: {
     marginBottom: 5,
     fontWeight: '600',

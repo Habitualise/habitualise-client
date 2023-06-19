@@ -7,4 +7,11 @@ export const commonStyles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
   },
+  headerContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 24,
+  },
+  heading: {
+    fontWeight: '600',
+  },
 });
