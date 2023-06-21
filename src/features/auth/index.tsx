@@ -1,6 +1,6 @@
 import React from 'react';
-import {Image, StyleSheet, Pressable} from 'react-native';
-import {Text, Button} from 'react-native-paper';
+import {Image, Pressable, StyleSheet} from 'react-native';
+import {Button, Text} from 'react-native-paper';
 import {useAuth0} from 'react-native-auth0';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -21,7 +21,7 @@ export const WelcomeScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={commonStyles.safeArea}>
       <PaperView style={commonStyles.container}>
         <Image
           source={require('@app/assets/googleLogo.png')}

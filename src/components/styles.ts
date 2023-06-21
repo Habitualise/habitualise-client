@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {themeColors} from '@app/theme';
 
 export const commonStyles = StyleSheet.create({
   container: {
@@ -20,6 +21,7 @@ export const commonStyles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
+    backgroundColor: themeColors.background,
   },
   paperView: {
     flex: 1,

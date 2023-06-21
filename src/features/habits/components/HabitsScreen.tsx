@@ -29,9 +29,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
 
   return (
     <SafeAreaView
-      style={{
-        flex: 1,
-      }}
+      style={commonStyles.safeArea}
       edges={['top', 'left', 'right']}>
       <PaperView style={{flex: 1}}>
         <View style={commonStyles.headerContainer}>
