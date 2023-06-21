@@ -6,8 +6,9 @@ import {ColorValue} from 'react-native';
 import {TodayScreen} from '@app/features/today';
 import {HabitsStack} from '@app/features/habits';
 import {LABEL} from '@app/language';
-import {useStore, ACTIONS} from '@app/context/StoreContext';
+import {ACTIONS, useStore} from '@app/context/StoreContext';
 import {getHabits} from './api/getHabits';
+import {SettingsScreen} from '@app/features/settings';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -24,7 +25,7 @@ export const AppTabs = () => {
   }, [dispatch]);
 
   return (
-    <Tab.Navigator shifting={true}>
+    <Tab.Navigator>
       <Tab.Screen
         name={LABEL.TODAY_SCREEN}
         component={TodayScreen}
@@ -46,6 +47,16 @@ export const AppTabs = () => {
               color={color}
               size={26}
             />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name={LABEL.SETTINGS_SCREEN}
+        component={SettingsScreen}
+        options={{
+          tabBarLabel: LABEL.SETTINGS,
+          tabBarIcon: ({color}) => (
+            <MaterialIcons name="settings" color={color} size={26} />
           ),
         }}
       />

@@ -25,4 +25,7 @@ export const LABEL = {
   HABIT_NAME: 'Habit Name',
   REPEAT: 'REPEAT',
   COLOUR: 'COLOUR',
+  SETTINGS_SCREEN: 'Settings Screen',
+  LOG_OUT: 'Log Out',
+  SETTINGS: 'Settings',
 };

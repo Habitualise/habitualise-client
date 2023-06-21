@@ -11,6 +11,10 @@ export const commonStyles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 24,
   },
+  paddedContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+  },
   heading: {
     fontWeight: '600',
   },
