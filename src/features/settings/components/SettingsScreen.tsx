@@ -5,6 +5,8 @@ import {axios} from '@app/lib/axios';
 import PaperView from '@app/components/PaperView';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {commonStyles} from '@app/components/styles';
+import {themeColors} from '@app/theme';
+import {LABEL} from '@app/language';
 
 export const SettingsScreen = () => {
   // const {clearSession, user} = useAuth0();
@@ -37,51 +39,50 @@ export const SettingsScreen = () => {
       style={commonStyles.safeArea}
       edges={['top', 'left', 'right']}>
       <PaperView style={[commonStyles.paperView, commonStyles.paddedContainer]}>
-        <Text style={styles.title}>Settings</Text>
+        <Text style={styles.title}>{LABEL.SETTINGS}</Text>
 
         <Card style={styles.profileCard} mode="contained">
           <Card.Title
-            title="Name"
-            subtitle="Email Address"
+            title={LABEL.NAME}
+            subtitle={LABEL.EMAIL_ADDRESS}
             left={props => <Avatar.Text {...props} size={48} label="TY" />}
             right={props => <IconButton {...props} icon="chevron-right" />}
           />
         </Card>
 
         <Text style={styles.containerLabel} variant="labelMedium">
-          APP
+          {LABEL.APP}
         </Text>
         <Card style={styles.buttonCard} mode="contained">
           <Card.Content>
-            <Text style={styles.cardText}>Log out</Text>
+            <Text style={styles.cardText}>{LABEL.LOG_OUT}</Text>
           </Card.Content>
         </Card>
         <Card style={styles.buttonCard} mode="contained">
           <Card.Content>
             <Text style={[styles.cardText, styles.redText]}>
-              Delete account
+              {LABEL.DELETE_ACCOUNT}
             </Text>
           </Card.Content>
         </Card>
         <Card style={styles.buttonCard} mode="contained">
           <Card.Content>
             <View style={styles.rowContainer}>
-              <Text style={styles.cardText}>Dark Mode</Text>
+              <Text style={styles.cardText}>{LABEL.DARK_MODE}</Text>
               <Switch onValueChange={toggleSwitch} value={isDarkMode} />
             </View>
           </Card.Content>
         </Card>
 
-        <View style={styles.borderContainer}>
-          <Button onPress={testAxiosHealth} title="Test Axios Health" />
+        <Text style={styles.containerLabel} variant="labelMedium">
+          {LABEL.DEVELOPER}
+        </Text>
 
-          <View style={styles.rowContainer}>
-            <Text style={styles.cardText}>Dark Mode</Text>
-            <Switch onValueChange={toggleSwitch} value={isDarkMode} />
-          </View>
+        <View style={styles.borderContainer}>
+          <Button onPress={testAxiosHealth} title={LABEL.TEST_AXIOS_HEALTH} />
         </View>
 
-        <Text style={styles.appVersion}>App version: 1.00</Text>
+        <Text style={styles.appVersion}>{LABEL.APP_VERSION}</Text>
       </PaperView>
     </SafeAreaView>
   );
@@ -89,6 +90,7 @@ export const SettingsScreen = () => {
 
 const styles = StyleSheet.create({
   containerLabel: {
+    marginTop: 15,
     marginBottom: 7,
     marginLeft: 10,
   },
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   profileCard: {
-    marginBottom: 25,
+    marginBottom: 10,
   },
   buttonCard: {
     marginBottom: 10,
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   redText: {
-    color: 'red',
+    color: themeColors.red[500],
   },
   rowContainer: {
     flexDirection: 'row',
@@ -117,7 +119,7 @@ const styles = StyleSheet.create({
   },
   borderContainer: {
     padding: 10,
-    borderColor: '#ccc',
+    borderColor: themeColors.grey[400],
     borderWidth: 0.5,
     marginBottom: 10,
     borderRadius: 5,
