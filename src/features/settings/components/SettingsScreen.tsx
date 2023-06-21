@@ -7,19 +7,25 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {commonStyles} from '@app/components/styles';
 import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
+import CardButton from '@app/components/CardButton';
+import {ACTIONS} from '@app/context/reducer';
+import {useStore} from '@app/context/StoreContext';
+import {useAuth0} from 'react-native-auth0';
 
 export const SettingsScreen = () => {
-  // const {clearSession, user} = useAuth0();
-  // const {dispatch} = useStore();
+  const {clearSession, user} = useAuth0();
+  const {dispatch} = useStore();
 
-  // const logOut = async () => {
-  //   try {
-  //     await clearSession();
-  //     dispatch({type: ACTIONS.HANDLE_LOGOUT});
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+  const logOut = async () => {
+    console.log('Logging out user:');
+    console.log(user);
+    try {
+      await clearSession();
+      dispatch({type: ACTIONS.HANDLE_LOGOUT});
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const testAxiosHealth = async () => {
     try {
@@ -53,22 +59,16 @@ export const SettingsScreen = () => {
         <Text style={styles.containerLabel} variant="labelMedium">
           {LABEL.APP}
         </Text>
-        <Card style={styles.buttonCard} mode="contained">
-          <Card.Content>
-            <Text style={styles.cardText}>{LABEL.LOG_OUT}</Text>
-          </Card.Content>
-        </Card>
-        <Card style={styles.buttonCard} mode="contained">
-          <Card.Content>
-            <Text style={[styles.cardText, styles.redText]}>
-              {LABEL.DELETE_ACCOUNT}
-            </Text>
-          </Card.Content>
-        </Card>
-        <Card style={styles.buttonCard} mode="contained">
+        <CardButton label={LABEL.LOG_OUT} onPress={logOut} />
+        <CardButton
+          label={LABEL.DELETE_ACCOUNT}
+          onPress={() => {}}
+          isRedText={true}
+        />
+        <Card style={styles.switcherCard} mode="contained">
           <Card.Content>
             <View style={styles.rowContainer}>
-              <Text style={styles.cardText}>{LABEL.DARK_MODE}</Text>
+              <Text style={styles.switcherText}>{LABEL.DARK_MODE}</Text>
               <Switch onValueChange={toggleSwitch} value={isDarkMode} />
             </View>
           </Card.Content>
@@ -77,7 +77,6 @@ export const SettingsScreen = () => {
         <Text style={styles.containerLabel} variant="labelMedium">
           {LABEL.DEVELOPER}
         </Text>
-
         <View style={styles.borderContainer}>
           <Button onPress={testAxiosHealth} title={LABEL.TEST_AXIOS_HEALTH} />
         </View>
@@ -103,12 +102,6 @@ const styles = StyleSheet.create({
   profileCard: {
     marginBottom: 10,
   },
-  buttonCard: {
-    marginBottom: 10,
-  },
-  cardText: {
-    fontWeight: '500',
-  },
   redText: {
     color: themeColors.red[500],
   },
@@ -127,5 +120,11 @@ const styles = StyleSheet.create({
   appVersion: {
     alignSelf: 'center',
     fontSize: 10,
+  },
+  switcherCard: {
+    marginBottom: 10,
+  },
+  switcherText: {
+    fontWeight: '500',
   },
 });
