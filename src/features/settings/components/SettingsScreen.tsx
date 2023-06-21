@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, StyleSheet, View} from 'react-native';
-import {Avatar, Card, IconButton, Switch, Text} from 'react-native-paper';
+import {Avatar, Card, IconButton, Text} from 'react-native-paper';
 import {axios} from '@app/lib/axios';
 import PaperView from '@app/components/PaperView';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -11,6 +11,7 @@ import CardButton from '@app/components/CardButton';
 import {ACTIONS} from '@app/context/reducer';
 import {useStore} from '@app/context/StoreContext';
 import {useAuth0} from 'react-native-auth0';
+import CardSwitcher from '@app/components/CardSwitcher';
 
 export const SettingsScreen = () => {
   const {clearSession, user} = useAuth0();
@@ -59,20 +60,21 @@ export const SettingsScreen = () => {
         <Text style={styles.containerLabel} variant="labelMedium">
           {LABEL.APP}
         </Text>
+        <CardSwitcher
+          label={LABEL.DARK_MODE}
+          onToggleSwitch={toggleSwitch}
+          value={isDarkMode}
+        />
+
+        <Text style={styles.containerLabel} variant="labelMedium">
+          {LABEL.ACCOUNT}
+        </Text>
         <CardButton label={LABEL.LOG_OUT} onPress={logOut} />
         <CardButton
           label={LABEL.DELETE_ACCOUNT}
           onPress={() => {}}
           isRedText={true}
         />
-        <Card style={styles.switcherCard} mode="contained">
-          <Card.Content>
-            <View style={styles.rowContainer}>
-              <Text style={styles.switcherText}>{LABEL.DARK_MODE}</Text>
-              <Switch onValueChange={toggleSwitch} value={isDarkMode} />
-            </View>
-          </Card.Content>
-        </Card>
 
         <Text style={styles.containerLabel} variant="labelMedium">
           {LABEL.DEVELOPER}
@@ -92,6 +94,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 7,
     marginLeft: 10,
+    color: themeColors.grey[800],
+    fontWeight: '400',
   },
   title: {
     fontWeight: '600',
@@ -119,7 +123,8 @@ const styles = StyleSheet.create({
   },
   appVersion: {
     alignSelf: 'center',
-    fontSize: 10,
+    fontSize: 12,
+    color: themeColors.grey[600],
   },
   switcherCard: {
     marginBottom: 10,
