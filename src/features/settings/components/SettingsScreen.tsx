@@ -59,12 +59,14 @@ export const SettingsScreen = () => {
         </Text>
         <Card style={styles.buttonCard} mode={'contained'}>
           <Card.Content>
-            <Text>Log out</Text>
+            <Text style={styles.cardText}>Log out</Text>
           </Card.Content>
         </Card>
         <Card style={styles.buttonCard} mode={'contained'}>
           <Card.Content>
-            <Text style={{color: 'red'}}>Delete account</Text>
+            <Text style={[styles.cardText, {color: 'red'}]}>
+              Delete account
+            </Text>
           </Card.Content>
         </Card>
         <Card style={styles.buttonCard} mode={'contained'}>
@@ -75,7 +77,7 @@ export const SettingsScreen = () => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <Text>Dark Mode</Text>
+              <Text style={styles.cardText}>Dark Mode</Text>
               <Switch onValueChange={toggleSwitch} value={isDarkMode} />
             </View>
           </Card.Content>
@@ -97,7 +99,7 @@ export const SettingsScreen = () => {
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
-            <Text>Dark Mode</Text>
+            <Text style={styles.cardText}>Dark Mode</Text>
             <Switch onValueChange={toggleSwitch} value={isDarkMode} />
           </View>
         </View>
@@ -120,5 +122,8 @@ const styles = StyleSheet.create({
   },
   buttonCard: {
     marginBottom: 10,
+  },
+  cardText: {
+    fontWeight: '500',
   },
 });
