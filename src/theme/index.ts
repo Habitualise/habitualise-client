@@ -21,7 +21,7 @@ export const themeColors = {
   onBackground: 'rgb(27, 27, 31)',
   surface: 'rgb(254, 251, 255)',
   onSurface: 'rgb(27, 27, 31)',
-  surfaceVariant: 'rgb(225, 226, 236)',
+  surfaceVariant: 'rgb(237,237,243)',
   onSurfaceVariant: 'rgb(68, 71, 79)',
   outline: 'rgb(117, 119, 127)',
   outlineVariant: 'rgb(196, 198, 208)',
