@@ -33,19 +33,13 @@ export const SettingsScreen = () => {
   const toggleSwitch = () => setIsDarkMode(previousState => !previousState);
 
   return (
-    <SafeAreaView style={{flex: 1}} edges={['top', 'left', 'right']}>
-      <PaperView style={[{flex: 1}, commonStyles.paddedContainer]}>
-        <Text
-          style={{
-            fontWeight: '600',
-            fontSize: 20,
-            marginBottom: 20,
-            textAlign: 'center',
-          }}>
-          Settings
-        </Text>
+    <SafeAreaView
+      style={commonStyles.safeArea}
+      edges={['top', 'left', 'right']}>
+      <PaperView style={[commonStyles.paperView, commonStyles.paddedContainer]}>
+        <Text style={styles.title}>Settings</Text>
 
-        <Card style={styles.profileCard} mode={'contained'}>
+        <Card style={styles.profileCard} mode="contained">
           <Card.Title
             title="Name"
             subtitle="Email Address"
@@ -54,59 +48,40 @@ export const SettingsScreen = () => {
           />
         </Card>
 
-        <Text variant={'labelMedium'} style={styles.containerLabel}>
+        <Text style={styles.containerLabel} variant="labelMedium">
           APP
         </Text>
-        <Card style={styles.buttonCard} mode={'contained'}>
+        <Card style={styles.buttonCard} mode="contained">
           <Card.Content>
             <Text style={styles.cardText}>Log out</Text>
           </Card.Content>
         </Card>
-        <Card style={styles.buttonCard} mode={'contained'}>
+        <Card style={styles.buttonCard} mode="contained">
           <Card.Content>
-            <Text style={[styles.cardText, {color: 'red'}]}>
+            <Text style={[styles.cardText, styles.redText]}>
               Delete account
             </Text>
           </Card.Content>
         </Card>
-        <Card style={styles.buttonCard} mode={'contained'}>
+        <Card style={styles.buttonCard} mode="contained">
           <Card.Content>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}>
+            <View style={styles.rowContainer}>
               <Text style={styles.cardText}>Dark Mode</Text>
               <Switch onValueChange={toggleSwitch} value={isDarkMode} />
             </View>
           </Card.Content>
         </Card>
 
-        <View
-          style={{
-            padding: 10,
-            borderColor: '#ccc',
-            borderWidth: 0.5,
-            marginBottom: 10,
-            borderRadius: 5,
-          }}>
+        <View style={styles.borderContainer}>
           <Button onPress={testAxiosHealth} title="Test Axios Health" />
 
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
+          <View style={styles.rowContainer}>
             <Text style={styles.cardText}>Dark Mode</Text>
             <Switch onValueChange={toggleSwitch} value={isDarkMode} />
           </View>
         </View>
 
-        <Text style={{alignSelf: 'center', fontSize: 10}}>
-          App version: 1.00
-        </Text>
+        <Text style={styles.appVersion}>App version: 1.00</Text>
       </PaperView>
     </SafeAreaView>
   );
@@ -117,6 +92,12 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     marginLeft: 10,
   },
+  title: {
+    fontWeight: '600',
+    fontSize: 20,
+    marginBottom: 20,
+    textAlign: 'center',
+  },
   profileCard: {
     marginBottom: 25,
   },
@@ -125,5 +106,24 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontWeight: '500',
+  },
+  redText: {
+    color: 'red',
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  borderContainer: {
+    padding: 10,
+    borderColor: '#ccc',
+    borderWidth: 0.5,
+    marginBottom: 10,
+    borderRadius: 5,
+  },
+  appVersion: {
+    alignSelf: 'center',
+    fontSize: 10,
   },
 });

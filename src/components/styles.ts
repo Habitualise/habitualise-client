@@ -18,4 +18,10 @@ export const commonStyles = StyleSheet.create({
   heading: {
     fontWeight: '600',
   },
+  safeArea: {
+    flex: 1,
+  },
+  paperView: {
+    flex: 1,
+  },
 });
