@@ -1,6 +1,5 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text} from 'react-native';
-import {Card} from 'react-native-paper';
 import {themeColors} from '@app/theme';
 
 interface CardButtonProps {
@@ -15,28 +14,25 @@ const CardButton: React.FC<CardButtonProps> = ({
   isRedText = false,
 }) => {
   return (
-    <Pressable onPress={onPress}>
-      {({pressed}) => (
-        <Card
-          style={[
-            styles.buttonCard,
-            pressed && styles.pressableContainerPressed,
-          ]}
-          mode="contained">
-          <Card.Content>
-            <Text style={[styles.cardText, isRedText && styles.redText]}>
-              {label}
-            </Text>
-          </Card.Content>
-        </Card>
-      )}
+    <Pressable
+      onPress={onPress}
+      style={({pressed}) => [
+        styles.buttonContainer,
+        pressed && styles.pressableContainerPressed,
+      ]}>
+      <Text style={[styles.cardText, isRedText && styles.redText]}>
+        {label}
+      </Text>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonCard: {
+  buttonContainer: {
     marginBottom: 10,
+    padding: 15,
+    backgroundColor: themeColors.surfaceVariant,
+    borderRadius: 10,
   },
   cardText: {
     fontWeight: '500',
@@ -44,11 +40,8 @@ const styles = StyleSheet.create({
   redText: {
     color: themeColors.red[500],
   },
-  pressableContainer: {
-    // Add additional styles for the pressable container if needed
-  },
   pressableContainerPressed: {
-    backgroundColor: themeColors.grey[200],
+    backgroundColor: themeColors.surfaceVariantDarker,
   },
 });
 
