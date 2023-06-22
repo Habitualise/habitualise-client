@@ -1,11 +1,11 @@
-import {Habit} from './types';
+import {Habit, UserBE} from './types';
 
 export const ACTIONS = {
   SET_ALL_HABITS: 'SET_ALL_HABITS',
   TOGGLE_HABIT_IS_COMPLETED: 'TOGGLE_HABIT_IS_COMPLETED',
   HANDLE_LOGOUT: 'HANDLE_LOGOUT',
   ADD_HABIT: 'ADD_HABIT',
-  SET_USER_NAME: 'SET_USER_NAME',
+  SET_USER: 'SET_USER',
 } as const;
 
 type Action = {
@@ -15,15 +15,14 @@ type Action = {
 
 export interface State {
   habits: Habit[];
-  user: {
-    name: string;
-  };
+  // BE = backend, additional info about the user, not the same as user from Auth0
+  userBE: UserBE;
 }
 
 export const reducer = (state: State, action: Action) => {
   switch (action.type) {
-    case ACTIONS.SET_USER_NAME:
-      return {...state, user: {name: action.payload}};
+    case ACTIONS.SET_USER:
+      return {...state, userBE: action.payload};
     case ACTIONS.SET_ALL_HABITS:
       // action.payload should be an array of habits
       // TODO: add some validation here
@@ -32,7 +31,7 @@ export const reducer = (state: State, action: Action) => {
       // action.payload should be a habit
       return {...state, habits: [...state.habits, action.payload]};
     case ACTIONS.HANDLE_LOGOUT:
-      return {...state, habits: [], user: {name: ''}};
+      return {...state, habits: [], userBE: {name: ''}};
     case ACTIONS.TOGGLE_HABIT_IS_COMPLETED: {
       // action.payload should be the id of the habit
       // scan through habits and find the one that matches the id

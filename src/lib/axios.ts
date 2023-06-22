@@ -52,3 +52,7 @@ mock.onGet('/api/health').reply(function (config) {
 mock.onGet('/api/habits').reply(function () {
   return [200, mockHabits];
 });
+
+mock.onGet('/api/user').reply(function () {
+  return [200, {name: 'Thomas Yao'}];
+});

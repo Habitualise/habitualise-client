@@ -9,13 +9,13 @@ interface StoreContextProps {
 }
 
 const StoreContext = React.createContext<StoreContextProps>({
-  state: {habits: [], user: {name: ''}},
+  state: {habits: [], userBE: {name: ''}},
   dispatch: () => {},
 });
 
 const initState = {
   habits: [],
-  user: {name: ''},
+  userBE: {name: ''},
 };
 
 interface StoreContextProviderProps {
