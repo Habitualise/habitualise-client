@@ -16,14 +16,14 @@ const CardButton: React.FC<CardButtonProps> = ({
   isDisabled = false,
 }) => {
   return (
-    <View style={styles.buttonContainer}>
+    <View
+      style={[styles.buttonContainer, isDisabled && styles.disabledContainer]}>
       <Pressable
         onPress={onPress}
         android_ripple={{color: themeColors.grey[400]}}
         style={({pressed}) => [
           styles.pressable,
           pressed && styles.pressableContainerPressed,
-          isDisabled && styles.disabledContainer,
         ]}
         disabled={isDisabled}>
         <Text style={[styles.cardText, isRedText && styles.redText]}>
