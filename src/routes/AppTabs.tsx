@@ -9,19 +9,22 @@ import {LABEL} from '@app/language';
 import {ACTIONS, useStore} from '@app/context/StoreContext';
 import {getHabits} from './api/getHabits';
 import {SettingsScreen} from '@app/features/settings';
+import {getUser} from '@app/routes/api/getUser';
 
 const Tab = createMaterialBottomTabNavigator();
 
 export const AppTabs = () => {
   const {dispatch} = useStore();
 
-  // fetch habits from server and set them in the store
+  // fetch habits and user from server and set them in the store
   useEffect(() => {
-    const fetchHabits = async () => {
+    const fetchHabitsAndUser = async () => {
       const habits = await getHabits();
+      const userBE = await getUser();
       dispatch({type: ACTIONS.SET_ALL_HABITS, payload: habits});
+      dispatch({type: ACTIONS.SET_USER, payload: userBE});
     };
-    fetchHabits();
+    fetchHabitsAndUser();
   }, [dispatch]);
 
   return (
