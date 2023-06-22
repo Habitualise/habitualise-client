@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import {Text, IconButton, TextInput} from 'react-native-paper';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {IconButton, Text, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useFocusEffect} from '@react-navigation/native';
 
@@ -8,7 +8,7 @@ import {WeekdayPicker} from './WeekdayPicker';
 import {ColorSwatchSelector} from './ColorSwatchSelector';
 import {LABEL} from '@app/language';
 import {habitColors, themeColors} from '@app/theme';
-import {useStore, ACTIONS} from '@app/context/StoreContext';
+import {ACTIONS, useStore} from '@app/context/StoreContext';
 import {HabitColor} from '@app/context/types';
 
 interface AddHabitModalProps {

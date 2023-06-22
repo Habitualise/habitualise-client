@@ -50,8 +50,8 @@ export const SettingsScreen = () => {
 
         <Card style={styles.profileCard} mode="contained">
           <Card.Title
-            title={LABEL.NAME}
-            subtitle={LABEL.EMAIL_ADDRESS}
+            title={user.name}
+            subtitle={user.email}
             left={props => <Avatar.Text {...props} size={48} label="TY" />}
             right={props => <IconButton {...props} icon="chevron-right" />}
           />

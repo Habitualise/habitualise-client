@@ -3,18 +3,19 @@ import {State} from './reducer';
 
 export * from './reducer';
 
-interface HabitsStore {
+interface StoreContextProps {
   state: State;
   dispatch: React.Dispatch<any>;
 }
 
-const StoreContext = React.createContext<HabitsStore>({
-  state: {habits: []},
+const StoreContext = React.createContext<StoreContextProps>({
+  state: {habits: [], user: {name: ''}},
   dispatch: () => {},
 });
 
 const initState = {
   habits: [],
+  user: {name: ''},
 };
 
 interface StoreContextProviderProps {
