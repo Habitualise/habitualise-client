@@ -6,12 +6,14 @@ interface CardButtonProps {
   label: string;
   onPress: () => void;
   isRedText?: boolean;
+  isDisabled?: boolean;
 }
 
 const CardButton: React.FC<CardButtonProps> = ({
   label,
   onPress,
   isRedText = false,
+  isDisabled = false,
 }) => {
   return (
     <Pressable
@@ -19,7 +21,9 @@ const CardButton: React.FC<CardButtonProps> = ({
       style={({pressed}) => [
         styles.buttonContainer,
         pressed && styles.pressableContainerPressed,
-      ]}>
+        isDisabled && styles.disabledContainer,
+      ]}
+      disabled={isDisabled}>
       <Text style={[styles.cardText, isRedText && styles.redText]}>
         {label}
       </Text>
@@ -42,6 +46,9 @@ const styles = StyleSheet.create({
   },
   pressableContainerPressed: {
     backgroundColor: themeColors.surfaceVariantDarker,
+  },
+  disabledContainer: {
+    opacity: 0.5,
   },
 });
 

@@ -73,6 +73,7 @@ export const SettingsScreen = () => {
           label={LABEL.DELETE_ACCOUNT}
           onPress={() => {}}
           isRedText={true}
+          isDisabled={true}
         />
 
         <Text style={styles.containerLabel} variant="labelMedium">
