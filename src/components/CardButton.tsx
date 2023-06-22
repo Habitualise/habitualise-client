@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontWeight: '500',
+    color: themeColors.grey[900],
   },
   redText: {
     color: themeColors.red[500],

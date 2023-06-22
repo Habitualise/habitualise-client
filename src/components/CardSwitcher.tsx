@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   switcherText: {
     fontWeight: '500',
+    color: themeColors.grey[900],
   },
 });
 

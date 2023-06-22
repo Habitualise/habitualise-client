@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Avatar, Card, IconButton, Text} from 'react-native-paper';
 import {axios} from '@app/lib/axios';
 import PaperView from '@app/components/PaperView';
@@ -79,9 +79,7 @@ export const SettingsScreen = () => {
         <Text style={styles.containerLabel} variant="labelMedium">
           {LABEL.DEVELOPER}
         </Text>
-        <View style={styles.borderContainer}>
-          <Button onPress={testAxiosHealth} title={LABEL.TEST_AXIOS_HEALTH} />
-        </View>
+        <CardButton label={LABEL.TEST_AXIOS_HEALTH} onPress={testAxiosHealth} />
 
         <Text style={styles.appVersion}>{LABEL.APP_VERSION}</Text>
       </PaperView>
@@ -106,30 +104,9 @@ const styles = StyleSheet.create({
   profileCard: {
     marginBottom: 10,
   },
-  redText: {
-    color: themeColors.red[500],
-  },
-  rowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  borderContainer: {
-    padding: 10,
-    borderColor: themeColors.grey[400],
-    borderWidth: 0.5,
-    marginBottom: 10,
-    borderRadius: 5,
-  },
   appVersion: {
     alignSelf: 'center',
     fontSize: 12,
     color: themeColors.grey[600],
-  },
-  switcherCard: {
-    marginBottom: 10,
-  },
-  switcherText: {
-    fontWeight: '500',
   },
 });
