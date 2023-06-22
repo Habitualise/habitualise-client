@@ -12,6 +12,7 @@ import {ACTIONS} from '@app/context/reducer';
 import {useStore} from '@app/context/StoreContext';
 import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
+import {formatInitials} from '@app/features/settings/utils/formatInitials';
 
 export const SettingsScreen = () => {
   const {clearSession, user: userAuth0} = useAuth0();
@@ -51,7 +52,13 @@ export const SettingsScreen = () => {
           <Card.Title
             title={userBE.name}
             subtitle={userAuth0.email}
-            left={props => <Avatar.Text {...props} size={48} label="TY" />}
+            left={props => (
+              <Avatar.Text
+                {...props}
+                size={48}
+                label={formatInitials(userBE.name)}
+              />
+            )}
             right={props => <IconButton {...props} icon="chevron-right" />}
           />
         </Card>
