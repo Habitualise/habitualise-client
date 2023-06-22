@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   switcherCard: {
     marginBottom: 10,
     paddingHorizontal: 15,
-    paddingVertical: 8,
+    paddingVertical: 10,
     backgroundColor: themeColors.surfaceVariant,
     borderRadius: 10,
   },

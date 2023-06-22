@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pressable, StyleSheet, Text} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {themeColors} from '@app/theme';
 
 interface CardButtonProps {
@@ -16,27 +16,33 @@ const CardButton: React.FC<CardButtonProps> = ({
   isDisabled = false,
 }) => {
   return (
-    <Pressable
-      onPress={onPress}
-      style={({pressed}) => [
-        styles.buttonContainer,
-        pressed && styles.pressableContainerPressed,
-        isDisabled && styles.disabledContainer,
-      ]}
-      disabled={isDisabled}>
-      <Text style={[styles.cardText, isRedText && styles.redText]}>
-        {label}
-      </Text>
-    </Pressable>
+    <View style={styles.buttonContainer}>
+      <Pressable
+        onPress={onPress}
+        android_ripple={{color: themeColors.grey[400]}}
+        style={({pressed}) => [
+          styles.pressable,
+          pressed && styles.pressableContainerPressed,
+          isDisabled && styles.disabledContainer,
+        ]}
+        disabled={isDisabled}>
+        <Text style={[styles.cardText, isRedText && styles.redText]}>
+          {label}
+        </Text>
+      </Pressable>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   buttonContainer: {
     marginBottom: 10,
-    padding: 15,
     backgroundColor: themeColors.surfaceVariant,
     borderRadius: 10,
+    overflow: 'hidden', // added to contain the ripple within the View
+  },
+  pressable: {
+    padding: 15,
   },
   cardText: {
     fontWeight: '500',
