@@ -14,12 +14,11 @@ import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
 
 export const SettingsScreen = () => {
-  const {clearSession, user} = useAuth0();
-  const {dispatch} = useStore();
+  const {clearSession, user: userAuth0} = useAuth0();
+  const {dispatch, state} = useStore();
+  const {userBE} = state;
 
   const logOut = async () => {
-    console.log('Logging out user:');
-    console.log(user);
     try {
       await clearSession();
       dispatch({type: ACTIONS.HANDLE_LOGOUT});
@@ -50,8 +49,8 @@ export const SettingsScreen = () => {
 
         <Card style={styles.profileCard} mode="contained">
           <Card.Title
-            title={user.name}
-            subtitle={user.email}
+            title={userBE.name}
+            subtitle={userAuth0.email}
             left={props => <Avatar.Text {...props} size={48} label="TY" />}
             right={props => <IconButton {...props} icon="chevron-right" />}
           />
