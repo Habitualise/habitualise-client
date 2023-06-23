@@ -118,6 +118,7 @@ exports[`App renders correctly 1`] = `
                 }
                 style={
                   {
+                    "backgroundColor": "rgb(254, 251, 255)",
                     "flex": 1,
                   }
                 }
