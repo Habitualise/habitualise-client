@@ -48,7 +48,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
                 {LABEL.ACTIVE}
               </Button>
               <Button
-                mode={habitActive ? 'contained-tonal' : 'text'}
+                mode={!habitActive ? 'contained-tonal' : 'text'}
                 textColor={themeColors.primary}
                 onPress={setInactive}
                 icon="archive">
