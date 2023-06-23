@@ -5,7 +5,7 @@ import {Dot} from './Dot';
 import {HabitColor} from '@app/context/types';
 
 interface HistoryDotViewProps {
-  completionHistory: string[];
+  completionHistory: boolean[];
   colour: HabitColor;
 }
 
@@ -28,17 +28,17 @@ export const DotHistory = (props: HistoryDotViewProps) => {
       paddedHistory = paddedHistory.slice(paddedHistory.length - 14);
     }
 
-    return paddedHistory.map((state, index) => {
-      if (state === 'DONE') {
+    return paddedHistory.map((completed, index) => {
+      if (completed) {
         streak += 1;
-      } else if (state === 'MISSED') {
+      } else if (!completed) {
         streak = 0;
       }
       return (
         <Dot
           key={index}
           colorType={colour}
-          state={state}
+          completed={completed}
           consecutiveDaysCompleted={streak}
         />
       );

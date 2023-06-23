@@ -9,7 +9,7 @@ import {ColorSwatchSelector} from './ColorSwatchSelector';
 import {LABEL} from '@app/language';
 import {habitColors, themeColors} from '@app/theme';
 import {ACTIONS, useStore} from '@app/context/StoreContext';
-import {HabitColor} from '@app/context/types';
+import {Habit, HabitColor} from '@app/context/types';
 
 interface AddHabitModalProps {
   navigation: any;
@@ -78,8 +78,8 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       return;
     }
 
-    const newHabit = {
-      id: habits.length + 1,
+    const newHabit: Habit = {
+      id: (habits.length + 1).toString(),
       name,
       iconName: icon,
       colour: selectedColor || themeColors.grey[600],
@@ -92,8 +92,8 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             return index + 1;
           }
         })
-        .filter(day => day !== undefined),
-      completionHistory: Array(28).fill('DONE'),
+        .filter(day => day !== undefined) as number[],
+      completionHistory: Array(28).fill(false),
     };
 
     dispatch({

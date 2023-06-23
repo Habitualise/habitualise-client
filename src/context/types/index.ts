@@ -7,7 +7,7 @@ export interface Habit {
   completionPercentage: number;
   active: boolean;
   daysDue: number[];
-  completionHistory: string[]; // DONE, SKIPPED, MISSED - one for each day, last element is the most recent (today)
+  completionHistory: boolean[]; // DONE, SKIPPED, MISSED - one for each day, last element is the most recent (today)
 }
 
 export type HabitColor =
