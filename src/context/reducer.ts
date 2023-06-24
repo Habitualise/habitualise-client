@@ -40,7 +40,16 @@ export const reducer = (state: State, action: Action) => {
       // then toggle the isCompleted property
       const updatedHabits = state.habits.map(habit => {
         if (habit.id === action.payload) {
-          return {...habit, isCompleted: !habit.isCompleted};
+          // push true to habit.completionHistory [] if habit.isCompleted is false
+          // else, pop off the last element of habit.completionHistory []
+          // then toggle habit.isCompleted
+          if (!habit.isCompletedToday) {
+            habit.completionHistory.push(true);
+          } else {
+            habit.completionHistory.pop();
+          }
+
+          return {...habit, isCompletedToday: !habit.isCompletedToday};
         }
         return habit;
       });

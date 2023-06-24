@@ -72,7 +72,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
                 name={habit.name}
                 iconName={habit.iconName}
                 colour={habit.colour}
-                isCompleted={habit.isCompleted}
+                isCompletedToday={habit.isCompletedToday}
                 completionPercentage={habit.completionPercentage}
                 active={habit.active}
                 completionHistory={habit.completionHistory}

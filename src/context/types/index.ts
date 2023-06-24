@@ -3,7 +3,7 @@ export interface Habit {
   name: string;
   iconName: string;
   colour: HabitColor;
-  isCompleted: boolean;
+  isCompletedToday: boolean; //
   completionPercentage: number;
   active: boolean;
   daysDue: number[];

@@ -33,7 +33,7 @@ export const TodayScreen = () => {
               id={habit.id}
               iconName={habit.iconName}
               name={habit.name}
-              isCompleted={habit.isCompleted}
+              isCompletedToday={habit.isCompletedToday}
               daysDue={habit.daysDue}
               colour={habit.colour}
             />
