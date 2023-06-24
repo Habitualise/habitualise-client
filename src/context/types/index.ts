@@ -6,7 +6,7 @@ export interface Habit {
   isCompletedToday: boolean; //
   completionPercentage: number;
   active: boolean;
-  daysDue: number[];
+  daysDue: number[]; // 1 = Monday, 2 = Tuesday, etc.
   completionHistory: boolean[]; // DONE, SKIPPED, MISSED - one for each day, last element is the most recent (today)
 }
 
