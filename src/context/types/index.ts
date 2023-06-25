@@ -18,3 +18,7 @@ export type HabitColor =
   | 'purple'
   | 'orange'
   | 'grey';
+
+export interface UserBE {
+  name: string;
+}

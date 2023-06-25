@@ -5,7 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {themeColors} from '@app/theme';
 import {HabitIcon} from '@app/components/HabitIcon';
-import {useStore, ACTIONS} from '@app/context/StoreContext';
+import {ACTIONS, useStore} from '@app/context/StoreContext';
 import {formatDaysDue} from '../utils/formatDaysDue';
 import {PressableCard} from '@app/components/PressableCard';
 import {HabitColor} from '@app/context/types';
