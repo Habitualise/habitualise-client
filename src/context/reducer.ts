@@ -6,14 +6,60 @@ export const ACTIONS = {
   HANDLE_LOGOUT: 'HANDLE_LOGOUT',
   ADD_HABIT: 'ADD_HABIT',
   SET_USER: 'SET_USER',
+  SET_USER_DISPLAY_NAME: 'SET_USER_DISPLAY_NAME',
   TOGGLE_HABIT_ACTIVE: 'TOGGLE_HABIT_ACTIVE',
   DELETE_HABIT: 'DELETE_HABIT',
 } as const;
 
-type Action = {
-  type: keyof typeof ACTIONS;
-  payload: any;
+type SetUserAction = {
+  type: typeof ACTIONS.SET_USER;
+  payload: UserBE;
 };
+
+type SetUserDisplayNameAction = {
+  type: typeof ACTIONS.SET_USER_DISPLAY_NAME;
+  payload: string;
+};
+
+type SetAllHabitsAction = {
+  type: typeof ACTIONS.SET_ALL_HABITS;
+  payload: Habit[];
+};
+
+type AddHabitAction = {
+  type: typeof ACTIONS.ADD_HABIT;
+  payload: Habit;
+};
+
+type ToggleHabitIsCompletedAction = {
+  type: typeof ACTIONS.TOGGLE_HABIT_IS_COMPLETED;
+  payload: string; // assuming id is string
+};
+
+type ToggleHabitActiveAction = {
+  type: typeof ACTIONS.TOGGLE_HABIT_ACTIVE;
+  payload: string; // assuming id is string
+};
+
+type DeleteHabitAction = {
+  type: typeof ACTIONS.DELETE_HABIT;
+  payload: string; // assuming id is string
+};
+
+type HandleLogoutAction = {
+  type: typeof ACTIONS.HANDLE_LOGOUT;
+};
+
+// Must use this type whenever dispatch is being used
+export type DispatchParams =
+  | SetUserAction
+  | SetUserDisplayNameAction
+  | SetAllHabitsAction
+  | AddHabitAction
+  | ToggleHabitIsCompletedAction
+  | ToggleHabitActiveAction
+  | DeleteHabitAction
+  | HandleLogoutAction;
 
 export interface State {
   habits: Habit[];
@@ -21,23 +67,19 @@ export interface State {
   userBE: UserBE;
 }
 
-export const reducer = (state: State, action: Action) => {
+export const reducer = (state: State, action: DispatchParams) => {
   switch (action.type) {
     case ACTIONS.SET_USER:
       return {...state, userBE: action.payload};
+    case ACTIONS.SET_USER_DISPLAY_NAME:
+      return {...state, userBE: {...state.userBE, name: action.payload}};
     case ACTIONS.SET_ALL_HABITS:
-      // action.payload should be an array of habits
-      // TODO: add some validation here
       return {...state, habits: action.payload};
     case ACTIONS.ADD_HABIT:
-      // action.payload should be a habit
       return {...state, habits: [...state.habits, action.payload]};
     case ACTIONS.HANDLE_LOGOUT:
       return {...state, habits: [], userBE: {name: ''}};
     case ACTIONS.TOGGLE_HABIT_IS_COMPLETED: {
-      // action.payload should be the id of the habit
-      // scan through habits and find the one that matches the id
-      // then toggle the isCompleted property
       const updatedHabits = state.habits.map(habit => {
         if (habit.id === action.payload) {
           return {...habit, isCompleted: !habit.isCompleted};
@@ -47,7 +89,6 @@ export const reducer = (state: State, action: Action) => {
       return {...state, habits: updatedHabits};
     }
     case ACTIONS.TOGGLE_HABIT_ACTIVE: {
-      // action.payload should be the id of the habit
       const updatedHabits = state.habits.map(habit => {
         if (habit.id === action.payload) {
           return {...habit, active: !habit.active};
@@ -57,11 +98,13 @@ export const reducer = (state: State, action: Action) => {
       return {...state, habits: updatedHabits};
     }
     case ACTIONS.DELETE_HABIT: {
-      // action.payload should be the id of the habit
       const updatedHabits = state.habits.filter(
         habit => habit.id !== action.payload,
       );
-      return {...state, habits: updatedHabits};
+      return {
+        ...state,
+        habits: updatedHabits,
+      };
     }
     default:
       return state;
