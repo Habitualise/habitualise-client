@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 import {Avatar, Card, IconButton, Text} from 'react-native-paper';
 import {axios} from '@app/lib/axios';
 import PaperView from '@app/components/PaperView';
@@ -48,20 +48,32 @@ export const SettingsScreen = () => {
       <PaperView style={[commonStyles.paperView, commonStyles.paddedContainer]}>
         <Text style={styles.title}>{LABEL.SETTINGS}</Text>
 
-        <Card style={styles.profileCard} mode="contained">
-          <Card.Title
-            title={userBE.name}
-            subtitle={userAuth0.email}
-            left={props => (
-              <Avatar.Text
-                {...props}
-                size={48}
-                label={formatInitials(userBE.name)}
-              />
+        <View style={styles.profileCard}>
+          <Pressable
+            onPress={() => {}}
+            android_ripple={{color: themeColors.grey[400]}}>
+            {({pressed}) => (
+              <Card
+                style={[pressed && styles.pressableContainerPressed]}
+                mode="contained">
+                <Card.Title
+                  title={userBE.name}
+                  subtitle={userAuth0.email}
+                  left={props => (
+                    <Avatar.Text
+                      {...props}
+                      size={48}
+                      label={formatInitials(userBE.name)}
+                    />
+                  )}
+                  right={props => (
+                    <IconButton {...props} icon="chevron-right" />
+                  )}
+                />
+              </Card>
             )}
-            right={props => <IconButton {...props} icon="chevron-right" />}
-          />
-        </Card>
+          </Pressable>
+        </View>
 
         <Text style={styles.containerLabel} variant="labelMedium">
           {LABEL.APP}
@@ -115,5 +127,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 12,
     color: themeColors.grey[600],
+  },
+  pressableContainerPressed: {
+    backgroundColor: themeColors.surfaceVariantDarker,
   },
 });
