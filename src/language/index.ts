@@ -47,7 +47,7 @@ export const LABEL = {
   DISPLAY_NAME_REQUIRED: 'Display name is required.',
   EDIT_PROFILE: 'Edit Profile',
   UPDATE: 'Update',
-  DISPLAY_NAME: 'Display Name',
-  EMAIL: 'Email',
+  DISPLAY_NAME: 'DISPLAY NAME',
+  EMAIL: 'EMAIL',
   SETTINGS_STACK: 'Settings Stack',
 };

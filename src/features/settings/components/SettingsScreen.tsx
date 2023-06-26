@@ -14,6 +14,7 @@ import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
 import {formatInitials} from '@app/features/settings/utils/formatInitials';
 import {EditProfileScreenParams} from '@app/features/settings/types';
+import {ContainerLabel} from '@app/components/ContainerLabel';
 
 interface SettingsScreenProps {
   navigation: any;
@@ -90,18 +91,14 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
           </Pressable>
         </View>
 
-        <Text style={styles.containerLabel} variant="labelMedium">
-          {LABEL.APP}
-        </Text>
+        <ContainerLabel text={LABEL.APP} />
         <CardSwitcher
           label={LABEL.DARK_MODE}
           onToggleSwitch={toggleSwitch}
           value={isDarkMode}
         />
 
-        <Text style={styles.containerLabel} variant="labelMedium">
-          {LABEL.ACCOUNT}
-        </Text>
+        <ContainerLabel text={LABEL.ACCOUNT} />
         <CardButton label={LABEL.LOG_OUT} onPress={logOut} />
         <CardButton
           label={LABEL.DELETE_ACCOUNT}
@@ -110,9 +107,7 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
           isDisabled={true}
         />
 
-        <Text style={styles.containerLabel} variant="labelMedium">
-          {LABEL.DEVELOPER}
-        </Text>
+        <ContainerLabel text={LABEL.DEVELOPER} />
         <CardButton label={LABEL.TEST_AXIOS_HEALTH} onPress={testAxiosHealth} />
 
         <Text style={styles.appVersion}>{LABEL.APP_VERSION}</Text>
@@ -122,13 +117,6 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
 };
 
 const styles = StyleSheet.create({
-  containerLabel: {
-    marginTop: 15,
-    marginBottom: 7,
-    marginLeft: 10,
-    color: themeColors.grey[800],
-    fontWeight: '400',
-  },
   title: {
     fontWeight: '600',
     fontSize: 20,

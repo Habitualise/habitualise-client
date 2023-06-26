@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {LABEL} from '@app/language';
 import {themeColors} from '@app/theme';
 import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
+import {ContainerLabel} from '@app/components/ContainerLabel';
 
 interface EditProfileModalProps {
   route: any;
@@ -71,21 +72,18 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
+        <ContainerLabel text={LABEL.DISPLAY_NAME} />
         <TextInput
           style={styles.textInput}
-          label={LABEL.DISPLAY_NAME}
           onChangeText={setDisplayName}
           value={displayName}
         />
         {displayNameError ? (
           <Text style={styles.error}>{displayNameError}</Text>
         ) : null}
-        <TextInput
-          style={styles.textInput}
-          label={LABEL.EMAIL}
-          value={email}
-          disabled={true}
-        />
+
+        <ContainerLabel text={LABEL.EMAIL} />
+        <TextInput style={styles.textInput} value={email} disabled={true} />
       </View>
     </SafeAreaView>
   );
@@ -113,8 +111,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   textInput: {
-    marginTop: 16,
-    marginBottom: 32,
+    marginBottom: 16,
     fontSize: 16,
   },
   discard: {
