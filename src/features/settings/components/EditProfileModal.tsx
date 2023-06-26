@@ -2,19 +2,24 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import axios from 'axios';
-
 import {LABEL} from '@app/language';
 import {themeColors} from '@app/theme';
+import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 
 interface EditProfileModalProps {
   route: any;
+  navigation: any;
 }
 
-export const EditProfileModal: React.FC<EditProfileModalProps> = ({route}) => {
+export const EditProfileModal: React.FC<EditProfileModalProps> = ({
+  route,
+  navigation,
+}) => {
   const [displayName, setDisplayName] = useState(route.params?.displayName);
   const [email] = useState(route.params?.email); // TODO: add edit email later
   const [displayNameError, setDisplayNameError] = useState('');
+
+  const {dispatch} = useStore();
 
   const validateForm = useCallback(() => {
     let isValid = true;
@@ -40,17 +45,24 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({route}) => {
 
     if (displayName !== route.params?.displayName) {
       try {
-        await axios.patch('/update-profile', {displayName});
+        // await axios.patch('/update-profile', {displayName});
       } catch (error) {
         console.error(error);
       }
     }
+
+    dispatch({
+      type: ACTIONS.SET_USER_DISPLAY_NAME,
+      payload: displayName,
+    } as DispatchParams);
+
+    navigation.pop();
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => navigation.pop()}>
           <Text style={styles.discard}>{LABEL.DISCARD}</Text>
         </TouchableOpacity>
         <Text variant="titleMedium">{LABEL.EDIT_PROFILE}</Text>
