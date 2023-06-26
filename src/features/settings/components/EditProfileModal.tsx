@@ -12,8 +12,8 @@ interface EditProfileModalProps {
 }
 
 export const EditProfileModal: React.FC<EditProfileModalProps> = ({route}) => {
-  const [displayName, setDisplayName] = useState(route.params.displayName);
-  const [email] = useState(route.params.email); // TODO: add edit email later
+  const [displayName, setDisplayName] = useState(route.params?.displayName);
+  const [email] = useState(route.params?.email); // TODO: add edit email later
   const [displayNameError, setDisplayNameError] = useState('');
 
   const validateForm = useCallback(() => {
@@ -38,7 +38,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({route}) => {
       return;
     }
 
-    if (displayName !== route.params.displayName) {
+    if (displayName !== route.params?.displayName) {
       try {
         await axios.patch('/update-profile', {displayName});
       } catch (error) {

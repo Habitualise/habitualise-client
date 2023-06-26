@@ -13,8 +13,13 @@ import {useStore} from '@app/context/StoreContext';
 import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
 import {formatInitials} from '@app/features/settings/utils/formatInitials';
+import {EditProfileScreenParams} from '@app/features/settings/types';
 
-export const SettingsScreen = () => {
+interface SettingsScreenProps {
+  navigation: any;
+}
+
+export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
   const {clearSession, user: userAuth0} = useAuth0();
   const {dispatch, state} = useStore();
   const {userBE} = state;
@@ -26,6 +31,16 @@ export const SettingsScreen = () => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const onProfileClick = () => {
+    navigation.navigate(LABEL.SETTINGS_STACK, {
+      screen: LABEL.EDIT_PROFILE_MODAL,
+      params: {
+        displayName: userBE.name,
+        email: userAuth0.email,
+      } as EditProfileScreenParams,
+    });
   };
 
   const testAxiosHealth = async () => {
@@ -50,7 +65,7 @@ export const SettingsScreen = () => {
 
         <View style={styles.profileCard}>
           <Pressable
-            onPress={() => {}}
+            onPress={onProfileClick}
             android_ripple={{color: themeColors.grey[400]}}>
             {({pressed}) => (
               <Card
