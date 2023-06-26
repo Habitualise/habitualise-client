@@ -8,8 +8,8 @@ import {HabitsStack} from '@app/features/habits';
 import {LABEL} from '@app/language';
 import {ACTIONS, useStore} from '@app/context/StoreContext';
 import {getHabits} from './api/getHabits';
-import {SettingsScreen} from '@app/features/settings';
 import {getUser} from '@app/routes/api/getUser';
+import {SettingsStack} from '@app/features/settings/components/SettingsStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -54,8 +54,8 @@ export const AppTabs = () => {
         }}
       />
       <Tab.Screen
-        name={LABEL.SETTINGS_SCREEN}
-        component={SettingsScreen}
+        name={LABEL.SETTINGS_STACK}
+        component={SettingsStack}
         options={{
           tabBarLabel: LABEL.SETTINGS,
           tabBarIcon: ({color}) => (
