@@ -8,7 +8,7 @@ import {commonStyles} from '@app/components/styles';
 import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import CardButton from '@app/components/CardButton';
-import {ACTIONS} from '@app/context/reducer';
+import {ACTIONS, DispatchParams} from '@app/context/reducer';
 import {useStore} from '@app/context/StoreContext';
 import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
@@ -27,7 +27,7 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
   const logOut = async () => {
     try {
       await clearSession();
-      dispatch({type: ACTIONS.HANDLE_LOGOUT});
+      dispatch({type: ACTIONS.HANDLE_LOGOUT} as DispatchParams);
     } catch (e) {
       console.log(e);
     }

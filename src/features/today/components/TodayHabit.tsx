@@ -5,7 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {themeColors} from '@app/theme';
 import {HabitIcon} from '@app/components/HabitIcon';
-import {ACTIONS, useStore} from '@app/context/StoreContext';
+import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {formatDaysDue} from '../utils/formatDaysDue';
 import {PressableCard} from '@app/components/PressableCard';
 import {HabitColor} from '@app/context/types';
@@ -27,7 +27,7 @@ export const TodayHabit = (props: TodayHabitProps) => {
     dispatch({
       type: ACTIONS.TOGGLE_HABIT_IS_COMPLETED,
       payload: id,
-    });
+    } as DispatchParams);
   };
 
   return (
