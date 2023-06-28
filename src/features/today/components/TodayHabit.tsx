@@ -15,12 +15,12 @@ interface TodayHabitProps {
   name: string;
   iconName: string;
   colour: HabitColor;
-  isCompleted: boolean;
+  isCompletedToday: boolean;
   daysDue: number[];
 }
 
 export const TodayHabit = (props: TodayHabitProps) => {
-  const {id, name, iconName, colour, isCompleted, daysDue} = props;
+  const {id, name, iconName, colour, isCompletedToday, daysDue} = props;
   const {dispatch} = useStore();
 
   const toggleHabitCompleted = () => {
@@ -32,18 +32,24 @@ export const TodayHabit = (props: TodayHabitProps) => {
 
   return (
     <>
-      <PressableCard onPress={toggleHabitCompleted} isGreyedOut={isCompleted}>
+      <PressableCard
+        onPress={toggleHabitCompleted}
+        isGreyedOut={isCompletedToday}>
         <HabitIcon iconName={iconName} colour={colour} />
         <View style={{flex: 1}}>
-          <Text style={styles(isCompleted).habitName}>{name}</Text>
-          <Text style={styles(isCompleted).habitDaysDue} variant={'bodySmall'}>
+          <Text style={styles(isCompletedToday).habitName}>{name}</Text>
+          <Text
+            style={styles(isCompletedToday).habitDaysDue}
+            variant={'bodySmall'}>
             {formatDaysDue(daysDue)}
           </Text>
         </View>
         <MaterialCommunityIcons
-          name={isCompleted ? 'check-circle' : 'circle-outline'}
+          name={isCompletedToday ? 'check-circle' : 'circle-outline'}
           color={
-            isCompleted ? themeColors.successGreyedOut : themeColors.grey[400]
+            isCompletedToday
+              ? themeColors.successGreyedOut
+              : themeColors.grey[400]
           }
           size={25}
         />
@@ -53,15 +59,15 @@ export const TodayHabit = (props: TodayHabitProps) => {
   );
 };
 
-const styles = (isCompleted = false) =>
+const styles = (isCompletedToday = false) =>
   StyleSheet.create({
     habitName: {
       marginBottom: 4,
       fontWeight: 'bold',
-      textDecorationLine: isCompleted ? 'line-through' : 'none',
-      color: isCompleted ? themeColors.grey[500] : themeColors.grey[900],
+      textDecorationLine: isCompletedToday ? 'line-through' : 'none',
+      color: isCompletedToday ? themeColors.grey[500] : themeColors.grey[900],
     },
     habitDaysDue: {
-      color: isCompleted ? themeColors.grey[400] : themeColors.grey[500],
+      color: isCompletedToday ? themeColors.grey[400] : themeColors.grey[500],
     },
   });

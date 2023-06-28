@@ -9,10 +9,12 @@ import {TodayHabit} from './TodayHabit';
 import {useStore} from '@app/context/StoreContext';
 import PaperView from '@app/components/PaperView';
 import {commonStyles} from '@app/components/styles';
+import {getTodaysHabits} from '@app/features/today/utils/getTodaysHabits';
 
 export const TodayScreen = () => {
   const {state} = useStore();
-  const todaysHabits = state.habits;
+  const allHabits = state.habits;
+  const todaysHabits = getTodaysHabits(allHabits);
 
   return (
     <SafeAreaView
@@ -33,7 +35,7 @@ export const TodayScreen = () => {
               id={habit.id}
               iconName={habit.iconName}
               name={habit.name}
-              isCompleted={habit.isCompleted}
+              isCompletedToday={habit.isCompletedToday}
               daysDue={habit.daysDue}
               colour={habit.colour}
             />

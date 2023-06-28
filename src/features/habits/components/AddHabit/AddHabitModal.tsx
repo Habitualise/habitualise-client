@@ -83,7 +83,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       name,
       iconName: icon,
       colour: selectedColor || themeColors.grey[600],
-      isCompleted: false,
+      isCompletedToday: false,
       completionPercentage: 0,
       active: true,
       daysDue: selectedDays
