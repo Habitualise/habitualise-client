@@ -43,4 +43,6 @@ export const LABEL = {
   TEST_AXIOS_HEALTH: 'Test Axios Health',
   APP_VERSION: 'App version: 1.00',
   ACCOUNT: 'ACCOUNT',
+  NO_HABITS_FOR_TODAY: 'There are no habits for today',
+  CREATE_HABITS_TO_SEE: 'Create habits using the + button\nto see them here',
 };

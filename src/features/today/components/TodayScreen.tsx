@@ -11,6 +11,7 @@ import PaperView from '@app/components/PaperView';
 import {commonStyles} from '@app/components/styles';
 import {getTodaysHabits} from '@app/features/today/utils/getTodaysHabits';
 import Spinner from '@app/components/Spinner';
+import {themeColors} from '@app/theme';
 
 export const TodayScreen = () => {
   const {state} = useStore();
@@ -32,6 +33,13 @@ export const TodayScreen = () => {
         <Divider />
         <ScrollView>
           {loading && <Spinner />}
+          {!loading && todaysHabits.length === 0 && (
+            <View style={styles.noHabitsContainer}>
+              <Text style={styles.noHabitsLabel}>
+                {LABEL.NO_HABITS_FOR_TODAY}
+              </Text>
+            </View>
+          )}
           {todaysHabits.map(habit => (
             <TodayHabit
               key={habit.id}
@@ -47,4 +55,15 @@ export const TodayScreen = () => {
       </PaperView>
     </SafeAreaView>
   );
+};
+
+const styles = {
+  noHabitsContainer: {
+    alignItems: 'center',
+    paddingVertical: 40,
+  },
+  noHabitsLabel: {
+    color: themeColors.grey[500],
+    fontSize: 16,
+  },
 };

@@ -2,7 +2,6 @@ import Axios, {InternalAxiosRequestConfig} from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 import {API_URL} from '@app/config';
-import {mockHabits} from '@app/mocks';
 
 function requestInterceptor(config: InternalAxiosRequestConfig) {
   config.headers.Accept = 'application/json';
@@ -50,7 +49,8 @@ mock.onGet('/api/health').reply(function (config) {
 });
 
 mock.onGet('/api/habits').reply(function () {
-  return [200, mockHabits];
+  // return [200, mockHabits];
+  return [200, []];
 });
 
 mock.onGet('/api/user').reply(function () {

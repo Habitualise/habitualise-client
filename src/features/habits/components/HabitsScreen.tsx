@@ -66,6 +66,13 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
         <Divider />
         <ScrollView>
           {loading && <Spinner />}
+          {!loading && habits.length === 0 && (
+            <View style={styles.noHabitsContainer}>
+              <Text style={styles.noHabitsLabel}>
+                {LABEL.CREATE_HABITS_TO_SEE}
+              </Text>
+            </View>
+          )}
           {habits
             .filter(habit => habit.active === habitActive)
             .map(habit => (
@@ -100,5 +107,16 @@ const styles = StyleSheet.create({
   },
   buttonGroup: {
     flexDirection: 'row',
+  },
+  noHabitsContainer: {
+    alignItems: 'center',
+    paddingVertical: 40,
+    paddingHorizontal: 30,
+  },
+  noHabitsLabel: {
+    color: themeColors.grey[500],
+    fontSize: 16,
+    textAlign: 'center',
+    lineHeight: 24,
   },
 });
