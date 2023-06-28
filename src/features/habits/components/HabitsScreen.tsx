@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import {Button, Divider, IconButton, Text} from 'react-native-paper';
+import {Button, Divider, IconButton, Text, useTheme} from 'react-native-paper';
 
 import PaperView from '@app/components/PaperView';
 import {LABEL} from '@app/language';
 import {useStore} from '@app/context/StoreContext';
 import {Habit} from './Habit';
-import {themeColors} from '@app/theme';
 import {commonStyles} from '@app/components/styles';
 
 interface HabitScreenProps {
@@ -18,6 +17,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
   const [habitActive, setHabitActive] = useState<boolean>(true);
   const {state} = useStore();
   const {habits} = state;
+  const theme = useTheme();
 
   const setActive = () => {
     setHabitActive(true);
@@ -40,7 +40,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
             <View style={styles.buttonGroup}>
               <Button
                 mode={habitActive ? 'contained-tonal' : 'text'}
-                textColor={themeColors.primary}
+                textColor={theme?.colors.primary}
                 onPress={setActive}
                 icon="check"
                 style={{marginRight: 8}}>
@@ -48,7 +48,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
               </Button>
               <Button
                 mode={!habitActive ? 'contained-tonal' : 'text'}
-                textColor={themeColors.primary}
+                textColor={theme?.colors.primary}
                 onPress={setInactive}
                 icon="archive">
                 {LABEL.ARCHIVED}
@@ -56,7 +56,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
             </View>
             <IconButton
               icon="plus"
-              iconColor={themeColors.primary}
+              iconColor={theme?.colors.primary}
               onPress={() => navigation.navigate(LABEL.ADD_HABIT_MODAL)}
             />
           </View>
