@@ -1,4 +1,4 @@
-export const themeColors = {
+export const customLightThemeColors = {
   primary: 'rgb(0, 90, 193)',
   onPrimary: 'rgb(255, 255, 255)',
   primaryContainer: 'rgb(216, 226, 255)',

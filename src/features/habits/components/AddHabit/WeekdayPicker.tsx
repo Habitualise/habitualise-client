@@ -1,4 +1,4 @@
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from 'react-native-paper';
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   dayButton: {
     borderWidth: 1.5,
-    borderColor: themeColors.grey[400],
+    borderColor: customLightThemeColors.grey[400],
     paddingVertical: 11,
     flex: 1,
     marginHorizontal: 4,
@@ -57,13 +57,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   dayButtonSelected: {
-    borderColor: themeColors.primary,
-    backgroundColor: themeColors.primaryContainer,
+    borderColor: customLightThemeColors.primary,
+    backgroundColor: customLightThemeColors.primaryContainer,
   },
   dayButtonText: {
-    color: themeColors.grey[600],
+    color: customLightThemeColors.grey[600],
   },
   dayButtonTextSelected: {
-    color: themeColors.primary,
+    color: customLightThemeColors.primary,
   },
 });

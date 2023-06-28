@@ -3,7 +3,7 @@ import {Divider, IconButton, Menu, Text} from 'react-native-paper';
 
 import {HabitIcon} from '@app/components/HabitIcon';
 import {Alert, StyleSheet, View} from 'react-native';
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import {DotHistory} from './DotHistory';
 import {Habit as HabitType} from '@app/context/types';
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   habitDaysDue: {
-    color: themeColors.grey[500],
+    color: customLightThemeColors.grey[500],
   },
   dotHistoryContainer: {
     paddingHorizontal: 16,

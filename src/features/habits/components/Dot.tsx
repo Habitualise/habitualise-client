@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 import {ColorValue, StyleSheet, View} from 'react-native';
 
 import {calculateDotColour} from '../utils/calculateDotColour';
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 import {HabitColor} from '@app/context/types';
 
 interface DotProps {
@@ -44,6 +44,6 @@ const styles = (dotColour: ColorValue) =>
     //   backgroundColor: 'transparent',
     // },
     missedDot: {
-      backgroundColor: themeColors.grey[300],
+      backgroundColor: customLightThemeColors.grey[300],
     },
   });

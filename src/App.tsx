@@ -12,13 +12,13 @@ import {
 import merge from 'deepmerge';
 
 import {Router} from './routes';
-import {themeColors} from './theme';
+import {customLightThemeColors} from './theme';
 import {reducer, StoreContextProvider} from '@app/context/StoreContext';
 import {PreferencesContext} from '@app/context/PreferencesContext';
 
 const PaperLightTheme = {
   ...MD3LightTheme,
-  colors: themeColors,
+  colors: customLightThemeColors,
 };
 
 const CombinedLightTheme = merge(NavigationLightTheme, PaperLightTheme);

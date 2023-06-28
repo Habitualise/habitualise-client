@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, TouchableOpacity, FlatList} from 'react-native';
+import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {LABEL} from '@app/language';
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 import {IconItem} from './IconItem';
 
 interface PickIconModalProps {
@@ -50,7 +50,7 @@ export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
         placeholder="Filter icons"
         onChangeText={setFilterText}
         value={filterText}
-        underlineColor={themeColors.grey[400]}
+        underlineColor={customLightThemeColors.grey[400]}
       />
       <FlatList
         style={styles.iconContainer}
@@ -74,7 +74,7 @@ export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: themeColors.white,
+    backgroundColor: customLightThemeColors.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -84,12 +84,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderBottomColor: themeColors.grey[400],
+    borderBottomColor: customLightThemeColors.grey[400],
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   select: {
     fontSize: 16,
-    color: themeColors.primary,
+    color: customLightThemeColors.primary,
   },
   iconContainer: {
     flex: 1,

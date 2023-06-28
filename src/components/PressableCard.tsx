@@ -1,7 +1,7 @@
 import React from 'react';
 import {Pressable, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 
 interface PressableCardProps {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ export const PressableCard = (props: PressableCardProps) => {
         },
         style,
       ]}
-      android_ripple={{color: themeColors.grey[300]}}>
+      android_ripple={{color: customLightThemeColors.grey[300]}}>
       <View style={styles(isGreyedOut).card}>{children}</View>
     </Pressable>
   );

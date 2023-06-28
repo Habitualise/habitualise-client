@@ -1,6 +1,6 @@
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 import React from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export const IconItem: React.FC<{
@@ -26,7 +26,7 @@ export const IconItem: React.FC<{
 const styles = StyleSheet.create({
   iconButton: {
     padding: 8,
-    backgroundColor: themeColors.grey[300],
+    backgroundColor: customLightThemeColors.grey[300],
     borderRadius: 5,
     margin: 8,
     justifyContent: 'center',
@@ -34,6 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   iconButtonSelected: {
-    backgroundColor: themeColors.primary,
+    backgroundColor: customLightThemeColors.primary,
   },
 });

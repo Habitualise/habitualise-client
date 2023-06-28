@@ -5,7 +5,7 @@ import {axios} from '@app/lib/axios';
 import PaperView from '@app/components/PaperView';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {commonStyles} from '@app/components/styles';
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import CardButton from '@app/components/CardButton';
 import {ACTIONS} from '@app/context/reducer';
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 7,
     marginLeft: 10,
-    color: themeColors.grey[800],
+    color: customLightThemeColors.grey[800],
     fontWeight: '400',
   },
   title: {
@@ -113,6 +113,6 @@ const styles = StyleSheet.create({
   appVersion: {
     alignSelf: 'center',
     fontSize: 12,
-    color: themeColors.grey[600],
+    color: customLightThemeColors.grey[600],
   },
 });

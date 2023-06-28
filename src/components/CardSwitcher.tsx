@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Switch} from 'react-native-paper';
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 
 interface CardSwitcherProps {
   label: string;
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: themeColors.surfaceVariant,
+    backgroundColor: customLightThemeColors.surfaceVariant,
     borderRadius: 10,
   },
   rowContainer: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   switcherText: {
     fontWeight: '500',
-    color: themeColors.grey[900],
+    color: customLightThemeColors.grey[900],
   },
 });
 

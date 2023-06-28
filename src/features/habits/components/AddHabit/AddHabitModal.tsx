@@ -7,7 +7,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import {WeekdayPicker} from './WeekdayPicker';
 import {ColorSwatchSelector} from './ColorSwatchSelector';
 import {LABEL} from '@app/language';
-import {habitColors, themeColors} from '@app/theme';
+import {customLightThemeColors, habitColors} from '@app/theme';
 import {ACTIONS, useStore} from '@app/context/StoreContext';
 import {Habit, HabitColor} from '@app/context/types';
 
@@ -82,7 +82,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       id: (habits.length + 1).toString(),
       name,
       iconName: icon,
-      colour: selectedColor || themeColors.grey[600],
+      colour: selectedColor || customLightThemeColors.grey[600],
       isCompletedToday: false,
       completionPercentage: 0,
       active: true,
@@ -126,7 +126,8 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             mode={'contained'}
             size={42}
             iconColor={
-              habitColors[selectedColor].middle || themeColors.grey[600]
+              habitColors[selectedColor].middle ||
+              customLightThemeColors.grey[600]
             }
           />
           <TextInput
@@ -168,7 +169,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: themeColors.white,
+    backgroundColor: customLightThemeColors.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderBottomColor: themeColors.grey[400],
+    borderBottomColor: customLightThemeColors.grey[400],
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   content: {
@@ -203,18 +204,18 @@ const styles = StyleSheet.create({
   },
   discard: {
     fontSize: 16,
-    color: themeColors.red[600],
+    color: customLightThemeColors.red[600],
   },
   create: {
     fontSize: 16,
-    color: themeColors.primary,
+    color: customLightThemeColors.primary,
   },
   createDisabled: {
     fontSize: 16,
-    color: themeColors.grey[500],
+    color: customLightThemeColors.grey[500],
   },
   error: {
-    color: themeColors.red[600],
+    color: customLightThemeColors.red[600],
     marginBottom: 16,
   },
   repeatLabel: {

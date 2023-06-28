@@ -7,7 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {commonStyles} from '@app/components/styles';
 import {LABEL} from '@app/language';
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 import PaperView from '@app/components/PaperView';
 
 export const WelcomeScreen = () => {
@@ -38,12 +38,12 @@ export const WelcomeScreen = () => {
           style={({pressed}) => [
             {
               backgroundColor: pressed
-                ? themeColors.primaryLighter
-                : themeColors.primary,
+                ? customLightThemeColors.primaryLighter
+                : customLightThemeColors.primary,
             },
             styles.signUpButtonContainer,
           ]}
-          android_ripple={{color: themeColors.grey[200]}}>
+          android_ripple={{color: customLightThemeColors.grey[200]}}>
           <Text variant="bodyLarge" style={styles.signUpButtonText}>
             {LABEL.SIGN_UP}
           </Text>
@@ -72,13 +72,13 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
     fontWeight: '700',
-    color: themeColors.primary,
+    color: customLightThemeColors.primary,
   },
   subHeader: {
     marginBottom: 60,
     lineHeight: 30,
     textAlign: 'center',
-    color: themeColors.primary,
+    color: customLightThemeColors.primary,
   },
   signUpButtonContainer: {
     marginBottom: 10,

@@ -3,7 +3,7 @@ import {Divider, Text} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {themeColors} from '@app/theme';
+import {customLightThemeColors} from '@app/theme';
 import {HabitIcon} from '@app/components/HabitIcon';
 import {ACTIONS, useStore} from '@app/context/StoreContext';
 import {formatDaysDue} from '../utils/formatDaysDue';
@@ -48,8 +48,8 @@ export const TodayHabit = (props: TodayHabitProps) => {
           name={isCompletedToday ? 'check-circle' : 'circle-outline'}
           color={
             isCompletedToday
-              ? themeColors.successGreyedOut
-              : themeColors.grey[400]
+              ? customLightThemeColors.successGreyedOut
+              : customLightThemeColors.grey[400]
           }
           size={25}
         />
@@ -65,9 +65,13 @@ const styles = (isCompletedToday = false) =>
       marginBottom: 4,
       fontWeight: 'bold',
       textDecorationLine: isCompletedToday ? 'line-through' : 'none',
-      color: isCompletedToday ? themeColors.grey[500] : themeColors.grey[900],
+      color: isCompletedToday
+        ? customLightThemeColors.grey[500]
+        : customLightThemeColors.grey[900],
     },
     habitDaysDue: {
-      color: isCompletedToday ? themeColors.grey[400] : themeColors.grey[500],
+      color: isCompletedToday
+        ? customLightThemeColors.grey[400]
+        : customLightThemeColors.grey[500],
     },
   });
