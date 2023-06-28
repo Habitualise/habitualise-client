@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     color: customLightThemeColors.red[500],
   },
   pressableContainerPressed: {
-    backgroundColor: customLightThemeColors.surfaceVariantDarker,
+    backgroundColor: customLightThemeColors.surfaceVariantPressed,
   },
   disabledContainer: {
     opacity: 0.5,
