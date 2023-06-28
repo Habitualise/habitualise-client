@@ -8,6 +8,7 @@ export const ACTIONS = {
   SET_USER: 'SET_USER',
   TOGGLE_HABIT_ACTIVE: 'TOGGLE_HABIT_ACTIVE',
   DELETE_HABIT: 'DELETE_HABIT',
+  SET_THEME_DARK: 'SET_THEME_DARK',
 } as const;
 
 type Action = {
@@ -19,10 +20,13 @@ export interface State {
   habits: Habit[];
   // BE = backend, additional info about the user, not the same as user from Auth0
   userBE: UserBE;
+  isThemeDark: boolean;
 }
 
 export const reducer = (state: State, action: Action) => {
   switch (action.type) {
+    case ACTIONS.SET_THEME_DARK:
+      return {...state, isThemeDark: action.payload};
     case ACTIONS.SET_USER:
       return {...state, userBE: action.payload};
     case ACTIONS.SET_ALL_HABITS:
