@@ -1,31 +1,56 @@
-import React from 'react';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
-import {MD3LightTheme, Provider as PaperProvider} from 'react-native-paper';
+import React, {useCallback, useMemo, useState} from 'react';
+import {
+  DarkTheme as NavigationDarkTheme,
+  DefaultTheme as NavigationLightTheme,
+  NavigationContainer,
+} from '@react-navigation/native';
+import {
+  MD3DarkTheme as PaperDarkTheme,
+  MD3LightTheme,
+  Provider as PaperProvider,
+} from 'react-native-paper';
+import merge from 'deepmerge';
 
 import {Router} from './routes';
 import {themeColors} from './theme';
-import {StoreContextProvider, reducer} from '@app/context/StoreContext';
+import {reducer, StoreContextProvider} from '@app/context/StoreContext';
+import {PreferencesContext} from '@app/context/PreferencesContext';
 
-const NavigationTheme = {
-  ...DefaultTheme,
-  dark: true,
-};
-
-const theme = {
+const PaperLightTheme = {
   ...MD3LightTheme,
-  dark: true,
   colors: themeColors,
 };
 
+const CombinedLightTheme = merge(NavigationLightTheme, PaperLightTheme);
+const CombinedDarkTheme = merge(NavigationDarkTheme, PaperDarkTheme);
+
 export const App = () => {
+  const [isThemeDark, setIsThemeDark] = useState(false);
+
+  let currentTheme = isThemeDark ? CombinedDarkTheme : CombinedLightTheme;
+
+  const toggleTheme = useCallback(() => {
+    return setIsThemeDark(!isThemeDark);
+  }, [isThemeDark]);
+
+  const preferences = useMemo(
+    () => ({
+      toggleTheme,
+      isThemeDark,
+    }),
+    [toggleTheme, isThemeDark],
+  );
+
   return (
-    <PaperProvider theme={theme}>
-      <StoreContextProvider reducer={reducer}>
-        <NavigationContainer theme={NavigationTheme}>
-          <Router />
-        </NavigationContainer>
-      </StoreContextProvider>
-    </PaperProvider>
+    <PreferencesContext.Provider value={preferences}>
+      <PaperProvider theme={currentTheme}>
+        <StoreContextProvider reducer={reducer}>
+          <NavigationContainer theme={currentTheme}>
+            <Router />
+          </NavigationContainer>
+        </StoreContextProvider>
+      </PaperProvider>
+    </PreferencesContext.Provider>
   );
 };
 
