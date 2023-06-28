@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet} from 'react-native';
 import {Avatar, Card, IconButton, Text} from 'react-native-paper';
 import {axios} from '@app/lib/axios';
@@ -13,8 +13,11 @@ import {useStore} from '@app/context/StoreContext';
 import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
 import {formatInitials} from '@app/features/settings/utils/formatInitials';
+import {PreferencesContext} from '@app/context/PreferencesContext';
 
 export const SettingsScreen = () => {
+  const {toggleTheme, isThemeDark} = useContext(PreferencesContext);
+
   const {clearSession, user: userAuth0} = useAuth0();
   const {dispatch, state} = useStore();
   const {userBE} = state;
@@ -36,10 +39,6 @@ export const SettingsScreen = () => {
       console.log('=== error from SettingsScreen.tsx [21] ===', error);
     }
   };
-
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
-
-  const toggleSwitch = () => setIsDarkMode(previousState => !previousState);
 
   return (
     <SafeAreaView
@@ -68,8 +67,8 @@ export const SettingsScreen = () => {
         </Text>
         <CardSwitcher
           label={LABEL.DARK_MODE}
-          onToggleSwitch={toggleSwitch}
-          value={isDarkMode}
+          onToggleSwitch={toggleTheme}
+          value={isThemeDark}
         />
 
         <Text style={styles.containerLabel} variant="labelMedium">
