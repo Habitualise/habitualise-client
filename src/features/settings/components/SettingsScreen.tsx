@@ -13,11 +13,12 @@ import {useStore} from '@app/context/StoreContext';
 import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
 import {formatInitials} from '@app/features/settings/utils/formatInitials';
+import Spinner from '@app/components/Spinner';
 
 export const SettingsScreen = () => {
   const {clearSession, user: userAuth0} = useAuth0();
   const {dispatch, state} = useStore();
-  const {userBE} = state;
+  const {userBE, loading} = state;
 
   const logOut = async () => {
     try {
@@ -49,18 +50,22 @@ export const SettingsScreen = () => {
         <Text style={styles.title}>{LABEL.SETTINGS}</Text>
 
         <Card style={styles.profileCard} mode="contained">
-          <Card.Title
-            title={userBE.name}
-            subtitle={userAuth0.email}
-            left={props => (
-              <Avatar.Text
-                {...props}
-                size={48}
-                label={formatInitials(userBE.name)}
-              />
-            )}
-            right={props => <IconButton {...props} icon="chevron-right" />}
-          />
+          {loading ? (
+            <Spinner />
+          ) : (
+            <Card.Title
+              title={userBE.name}
+              subtitle={userAuth0.email}
+              left={props => (
+                <Avatar.Text
+                  {...props}
+                  size={48}
+                  label={formatInitials(userBE.name)}
+                />
+              )}
+              right={props => <IconButton {...props} icon="chevron-right" />}
+            />
+          )}
         </Card>
 
         <Text style={styles.containerLabel} variant="labelMedium">

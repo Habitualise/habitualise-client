@@ -9,6 +9,7 @@ import {useStore} from '@app/context/StoreContext';
 import {Habit} from './Habit';
 import {themeColors} from '@app/theme';
 import {commonStyles} from '@app/components/styles';
+import Spinner from '@app/components/Spinner';
 
 interface HabitScreenProps {
   navigation: any;
@@ -17,6 +18,7 @@ interface HabitScreenProps {
 export const HabitsScreen = ({navigation}: HabitScreenProps) => {
   const [habitActive, setHabitActive] = useState<boolean>(true);
   const {state} = useStore();
+  const {loading} = state;
   const {habits} = state;
 
   const setActive = () => {
@@ -63,6 +65,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
         </View>
         <Divider />
         <ScrollView>
+          {loading && <Spinner />}
           {habits
             .filter(habit => habit.active === habitActive)
             .map(habit => (

@@ -10,9 +10,11 @@ import {useStore} from '@app/context/StoreContext';
 import PaperView from '@app/components/PaperView';
 import {commonStyles} from '@app/components/styles';
 import {getTodaysHabits} from '@app/features/today/utils/getTodaysHabits';
+import Spinner from '@app/components/Spinner';
 
 export const TodayScreen = () => {
   const {state} = useStore();
+  const {loading} = state;
   const allHabits = state.habits;
   const todaysHabits = getTodaysHabits(allHabits);
 
@@ -29,6 +31,7 @@ export const TodayScreen = () => {
         </View>
         <Divider />
         <ScrollView>
+          {loading && <Spinner />}
           {todaysHabits.map(habit => (
             <TodayHabit
               key={habit.id}
