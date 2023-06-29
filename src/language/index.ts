@@ -45,4 +45,11 @@ export const LABEL = {
   ACCOUNT: 'ACCOUNT',
   NO_HABITS_FOR_TODAY: 'There are no habits for today',
   CREATE_HABITS_TO_SEE: 'Create habits using the + button\nto see them here',
+  EDIT_PROFILE_MODAL: 'Edit Profile Modal',
+  DISPLAY_NAME_REQUIRED: 'Display name is required.',
+  EDIT_PROFILE: 'Edit Profile',
+  UPDATE: 'Update',
+  DISPLAY_NAME: 'DISPLAY NAME',
+  EMAIL: 'EMAIL',
+  SETTINGS_STACK: 'Settings Stack',
 };

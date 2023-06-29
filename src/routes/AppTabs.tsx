@@ -6,10 +6,10 @@ import {ColorValue} from 'react-native';
 import {TodayScreen} from '@app/features/today';
 import {HabitsStack} from '@app/features/habits';
 import {LABEL} from '@app/language';
-import {ACTIONS, useStore} from '@app/context/StoreContext';
+import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {getHabits} from './api/getHabits';
-import {SettingsScreen} from '@app/features/settings';
 import {getUser} from '@app/routes/api/getUser';
+import {SettingsStack} from '@app/features/settings/components/SettingsStack';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -23,8 +23,11 @@ export const AppTabs = () => {
         dispatch({type: ACTIONS.SET_LOADING, payload: true});
         const habits = await getHabits();
         const userBE = await getUser();
-        dispatch({type: ACTIONS.SET_ALL_HABITS, payload: habits});
-        dispatch({type: ACTIONS.SET_USER, payload: userBE});
+        dispatch({
+          type: ACTIONS.SET_ALL_HABITS,
+          payload: habits,
+        } as DispatchParams);
+        dispatch({type: ACTIONS.SET_USER, payload: userBE} as DispatchParams);
       } catch (error) {
         console.error('An error occurred:', error);
       } finally {
@@ -62,8 +65,8 @@ export const AppTabs = () => {
         }}
       />
       <Tab.Screen
-        name={LABEL.SETTINGS_SCREEN}
-        component={SettingsScreen}
+        name={LABEL.SETTINGS_STACK}
+        component={SettingsStack}
         options={{
           tabBarLabel: LABEL.SETTINGS,
           tabBarIcon: ({color}) => (
