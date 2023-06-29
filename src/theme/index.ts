@@ -42,6 +42,8 @@ export const customLightThemeColors = {
   backdrop: 'rgba(46, 48, 56, 0.4)',
   // additional fields below
   primaryLighter: 'rgb(0, 122, 189)',
+  success: 'rgb(45, 181, 106)',
+  successGreyedOut: 'rgb(121, 184, 149)',
   grey: {
     50: 'rgb(250, 250, 250)',
     100: 'rgb(245, 245, 245)',
@@ -163,6 +165,8 @@ export const customDarkThemeColors = {
   backdrop: 'rgba(47, 48, 56, 0.4)',
   // additional fields below
   primaryLighter: 'rgb(145,162,241)',
+  success: 'rgb(121, 184, 149)',
+  successGreyedOut: 'rgb(45, 181, 106)',
   grey: {
     50: 'rgb(33, 33, 33)',
     100: 'rgb(66, 66, 66)',
