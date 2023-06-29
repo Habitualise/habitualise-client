@@ -13,6 +13,7 @@ import {useStore} from '@app/context/StoreContext';
 import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
 import {formatInitials} from '@app/features/settings/utils/formatInitials';
+import Spinner from '@app/components/Spinner';
 import {EditProfileScreenParams} from '@app/features/settings/types';
 import {ContainerLabel} from '@app/components/ContainerLabel';
 
@@ -23,7 +24,7 @@ interface SettingsScreenProps {
 export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
   const {clearSession, user: userAuth0} = useAuth0();
   const {dispatch, state} = useStore();
-  const {userBE} = state;
+  const {userBE, loading} = state;
 
   const logOut = async () => {
     try {
@@ -72,20 +73,24 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
               <Card
                 style={[pressed && styles.pressableContainerPressed]}
                 mode="contained">
-                <Card.Title
-                  title={userBE.name}
-                  subtitle={userAuth0.email}
-                  left={props => (
-                    <Avatar.Text
-                      {...props}
-                      size={48}
-                      label={formatInitials(userBE.name)}
-                    />
-                  )}
-                  right={props => (
-                    <IconButton {...props} icon="chevron-right" />
-                  )}
-                />
+                {loading ? (
+                  <Spinner />
+                ) : (
+                  <Card.Title
+                    title={userBE.name}
+                    subtitle={userAuth0.email}
+                    left={props => (
+                      <Avatar.Text
+                        {...props}
+                        size={48}
+                        label={formatInitials(userBE.name)}
+                      />
+                    )}
+                    right={props => (
+                      <IconButton {...props} icon="chevron-right" />
+                    )}
+                  />
+                )}
               </Card>
             )}
           </Pressable>

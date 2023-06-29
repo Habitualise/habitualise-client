@@ -1,10 +1,9 @@
 import React from 'react';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
+import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {MD3LightTheme, Provider as PaperProvider} from 'react-native-paper';
-
-import {Router} from './routes';
 import {themeColors} from './theme';
-import {StoreContextProvider, reducer} from '@app/context/StoreContext';
+import {reducer, StoreContextProvider} from '@app/context/StoreContext';
+import {AuthStack} from '@app/routes/AuthStack';
 
 const NavigationTheme = {
   ...DefaultTheme,
@@ -22,7 +21,7 @@ export const App = () => {
     <PaperProvider theme={theme}>
       <StoreContextProvider reducer={reducer}>
         <NavigationContainer theme={NavigationTheme}>
-          <Router />
+          <AuthStack />
         </NavigationContainer>
       </StoreContextProvider>
     </PaperProvider>

@@ -9,7 +9,7 @@ interface StoreContextProps {
 }
 
 const StoreContext = React.createContext<StoreContextProps>({
-  state: {habits: [], userBE: {name: ''}},
+  state: {habits: [], userBE: {name: ''}, loading: false},
   dispatch: () => {},
 });
 

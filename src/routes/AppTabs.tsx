@@ -19,13 +19,21 @@ export const AppTabs = () => {
   // fetch habits and user from server and set them in the store
   useEffect(() => {
     const fetchHabitsAndUser = async () => {
-      const habits = await getHabits();
-      const userBE = await getUser();
-      dispatch({
-        type: ACTIONS.SET_ALL_HABITS,
-        payload: habits,
-      } as DispatchParams);
-      dispatch({type: ACTIONS.SET_USER, payload: userBE} as DispatchParams);
+      try {
+        dispatch({type: ACTIONS.SET_LOADING, payload: true});
+        const habits = await getHabits();
+        const userBE = await getUser();
+        dispatch({
+          type: ACTIONS.SET_ALL_HABITS,
+          payload: habits,
+        } as DispatchParams);
+        dispatch({type: ACTIONS.SET_USER, payload: userBE} as DispatchParams);
+      } catch (error) {
+        console.error('An error occurred:', error);
+      } finally {
+        // Always makes sure to set loading to false
+        dispatch({type: ACTIONS.SET_LOADING, payload: false});
+      }
     };
     fetchHabitsAndUser();
   }, [dispatch]);

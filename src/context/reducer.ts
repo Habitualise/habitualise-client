@@ -9,7 +9,13 @@ export const ACTIONS = {
   SET_USER_DISPLAY_NAME: 'SET_USER_DISPLAY_NAME',
   TOGGLE_HABIT_ACTIVE: 'TOGGLE_HABIT_ACTIVE',
   DELETE_HABIT: 'DELETE_HABIT',
+  SET_LOADING: 'SET_LOADING',
 } as const;
+
+type SetLoadingAction = {
+  type: typeof ACTIONS.SET_LOADING;
+  payload: boolean;
+};
 
 type SetUserAction = {
   type: typeof ACTIONS.SET_USER;
@@ -52,6 +58,7 @@ type HandleLogoutAction = {
 
 // Must use this type whenever dispatch is being used
 export type DispatchParams =
+  | SetLoadingAction
   | SetUserAction
   | SetUserDisplayNameAction
   | SetAllHabitsAction
@@ -65,10 +72,13 @@ export interface State {
   habits: Habit[];
   // BE = backend, additional info about the user, not the same as user from Auth0
   userBE: UserBE;
+  loading: boolean;
 }
 
 export const reducer = (state: State, action: DispatchParams) => {
   switch (action.type) {
+    case ACTIONS.SET_LOADING:
+      return {...state, loading: action.payload};
     case ACTIONS.SET_USER:
       return {...state, userBE: action.payload};
     case ACTIONS.SET_USER_DISPLAY_NAME:
@@ -82,9 +92,6 @@ export const reducer = (state: State, action: DispatchParams) => {
     case ACTIONS.TOGGLE_HABIT_IS_COMPLETED: {
       const updatedHabits = state.habits.map(habit => {
         if (habit.id === action.payload) {
-          // push true to habit.completionHistory [] if habit.isCompleted is false
-          // else, pop off the last element of habit.completionHistory []
-          // then toggle habit.isCompleted
           if (!habit.isCompletedToday) {
             habit.completionHistory.push(true);
           } else {

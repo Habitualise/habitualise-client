@@ -1,4 +1,5 @@
 export const LABEL = {
+  APP_TABS: 'App Tabs',
   TODAY_SCREEN: 'Today Screen',
   LOGGED_IN_AS: (username: string) => `Logged in as ${username}`,
   LOGIN_SCREEN: 'Login Screen',
@@ -43,6 +44,8 @@ export const LABEL = {
   TEST_AXIOS_HEALTH: 'Test Axios Health',
   APP_VERSION: 'App version: 1.00',
   ACCOUNT: 'ACCOUNT',
+  NO_HABITS_FOR_TODAY: 'There are no habits for today',
+  CREATE_HABITS_TO_SEE: 'Create habits using the + button\nto see them here',
   EDIT_PROFILE_MODAL: 'Edit Profile Modal',
   DISPLAY_NAME_REQUIRED: 'Display name is required.',
   EDIT_PROFILE: 'Edit Profile',
