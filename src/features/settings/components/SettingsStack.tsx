@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  CardStyleInterpolators,
-  createStackNavigator,
-} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import {SettingsScreen} from '@app/features/settings';
 import {EditProfileModal} from './EditProfileModal';
@@ -24,8 +21,6 @@ export const SettingsStack = () => {
         component={EditProfileModal}
         options={() => ({
           cardOverlayEnabled: true,
-          gestureDirection: 'vertical',
-          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
         })}
       />
     </Stack.Navigator>
