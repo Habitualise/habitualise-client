@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {Divider, Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -10,9 +10,12 @@ import {useStore} from '@app/context/StoreContext';
 import PaperView from '@app/components/PaperView';
 import {commonStyles} from '@app/components/styles';
 import {getTodaysHabits} from '@app/features/today/utils/getTodaysHabits';
+import Spinner from '@app/components/Spinner';
+import {customLightThemeColors} from '@app/theme';
 
 export const TodayScreen = () => {
   const {state} = useStore();
+  const {loading} = state;
   const allHabits = state.habits;
   const todaysHabits = getTodaysHabits(allHabits);
 
@@ -29,6 +32,14 @@ export const TodayScreen = () => {
         </View>
         <Divider />
         <ScrollView>
+          {loading && <Spinner />}
+          {!loading && todaysHabits.length === 0 && (
+            <View style={styles.noHabitsContainer}>
+              <Text style={styles.noHabitsLabel}>
+                {LABEL.NO_HABITS_FOR_TODAY}
+              </Text>
+            </View>
+          )}
           {todaysHabits.map(habit => (
             <TodayHabit
               key={habit.id}
@@ -45,3 +56,14 @@ export const TodayScreen = () => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  noHabitsContainer: {
+    alignItems: 'center',
+    paddingVertical: 40,
+  },
+  noHabitsLabel: {
+    color: customLightThemeColors.grey[500],
+    fontSize: 16,
+  },
+});

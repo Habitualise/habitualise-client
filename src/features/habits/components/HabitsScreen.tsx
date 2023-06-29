@@ -8,6 +8,8 @@ import {LABEL} from '@app/language';
 import {useStore} from '@app/context/StoreContext';
 import {Habit} from './Habit';
 import {commonStyles} from '@app/components/styles';
+import Spinner from '@app/components/Spinner';
+import {customLightThemeColors} from '@app/theme';
 
 interface HabitScreenProps {
   navigation: any;
@@ -16,6 +18,7 @@ interface HabitScreenProps {
 export const HabitsScreen = ({navigation}: HabitScreenProps) => {
   const [habitActive, setHabitActive] = useState<boolean>(true);
   const {state} = useStore();
+  const {loading} = state;
   const {habits} = state;
   const theme = useTheme();
 
@@ -63,6 +66,14 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
         </View>
         <Divider />
         <ScrollView>
+          {loading && <Spinner />}
+          {!loading && habits.length === 0 && (
+            <View style={styles.noHabitsContainer}>
+              <Text style={styles.noHabitsLabel}>
+                {LABEL.CREATE_HABITS_TO_SEE}
+              </Text>
+            </View>
+          )}
           {habits
             .filter(habit => habit.active === habitActive)
             .map(habit => (
@@ -97,5 +108,16 @@ const styles = StyleSheet.create({
   },
   buttonGroup: {
     flexDirection: 'row',
+  },
+  noHabitsContainer: {
+    alignItems: 'center',
+    paddingVertical: 40,
+    paddingHorizontal: 30,
+  },
+  noHabitsLabel: {
+    color: customLightThemeColors.grey[500],
+    fontSize: 16,
+    textAlign: 'center',
+    lineHeight: 24,
   },
 });

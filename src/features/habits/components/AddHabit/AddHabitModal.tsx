@@ -8,7 +8,7 @@ import {WeekdayPicker} from './WeekdayPicker';
 import {ColorSwatchSelector} from './ColorSwatchSelector';
 import {LABEL} from '@app/language';
 import {customLightThemeColors, habitColors} from '@app/theme';
-import {ACTIONS, useStore} from '@app/context/StoreContext';
+import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {Habit, HabitColor} from '@app/context/types';
 
 interface AddHabitModalProps {
@@ -99,7 +99,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     dispatch({
       type: ACTIONS.ADD_HABIT,
       payload: newHabit,
-    });
+    } as DispatchParams);
 
     navigation.pop();
   };

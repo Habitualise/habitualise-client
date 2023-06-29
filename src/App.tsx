@@ -11,7 +11,7 @@ import {
 } from 'react-native-paper';
 import merge from 'deepmerge';
 
-import {Router} from './routes';
+import {AuthStack} from '@app/routes/AuthStack';
 import {customDarkThemeColors, customLightThemeColors} from './theme';
 import {reducer, StoreContextProvider} from '@app/context/StoreContext';
 import {PreferencesContext} from '@app/context/PreferencesContext';
@@ -51,7 +51,7 @@ export const App = () => {
       <PaperProvider theme={currentTheme}>
         <StoreContextProvider reducer={reducer}>
           <NavigationContainer theme={currentTheme}>
-            <Router />
+            <AuthStack />
           </NavigationContainer>
         </StoreContextProvider>
       </PaperProvider>

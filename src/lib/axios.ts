@@ -51,6 +51,7 @@ mock.onGet('/api/health').reply(function (config) {
 
 mock.onGet('/api/habits').reply(function () {
   return [200, mockHabits];
+  // return [200, []];
 });
 
 mock.onGet('/api/user').reply(function () {
