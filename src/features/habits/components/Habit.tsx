@@ -7,7 +7,7 @@ import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import {DotHistory} from './DotHistory';
 import {Habit as HabitType} from '@app/context/types';
-import {ACTIONS, useStore} from '@app/context/StoreContext';
+import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 
 export const Habit = (props: HabitType) => {
   const {
@@ -27,7 +27,7 @@ export const Habit = (props: HabitType) => {
     dispatch({
       type: ACTIONS.TOGGLE_HABIT_ACTIVE,
       payload: habitId,
-    });
+    } as DispatchParams);
   };
 
   const openDeleteHabitConfirmation = (habitId: string) => {
@@ -42,7 +42,7 @@ export const Habit = (props: HabitType) => {
           dispatch({
             type: ACTIONS.DELETE_HABIT,
             payload: habitId,
-          }),
+          } as DispatchParams),
         style: 'destructive',
       },
     ]);
