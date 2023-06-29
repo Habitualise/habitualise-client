@@ -1,4 +1,5 @@
 export const LABEL = {
+  APP_TABS: 'App Tabs',
   TODAY_SCREEN: 'Today Screen',
   LOGGED_IN_AS: (username: string) => `Logged in as ${username}`,
   LOGIN_SCREEN: 'Login Screen',
