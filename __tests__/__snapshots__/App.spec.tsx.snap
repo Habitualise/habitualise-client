@@ -72,15 +72,15 @@ exports[`App renders correctly 1`] = `
         >
           <RNSScreenStackHeaderConfig
             backButtonInCustomView={false}
-            backgroundColor="rgb(255, 255, 255)"
-            color="rgb(0, 122, 255)"
+            backgroundColor="rgb(18, 18, 18)"
+            color="rgb(183,208,255)"
             direction="ltr"
             disableBackButtonMenu={false}
             hidden={true}
             hideBackButton={false}
             largeTitleHideShadow={false}
             title="Login Screen"
-            titleColor="rgb(28, 28, 30)"
+            titleColor="rgb(229, 229, 231)"
             topInsetEnabled={false}
             translucent={false}
           />
@@ -101,7 +101,7 @@ exports[`App renders correctly 1`] = `
                     "flex": 1,
                   },
                   {
-                    "backgroundColor": "rgb(242, 242, 242)",
+                    "backgroundColor": "rgb(27, 27, 31)",
                   },
                   undefined,
                 ]
@@ -118,7 +118,7 @@ exports[`App renders correctly 1`] = `
                 }
                 style={
                   {
-                    "backgroundColor": "rgb(254, 251, 255)",
+                    "backgroundColor": "transparent",
                     "flex": 1,
                   }
                 }
@@ -127,7 +127,7 @@ exports[`App renders correctly 1`] = `
                   style={
                     [
                       {
-                        "backgroundColor": "rgb(254, 251, 255)",
+                        "backgroundColor": "rgb(27, 27, 31)",
                       },
                       {
                         "alignItems": "center",
@@ -167,11 +167,11 @@ exports[`App renders correctly 1`] = `
                           "textAlign": "left",
                         },
                         {
-                          "color": "rgb(27, 27, 31)",
+                          "color": "rgb(228, 225, 230)",
                           "writingDirection": "ltr",
                         },
                         {
-                          "color": "rgb(0, 90, 193)",
+                          "color": "rgb(183,208,255)",
                           "fontWeight": "700",
                           "marginBottom": 15,
                           "textAlign": "center",
@@ -196,11 +196,11 @@ your full potential?
                           "textAlign": "left",
                         },
                         {
-                          "color": "rgb(27, 27, 31)",
+                          "color": "rgb(228, 225, 230)",
                           "writingDirection": "ltr",
                         },
                         {
-                          "color": "rgb(0, 90, 193)",
+                          "color": "rgb(183,208,255)",
                           "lineHeight": 30,
                           "marginBottom": 60,
                           "textAlign": "center",
@@ -212,75 +212,83 @@ your full potential?
 today on Habitualise.
                   </Text>
                   <View
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onBlur={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      [
-                        {
-                          "backgroundColor": "rgb(0, 90, 193)",
-                        },
-                        {
-                          "borderRadius": 10,
-                          "marginBottom": 10,
-                          "paddingHorizontal": 120,
-                          "paddingVertical": 10,
-                        },
-                      ]
+                      {
+                        "borderRadius": 10,
+                        "marginBottom": 10,
+                        "overflow": "hidden",
+                      }
                     }
                   >
-                    <Text
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onBlur={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         [
                           {
-                            "fontFamily": "System",
-                            "fontSize": 16,
-                            "fontWeight": "400",
-                            "letterSpacing": 0.15,
-                            "lineHeight": 24,
+                            "backgroundColor": "rgb(183,208,255)",
                           },
                           {
-                            "textAlign": "left",
-                          },
-                          {
-                            "color": "rgb(27, 27, 31)",
-                            "writingDirection": "ltr",
-                          },
-                          {
-                            "color": "white",
-                            "fontWeight": "500",
+                            "paddingHorizontal": 120,
+                            "paddingVertical": 10,
                           },
                         ]
                       }
                     >
-                      Sign Up
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "fontFamily": "System",
+                              "fontSize": 16,
+                              "fontWeight": "400",
+                              "letterSpacing": 0.15,
+                              "lineHeight": 24,
+                            },
+                            {
+                              "textAlign": "left",
+                            },
+                            {
+                              "color": "rgb(228, 225, 230)",
+                              "writingDirection": "ltr",
+                            },
+                            {
+                              "color": "rgb(25,25,26)",
+                              "fontWeight": "500",
+                            },
+                          ]
+                        }
+                      >
+                        Sign Up
+                      </Text>
+                    </View>
                   </View>
                   <View
                     collapsable={false}
@@ -417,7 +425,7 @@ today on Habitualise.
                               style={
                                 [
                                   {
-                                    "color": "rgb(0, 90, 193)",
+                                    "color": "rgb(183,208,255)",
                                     "fontSize": 20,
                                   },
                                   undefined,
@@ -449,7 +457,7 @@ today on Habitualise.
                                   "textAlign": "left",
                                 },
                                 {
-                                  "color": "rgb(27, 27, 31)",
+                                  "color": "rgb(228, 225, 230)",
                                   "writingDirection": "ltr",
                                 },
                                 [
@@ -465,7 +473,7 @@ today on Habitualise.
                                   undefined,
                                   false,
                                   {
-                                    "color": "rgb(0, 90, 193)",
+                                    "color": "rgb(183,208,255)",
                                     "fontFamily": "System",
                                     "fontSize": 14,
                                     "fontWeight": "500",
