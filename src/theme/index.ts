@@ -131,7 +131,7 @@ export const customLightThemeColors: CustomThemeColors = {
   grey: {
     50: 'rgb(250, 250, 250)',
     100: 'rgb(245, 245, 245)',
-    200: 'rgb(238, 238, 238)',
+    200: 'rgb(235,236,239)',
     300: 'rgb(224, 224, 224)',
     400: 'rgb(189, 189, 189)',
     500: 'rgb(158, 158, 158)',

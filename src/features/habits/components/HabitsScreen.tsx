@@ -9,7 +9,6 @@ import {useStore} from '@app/context/StoreContext';
 import {Habit} from './Habit';
 import {commonStyles} from '@app/components/styles';
 import Spinner from '@app/components/Spinner';
-import {customLightThemeColors} from '@app/theme';
 import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface HabitScreenProps {
@@ -17,11 +16,12 @@ interface HabitScreenProps {
 }
 
 export const HabitsScreen = ({navigation}: HabitScreenProps) => {
+  const theme = useCustomTheme();
+
   const [habitActive, setHabitActive] = useState<boolean>(true);
   const {state} = useStore();
   const {loading} = state;
   const {habits} = state;
-  const theme = useCustomTheme();
 
   const setActive = () => {
     setHabitActive(true);
@@ -30,6 +30,32 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
   const setInactive = () => {
     setHabitActive(false);
   };
+
+  const styles = StyleSheet.create({
+    heading: {
+      marginBottom: 5,
+      fontWeight: '600',
+    },
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    buttonGroup: {
+      flexDirection: 'row',
+    },
+    noHabitsContainer: {
+      alignItems: 'center',
+      paddingVertical: 40,
+      paddingHorizontal: 30,
+    },
+    noHabitsLabel: {
+      color: theme.colors.grey[500],
+      fontSize: 16,
+      textAlign: 'center',
+      lineHeight: 24,
+    },
+  });
 
   return (
     <SafeAreaView
@@ -96,29 +122,3 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  heading: {
-    marginBottom: 5,
-    fontWeight: '600',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  buttonGroup: {
-    flexDirection: 'row',
-  },
-  noHabitsContainer: {
-    alignItems: 'center',
-    paddingVertical: 40,
-    paddingHorizontal: 30,
-  },
-  noHabitsLabel: {
-    color: customLightThemeColors.grey[500],
-    fontSize: 16,
-    textAlign: 'center',
-    lineHeight: 24,
-  },
-});

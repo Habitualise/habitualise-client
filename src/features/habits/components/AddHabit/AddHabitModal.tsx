@@ -7,9 +7,10 @@ import {useFocusEffect} from '@react-navigation/native';
 import {WeekdayPicker} from './WeekdayPicker';
 import {ColorSwatchSelector} from './ColorSwatchSelector';
 import {LABEL} from '@app/language';
-import {customLightThemeColors, habitColors} from '@app/theme';
 import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {Habit, HabitColor} from '@app/context/types';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
+import {habitColors} from '@app/theme';
 
 interface AddHabitModalProps {
   navigation: any;
@@ -20,6 +21,8 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
   navigation,
   route,
 }) => {
+  const theme = useCustomTheme();
+
   const [submitAttempted, setSubmitAttempted] = useState(false);
   const [name, setName] = useState('');
   const [icon, setIcon] = useState('image'); // default icon is image
@@ -82,7 +85,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
       id: (habits.length + 1).toString(),
       name,
       iconName: icon,
-      colour: selectedColor || customLightThemeColors.grey[600],
+      colour: selectedColor || theme.colors.grey[600],
       isCompletedToday: false,
       completionPercentage: 0,
       active: true,
@@ -103,6 +106,64 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
 
     navigation.pop();
   };
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingHorizontal: 16,
+      paddingVertical: 8,
+      borderBottomColor: theme.colors.grey[400],
+      borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    content: {
+      flex: 1,
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+    },
+    iconButton: {
+      marginRight: 16,
+      marginLeft: 0,
+    },
+    row: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginTop: 16,
+      marginBottom: 32,
+    },
+    textInput: {
+      flex: 1,
+      fontSize: 16,
+    },
+    discard: {
+      fontSize: 16,
+      color: theme.colors.red[600],
+    },
+    create: {
+      fontSize: 16,
+      color: theme.colors.primary,
+    },
+    createDisabled: {
+      fontSize: 16,
+      color: theme.colors.grey[500],
+    },
+    error: {
+      color: theme.colors.red[600],
+      marginBottom: 16,
+    },
+    repeatLabel: {
+      marginLeft: 4,
+      marginBottom: 8,
+      fontWeight: '300',
+    },
+  });
 
   return (
     <SafeAreaView style={styles.container}>
@@ -126,8 +187,7 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             mode={'contained'}
             size={42}
             iconColor={
-              habitColors[selectedColor].middle ||
-              customLightThemeColors.grey[600]
+              habitColors[selectedColor].middle || theme.colors.grey[600]
             }
           />
           <TextInput
@@ -165,62 +225,3 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: customLightThemeColors.white,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderBottomColor: customLightThemeColors.grey[400],
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-  },
-  iconButton: {
-    marginRight: 16,
-    marginLeft: 0,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: 16,
-    marginBottom: 32,
-  },
-  textInput: {
-    flex: 1,
-    fontSize: 16,
-  },
-  discard: {
-    fontSize: 16,
-    color: customLightThemeColors.red[600],
-  },
-  create: {
-    fontSize: 16,
-    color: customLightThemeColors.primary,
-  },
-  createDisabled: {
-    fontSize: 16,
-    color: customLightThemeColors.grey[500],
-  },
-  error: {
-    color: customLightThemeColors.red[600],
-    marginBottom: 16,
-  },
-  repeatLabel: {
-    marginLeft: 4,
-    marginBottom: 8,
-    fontWeight: '300',
-  },
-});
