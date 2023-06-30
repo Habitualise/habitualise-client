@@ -31,7 +31,7 @@ const CombinedLightTheme = merge(NavigationLightTheme, PaperLightTheme);
 const CombinedDarkTheme = merge(NavigationDarkTheme, PaperDarkTheme);
 
 export const App = () => {
-  const [isThemeDark, setIsThemeDark] = useState(false);
+  const [isThemeDark, setIsThemeDark] = useState(true);
   StatusBar.setBarStyle(isThemeDark ? 'light-content' : 'dark-content');
 
   let currentTheme = isThemeDark ? CombinedDarkTheme : CombinedLightTheme;

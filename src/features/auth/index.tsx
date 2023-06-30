@@ -7,10 +7,12 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {commonStyles} from '@app/components/styles';
 import {LABEL} from '@app/language';
-import {customLightThemeColors} from '@app/theme';
 import PaperView from '@app/components/PaperView';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 export const WelcomeScreen = () => {
+  const theme = useCustomTheme();
+
   const {authorize} = useAuth0();
   const logIn = async () => {
     try {
@@ -19,6 +21,40 @@ export const WelcomeScreen = () => {
       console.log(e);
     }
   };
+
+  const styles = StyleSheet.create({
+    logo: {
+      marginBottom: 50,
+      width: 150,
+      height: 150,
+      resizeMode: 'contain',
+    },
+    header: {
+      marginBottom: 15,
+      textAlign: 'center',
+      fontWeight: '700',
+      color: theme.colors.primary,
+    },
+    subHeader: {
+      marginBottom: 60,
+      lineHeight: 30,
+      textAlign: 'center',
+      color: theme.colors.primary,
+    },
+    signUpButtonContainer: {
+      paddingVertical: 10,
+      paddingHorizontal: 120,
+    },
+    pressableView: {
+      marginBottom: 10,
+      borderRadius: 10,
+      overflow: 'hidden',
+    },
+    signUpButtonText: {
+      color: theme.colors.grey[50],
+      fontWeight: '500',
+    },
+  });
 
   return (
     <SafeAreaView style={commonStyles.safeArea}>
@@ -39,12 +75,12 @@ export const WelcomeScreen = () => {
             style={({pressed}) => [
               {
                 backgroundColor: pressed
-                  ? customLightThemeColors.primaryLighter
-                  : customLightThemeColors.primary,
+                  ? theme.colors.primaryLighter
+                  : theme.colors.primary,
               },
               styles.signUpButtonContainer,
             ]}
-            android_ripple={{color: customLightThemeColors.grey[200]}}>
+            android_ripple={{color: theme.colors.grey[200]}}>
             <Text variant="bodyLarge" style={styles.signUpButtonText}>
               {LABEL.SIGN_UP}
             </Text>
@@ -62,37 +98,3 @@ export const WelcomeScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  logo: {
-    marginBottom: 50,
-    width: 150,
-    height: 150,
-    resizeMode: 'contain',
-  },
-  header: {
-    marginBottom: 15,
-    textAlign: 'center',
-    fontWeight: '700',
-    color: customLightThemeColors.primary,
-  },
-  subHeader: {
-    marginBottom: 60,
-    lineHeight: 30,
-    textAlign: 'center',
-    color: customLightThemeColors.primary,
-  },
-  signUpButtonContainer: {
-    paddingVertical: 10,
-    paddingHorizontal: 120,
-  },
-  pressableView: {
-    marginBottom: 10,
-    borderRadius: 10,
-    overflow: 'hidden',
-  },
-  signUpButtonText: {
-    color: 'white',
-    fontWeight: '500',
-  },
-});
