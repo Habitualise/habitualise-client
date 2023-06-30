@@ -3,9 +3,9 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {LABEL} from '@app/language';
-import {customLightThemeColors} from '@app/theme';
 import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {ContainerLabel} from '@app/components/ContainerLabel';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface EditProfileModalProps {
   route: any;
@@ -16,6 +16,8 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
   route,
   navigation,
 }) => {
+  const theme = useCustomTheme();
+
   const [displayName, setDisplayName] = useState(route.params?.displayName);
   const [email] = useState(route.params?.email); // TODO: add edit email later
   const [displayNameError, setDisplayNameError] = useState('');
@@ -60,6 +62,44 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
     navigation.pop();
   };
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingHorizontal: 16,
+      paddingVertical: 8,
+      borderBottomColor: theme.colors.grey[400],
+      borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    content: {
+      flex: 1,
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+    },
+    textInput: {
+      marginBottom: 16,
+      fontSize: 16,
+    },
+    discard: {
+      fontSize: 16,
+      color: theme.colors.red[600],
+    },
+    update: {
+      fontSize: 16,
+      color: theme.colors.primary,
+    },
+    error: {
+      color: theme.colors.red[600],
+      marginBottom: 16,
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -88,42 +128,3 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: customLightThemeColors.white,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderBottomColor: customLightThemeColors.grey[400],
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-  },
-  textInput: {
-    marginBottom: 16,
-    fontSize: 16,
-  },
-  discard: {
-    fontSize: 16,
-    color: customLightThemeColors.red[600],
-  },
-  update: {
-    fontSize: 16,
-    color: customLightThemeColors.primary,
-  },
-  error: {
-    color: customLightThemeColors.red[600],
-    marginBottom: 16,
-  },
-});

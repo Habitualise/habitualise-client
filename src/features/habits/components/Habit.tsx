@@ -3,11 +3,11 @@ import {Divider, IconButton, Menu, Text} from 'react-native-paper';
 
 import {HabitIcon} from '@app/components/HabitIcon';
 import {Alert, StyleSheet, View} from 'react-native';
-import {customLightThemeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import {DotHistory} from './DotHistory';
 import {Habit as HabitType} from '@app/context/types';
 import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 export const Habit = (props: HabitType) => {
   const {
@@ -20,6 +20,8 @@ export const Habit = (props: HabitType) => {
     completionHistory,
     // daysDue,
   } = props;
+
+  const theme = useCustomTheme();
 
   const {dispatch} = useStore();
 
@@ -51,6 +53,26 @@ export const Habit = (props: HabitType) => {
   const [visible, setVisible] = React.useState(false);
   const openContextMenu = () => setVisible(true);
   const closeContextMenu = () => setVisible(false);
+
+  const styles = StyleSheet.create({
+    cardContainer: {
+      padding: 16,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    habitName: {
+      marginBottom: 4,
+      fontWeight: 'bold',
+    },
+    habitDaysDue: {
+      color: theme.colors.grey[500],
+    },
+    dotHistoryContainer: {
+      paddingHorizontal: 16,
+      paddingBottom: 20,
+    },
+  });
 
   return (
     <>
@@ -89,23 +111,3 @@ export const Habit = (props: HabitType) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  cardContainer: {
-    padding: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  habitName: {
-    marginBottom: 4,
-    fontWeight: 'bold',
-  },
-  habitDaysDue: {
-    color: customLightThemeColors.grey[500],
-  },
-  dotHistoryContainer: {
-    paddingHorizontal: 16,
-    paddingBottom: 20,
-  },
-});

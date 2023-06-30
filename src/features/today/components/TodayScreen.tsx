@@ -11,13 +11,26 @@ import PaperView from '@app/components/PaperView';
 import {commonStyles} from '@app/components/styles';
 import {getTodaysHabits} from '@app/features/today/utils/getTodaysHabits';
 import Spinner from '@app/components/Spinner';
-import {customLightThemeColors} from '@app/theme';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 export const TodayScreen = () => {
+  const theme = useCustomTheme();
+
   const {state} = useStore();
   const {loading} = state;
   const allHabits = state.habits;
   const todaysHabits = getTodaysHabits(allHabits);
+
+  const styles = StyleSheet.create({
+    noHabitsContainer: {
+      alignItems: 'center',
+      paddingVertical: 40,
+    },
+    noHabitsLabel: {
+      color: theme.colors.grey[500],
+      fontSize: 16,
+    },
+  });
 
   return (
     <SafeAreaView
@@ -56,14 +69,3 @@ export const TodayScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  noHabitsContainer: {
-    alignItems: 'center',
-    paddingVertical: 40,
-  },
-  noHabitsLabel: {
-    color: customLightThemeColors.grey[500],
-    fontSize: 16,
-  },
-});

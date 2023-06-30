@@ -252,8 +252,8 @@ export const customDarkThemeColors: CustomThemeColors = {
   success: 'rgb(45, 181, 106)',
   successGreyedOut: 'rgb(121, 184, 149)',
   grey: {
-    50: 'rgb(33, 33, 33)',
-    100: 'rgb(56,59,65)',
+    50: 'rgb(25,25,26)',
+    100: 'rgb(38,40,45)',
     200: 'rgb(68,69,80)',
     300: 'rgb(89,93,101)',
     400: 'rgb(125,135,140)',
