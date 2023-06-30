@@ -1,4 +1,88 @@
-export const customLightThemeColors = {
+export type CustomThemeColors = {
+  primary: string;
+  onPrimary: string;
+  primaryContainer: string;
+  onPrimaryContainer: string;
+  secondary: string;
+  onSecondary: string;
+  secondaryContainer: string;
+  onSecondaryContainer: string;
+  tertiary: string;
+  onTertiary: string;
+  tertiaryContainer: string;
+  onTertiaryContainer: string;
+  error: string;
+  onError: string;
+  errorContainer: string;
+  onErrorContainer: string;
+  background: string;
+  onBackground: string;
+  surface: string;
+  onSurface: string;
+  surfaceVariant: string;
+  surfaceVariantPressed: string;
+  onSurfaceVariant: string;
+  outline: string;
+  outlineVariant: string;
+  shadow: string;
+  scrim: string;
+  inverseSurface: string;
+  inverseOnSurface: string;
+  inversePrimary: string;
+  elevation: {
+    level0: string;
+    level1: string;
+    level2: string;
+    level3: string;
+    level4: string;
+    level5: string;
+  };
+  surfaceDisabled: string;
+  onSurfaceDisabled: string;
+  backdrop: string;
+  primaryLighter: string;
+  success: string;
+  successGreyedOut: string;
+  grey: {
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    700: string;
+    800: string;
+    900: string;
+  };
+  red: {
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    700: string;
+    800: string;
+    900: string;
+  };
+  blue: {
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    700: string;
+    800: string;
+    900: string;
+  };
+  white: string;
+};
+
+export const customLightThemeColors: CustomThemeColors = {
   primary: 'rgb(0, 90, 193)',
   onPrimary: 'rgb(255, 255, 255)',
   primaryContainer: 'rgb(216, 226, 255)',
@@ -121,7 +205,7 @@ export const habitColors = {
   },
 };
 
-export const customDarkThemeColors = {
+export const customDarkThemeColors: CustomThemeColors = {
   primary: 'rgb(183,196,255)',
   onPrimary: 'rgb(0, 38, 129)',
   primaryContainer: 'rgb(15, 59, 174)',
