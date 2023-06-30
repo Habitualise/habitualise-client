@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Switch} from 'react-native-paper';
-import {customLightThemeColors} from '@app/theme';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface CardSwitcherProps {
   label: string;
@@ -15,6 +15,27 @@ const CardSwitcher: React.FC<CardSwitcherProps> = ({
   onToggleSwitch,
   value,
 }) => {
+  const theme = useCustomTheme();
+
+  const styles = StyleSheet.create({
+    switcherCard: {
+      marginBottom: 10,
+      paddingHorizontal: 15,
+      paddingVertical: 10,
+      backgroundColor: theme.colors.surfaceVariant,
+      borderRadius: 10,
+    },
+    rowContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    switcherText: {
+      fontWeight: '500',
+      color: theme.colors.grey[900],
+    },
+  });
+
   return (
     <View style={styles.switcherCard}>
       <View style={styles.rowContainer}>
@@ -24,24 +45,5 @@ const CardSwitcher: React.FC<CardSwitcherProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  switcherCard: {
-    marginBottom: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    backgroundColor: customLightThemeColors.surfaceVariant,
-    borderRadius: 10,
-  },
-  rowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  switcherText: {
-    fontWeight: '500',
-    color: customLightThemeColors.grey[900],
-  },
-});
 
 export default CardSwitcher;
