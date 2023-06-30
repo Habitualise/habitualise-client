@@ -226,8 +226,8 @@ export const customDarkThemeColors: CustomThemeColors = {
   onBackground: 'rgb(228, 225, 230)',
   surface: 'rgb(27, 27, 31)',
   onSurface: 'rgb(228, 225, 230)',
-  surfaceVariant: 'rgb(69, 70, 79)',
-  surfaceVariantPressed: 'rgb(47,48,56)', // additional field
+  surfaceVariant: 'rgb(54,55,63)',
+  surfaceVariantPressed: 'rgb(40,42,49)', // additional field
   onSurfaceVariant: 'rgb(198, 197, 208)',
   outline: 'rgb(144, 144, 154)',
   outlineVariant: 'rgb(69, 70, 79)',

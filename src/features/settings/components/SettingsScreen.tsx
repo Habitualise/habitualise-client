@@ -74,6 +74,8 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
     },
     profileCard: {
       marginBottom: 10,
+      borderRadius: 12,
+      overflow: 'hidden',
     },
     appVersion: {
       alignSelf: 'center',

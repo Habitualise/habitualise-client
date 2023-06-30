@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Pressable, StyleSheet} from 'react-native';
+import {Image, Pressable, StyleSheet, View} from 'react-native';
 import {Button, Text} from 'react-native-paper';
 import {useAuth0} from 'react-native-auth0';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -33,21 +33,23 @@ export const WelcomeScreen = () => {
         <Text variant="titleLarge" style={styles.subHeader}>
           {LABEL.WELCOME_SUBHEADER}
         </Text>
-        <Pressable
-          onPress={logIn}
-          style={({pressed}) => [
-            {
-              backgroundColor: pressed
-                ? customLightThemeColors.primaryLighter
-                : customLightThemeColors.primary,
-            },
-            styles.signUpButtonContainer,
-          ]}
-          android_ripple={{color: customLightThemeColors.grey[200]}}>
-          <Text variant="bodyLarge" style={styles.signUpButtonText}>
-            {LABEL.SIGN_UP}
-          </Text>
-        </Pressable>
+        <View style={styles.pressableView}>
+          <Pressable
+            onPress={logIn}
+            style={({pressed}) => [
+              {
+                backgroundColor: pressed
+                  ? customLightThemeColors.primaryLighter
+                  : customLightThemeColors.primary,
+              },
+              styles.signUpButtonContainer,
+            ]}
+            android_ripple={{color: customLightThemeColors.grey[200]}}>
+            <Text variant="bodyLarge" style={styles.signUpButtonText}>
+              {LABEL.SIGN_UP}
+            </Text>
+          </Pressable>
+        </View>
         <Button
           onPress={logIn}
           contentStyle={{flexDirection: 'row-reverse'}}
@@ -81,10 +83,13 @@ const styles = StyleSheet.create({
     color: customLightThemeColors.primary,
   },
   signUpButtonContainer: {
-    marginBottom: 10,
-    borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 120,
+  },
+  pressableView: {
+    marginBottom: 10,
+    borderRadius: 10,
+    overflow: 'hidden',
   },
   signUpButtonText: {
     color: 'white',
