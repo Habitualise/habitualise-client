@@ -195,8 +195,8 @@ export const habitColors = {
   },
   purple: {
     start: 'rgb(235, 139, 252)',
-    middle: 'rgb(145, 38, 191)',
-    end: 'rgb(74, 20, 140)',
+    middle: 'rgb(161,57,208)',
+    end: 'rgb(84,19,166)',
   },
   grey: {
     start: 'rgb(207, 204, 204)',

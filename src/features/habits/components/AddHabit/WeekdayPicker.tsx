@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from 'react-native-paper';
 import {useCustomTheme} from '@app/theme/useCustomTheme';
+import {PreferencesContext} from '@app/context/PreferencesContext';
 
 const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
@@ -15,6 +16,7 @@ export const WeekdayPicker: React.FC<WeekdayPickerProps> = ({
   onDayPress,
 }) => {
   const theme = useCustomTheme();
+  const {isThemeDark} = useContext(PreferencesContext);
 
   const styles = StyleSheet.create({
     fence: {
@@ -36,7 +38,9 @@ export const WeekdayPicker: React.FC<WeekdayPickerProps> = ({
     },
     dayButtonSelected: {
       borderColor: theme.colors.primary,
-      backgroundColor: theme.colors.primaryContainer,
+      backgroundColor: isThemeDark
+        ? 'transparent'
+        : theme.colors.primaryContainer,
     },
     dayButtonText: {
       color: theme.colors.grey[600],
