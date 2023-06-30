@@ -15,6 +15,7 @@ import {AuthStack} from '@app/routes/AuthStack';
 import {customDarkThemeColors, customLightThemeColors} from './theme';
 import {reducer, StoreContextProvider} from '@app/context/StoreContext';
 import {PreferencesContext} from '@app/context/PreferencesContext';
+import {StatusBar} from 'react-native';
 
 const PaperLightTheme = {
   ...MD3LightTheme,
@@ -31,6 +32,7 @@ const CombinedDarkTheme = merge(NavigationDarkTheme, PaperDarkTheme);
 
 export const App = () => {
   const [isThemeDark, setIsThemeDark] = useState(false);
+  StatusBar.setBarStyle(isThemeDark ? 'light-content' : 'dark-content');
 
   let currentTheme = isThemeDark ? CombinedDarkTheme : CombinedLightTheme;
 
