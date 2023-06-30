@@ -20,11 +20,11 @@ export const PressableCard = (props: PressableCardProps) => {
         {
           backgroundColor:
             pressed || isGreyedOut ? theme.colors.grey[100] : 'transparent',
-          opacity: pressed || isGreyedOut ? 0.6 : 1,
+          opacity: pressed || isGreyedOut ? 0.5 : 1,
         },
         style,
       ]}
-      android_ripple={{color: theme.colors.grey[300]}}>
+      android_ripple={{color: theme.colors.grey[200]}}>
       <View style={styles.card}>{children}</View>
     </Pressable>
   );
