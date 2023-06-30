@@ -206,7 +206,7 @@ export const habitColors = {
 };
 
 export const customDarkThemeColors: CustomThemeColors = {
-  primary: 'rgb(183,196,255)',
+  primary: 'rgb(183,208,255)',
   onPrimary: 'rgb(0, 38, 129)',
   primaryContainer: 'rgb(15, 59, 174)',
   onPrimaryContainer: 'rgb(220, 225, 255)',
@@ -249,14 +249,14 @@ export const customDarkThemeColors: CustomThemeColors = {
   backdrop: 'rgba(47, 48, 56, 0.4)',
   // additional fields below
   primaryLighter: 'rgb(145,162,241)',
-  success: 'rgb(121, 184, 149)',
-  successGreyedOut: 'rgb(45, 181, 106)',
+  success: 'rgb(45, 181, 106)',
+  successGreyedOut: 'rgb(121, 184, 149)',
   grey: {
     50: 'rgb(33, 33, 33)',
-    100: 'rgb(66, 66, 66)',
-    200: 'rgb(97, 97, 97)',
-    300: 'rgb(117, 117, 117)',
-    400: 'rgb(158, 158, 158)',
+    100: 'rgb(56,59,65)',
+    200: 'rgb(85,87,98)',
+    300: 'rgb(104,108,117)',
+    400: 'rgb(141,148,155)',
     500: 'rgb(189, 189, 189)',
     600: 'rgb(224, 224, 224)',
     700: 'rgb(238, 238, 238)',

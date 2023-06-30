@@ -5,7 +5,6 @@ import {axios} from '@app/lib/axios';
 import PaperView from '@app/components/PaperView';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {commonStyles} from '@app/components/styles';
-import {customLightThemeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import CardButton from '@app/components/CardButton';
 import {ACTIONS, DispatchParams} from '@app/context/reducer';
@@ -17,6 +16,7 @@ import {PreferencesContext} from '@app/context/PreferencesContext';
 import Spinner from '@app/components/Spinner';
 import {EditProfileScreenParams} from '@app/features/settings/types';
 import {ContainerLabel} from '@app/components/ContainerLabel';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface SettingsScreenProps {
   navigation: any;
@@ -24,6 +24,7 @@ interface SettingsScreenProps {
 
 export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
   const {toggleTheme, isThemeDark} = useContext(PreferencesContext);
+  const theme = useCustomTheme();
 
   const {clearSession, user: userAuth0} = useAuth0();
   const {dispatch, state} = useStore();
@@ -57,6 +58,33 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
     }
   };
 
+  const styles = StyleSheet.create({
+    containerLabel: {
+      marginTop: 15,
+      marginBottom: 7,
+      marginLeft: 10,
+      color: theme.colors.grey[800],
+      fontWeight: '400',
+    },
+    title: {
+      fontWeight: '600',
+      fontSize: 20,
+      marginBottom: 20,
+      textAlign: 'center',
+    },
+    profileCard: {
+      marginBottom: 10,
+    },
+    appVersion: {
+      alignSelf: 'center',
+      fontSize: 12,
+      color: theme.colors.grey[600],
+    },
+    pressableContainerPressed: {
+      backgroundColor: theme.colors.surfaceVariantPressed,
+    },
+  });
+
   return (
     <SafeAreaView
       style={commonStyles.safeArea}
@@ -67,7 +95,7 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
         <View style={styles.profileCard}>
           <Pressable
             onPress={onProfileClick}
-            android_ripple={{color: customLightThemeColors.grey[400]}}>
+            android_ripple={{color: theme.colors.grey[400]}}>
             {({pressed}) => (
               <Card
                 style={[pressed && styles.pressableContainerPressed]}
@@ -119,30 +147,3 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  containerLabel: {
-    marginTop: 15,
-    marginBottom: 7,
-    marginLeft: 10,
-    color: customLightThemeColors.grey[800],
-    fontWeight: '400',
-  },
-  title: {
-    fontWeight: '600',
-    fontSize: 20,
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  profileCard: {
-    marginBottom: 10,
-  },
-  appVersion: {
-    alignSelf: 'center',
-    fontSize: 12,
-    color: customLightThemeColors.grey[600],
-  },
-  pressableContainerPressed: {
-    backgroundColor: customLightThemeColors.surfaceVariantPressed,
-  },
-});

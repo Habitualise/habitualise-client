@@ -1,7 +1,6 @@
 import React from 'react';
 import {Pressable, StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
-
-import {customLightThemeColors} from '@app/theme';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface PressableCardProps {
   children: React.ReactNode;
@@ -12,29 +11,30 @@ interface PressableCardProps {
 
 export const PressableCard = (props: PressableCardProps) => {
   const {children, onPress, isGreyedOut, style} = props;
+  const theme = useCustomTheme();
 
   return (
     <Pressable
       onPress={onPress}
       style={({pressed}) => [
         {
-          backgroundColor: pressed ? 'rgba(0,0,0,0.04)' : 'rgba(0,0,0,0)',
+          backgroundColor:
+            pressed || isGreyedOut ? theme.colors.grey[100] : 'transparent',
+          opacity: pressed || isGreyedOut ? 0.6 : 1,
         },
         style,
       ]}
-      android_ripple={{color: customLightThemeColors.grey[300]}}>
-      <View style={styles(isGreyedOut).card}>{children}</View>
+      android_ripple={{color: theme.colors.grey[300]}}>
+      <View style={styles.card}>{children}</View>
     </Pressable>
   );
 };
 
-const styles = (isGreyedOut = false) =>
-  StyleSheet.create({
-    card: {
-      padding: 16,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      backgroundColor: isGreyedOut ? 'rgba(0,0,0,0.04)' : 'rgba(0,0,0,0)',
-    },
-  });
+const styles = StyleSheet.create({
+  card: {
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+});
