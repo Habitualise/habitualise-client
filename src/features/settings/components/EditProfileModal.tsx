@@ -6,6 +6,7 @@ import {LABEL} from '@app/language';
 import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {ContainerLabel} from '@app/components/ContainerLabel';
 import {useCustomTheme} from '@app/theme/useCustomTheme';
+import {commonStyles} from '@app/components/styles';
 
 interface EditProfileModalProps {
   route: any;
@@ -63,11 +64,6 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
   };
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
-    },
     header: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -101,7 +97,9 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={commonStyles.safeArea}
+      edges={['top', 'left', 'right']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.pop()}>
           <Text style={styles.discard}>{LABEL.DISCARD}</Text>

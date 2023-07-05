@@ -11,6 +11,7 @@ import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {Habit, HabitColor} from '@app/context/types';
 import {useCustomTheme} from '@app/theme/useCustomTheme';
 import {habitColors} from '@app/theme';
+import {commonStyles} from '@app/components/styles';
 
 interface AddHabitModalProps {
   navigation: any;
@@ -108,11 +109,6 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
   };
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
-    },
     header: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -166,7 +162,9 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={commonStyles.safeArea}
+      edges={['top', 'left', 'right']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.pop()}>
           <Text style={styles.discard}>{LABEL.DISCARD}</Text>

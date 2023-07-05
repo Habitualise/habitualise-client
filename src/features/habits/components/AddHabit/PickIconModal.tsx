@@ -6,6 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {LABEL} from '@app/language';
 import {IconItem} from './IconItem';
 import {useCustomTheme} from '@app/theme/useCustomTheme';
+import {commonStyles} from '@app/components/styles';
 
 interface PickIconModalProps {
   navigation: any;
@@ -66,7 +67,9 @@ export const PickIconModal: React.FC<PickIconModalProps> = ({navigation}) => {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={commonStyles.safeArea}
+      edges={['top', 'left', 'right']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.pop()}>
           <MaterialCommunityIcons
