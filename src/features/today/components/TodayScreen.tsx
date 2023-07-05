@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {Divider, Text} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -11,13 +11,26 @@ import PaperView from '@app/components/PaperView';
 import {commonStyles} from '@app/components/styles';
 import {getTodaysHabits} from '@app/features/today/utils/getTodaysHabits';
 import Spinner from '@app/components/Spinner';
-import {themeColors} from '@app/theme';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 export const TodayScreen = () => {
+  const theme = useCustomTheme();
+
   const {state} = useStore();
   const {loading} = state;
   const allHabits = state.habits;
   const todaysHabits = getTodaysHabits(allHabits);
+
+  const styles = StyleSheet.create({
+    noHabitsContainer: {
+      alignItems: 'center',
+      paddingVertical: 40,
+    },
+    noHabitsLabel: {
+      color: theme.colors.grey[500],
+      fontSize: 16,
+    },
+  });
 
   return (
     <SafeAreaView
@@ -55,15 +68,4 @@ export const TodayScreen = () => {
       </PaperView>
     </SafeAreaView>
   );
-};
-
-const styles = {
-  noHabitsContainer: {
-    alignItems: 'center',
-    paddingVertical: 40,
-  },
-  noHabitsLabel: {
-    color: themeColors.grey[500],
-    fontSize: 16,
-  },
 };

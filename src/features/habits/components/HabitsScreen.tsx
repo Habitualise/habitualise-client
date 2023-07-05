@@ -7,15 +7,17 @@ import PaperView from '@app/components/PaperView';
 import {LABEL} from '@app/language';
 import {useStore} from '@app/context/StoreContext';
 import {Habit} from './Habit';
-import {themeColors} from '@app/theme';
 import {commonStyles} from '@app/components/styles';
 import Spinner from '@app/components/Spinner';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface HabitScreenProps {
   navigation: any;
 }
 
 export const HabitsScreen = ({navigation}: HabitScreenProps) => {
+  const theme = useCustomTheme();
+
   const [habitActive, setHabitActive] = useState<boolean>(true);
   const {state} = useStore();
   const {loading} = state;
@@ -28,6 +30,32 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
   const setInactive = () => {
     setHabitActive(false);
   };
+
+  const styles = StyleSheet.create({
+    heading: {
+      marginBottom: 5,
+      fontWeight: '600',
+    },
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    buttonGroup: {
+      flexDirection: 'row',
+    },
+    noHabitsContainer: {
+      alignItems: 'center',
+      paddingVertical: 40,
+      paddingHorizontal: 30,
+    },
+    noHabitsLabel: {
+      color: theme.colors.grey[500],
+      fontSize: 16,
+      textAlign: 'center',
+      lineHeight: 24,
+    },
+  });
 
   return (
     <SafeAreaView
@@ -42,7 +70,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
             <View style={styles.buttonGroup}>
               <Button
                 mode={habitActive ? 'contained-tonal' : 'text'}
-                textColor={themeColors.primary}
+                textColor={theme?.colors.primary}
                 onPress={setActive}
                 icon="check"
                 style={{marginRight: 8}}>
@@ -50,7 +78,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
               </Button>
               <Button
                 mode={!habitActive ? 'contained-tonal' : 'text'}
-                textColor={themeColors.primary}
+                textColor={theme?.colors.primary}
                 onPress={setInactive}
                 icon="archive">
                 {LABEL.ARCHIVED}
@@ -58,7 +86,7 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
             </View>
             <IconButton
               icon="plus"
-              iconColor={themeColors.primary}
+              iconColor={theme?.colors.primary}
               onPress={() => navigation.navigate(LABEL.ADD_HABIT_MODAL)}
             />
           </View>
@@ -94,29 +122,3 @@ export const HabitsScreen = ({navigation}: HabitScreenProps) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  heading: {
-    marginBottom: 5,
-    fontWeight: '600',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  buttonGroup: {
-    flexDirection: 'row',
-  },
-  noHabitsContainer: {
-    alignItems: 'center',
-    paddingVertical: 40,
-    paddingHorizontal: 30,
-  },
-  noHabitsLabel: {
-    color: themeColors.grey[500],
-    fontSize: 16,
-    textAlign: 'center',
-    lineHeight: 24,
-  },
-});

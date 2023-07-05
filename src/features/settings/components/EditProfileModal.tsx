@@ -3,9 +3,10 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text, TextInput} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {LABEL} from '@app/language';
-import {themeColors} from '@app/theme';
 import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {ContainerLabel} from '@app/components/ContainerLabel';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
+import {commonStyles} from '@app/components/styles';
 
 interface EditProfileModalProps {
   route: any;
@@ -16,6 +17,8 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
   route,
   navigation,
 }) => {
+  const theme = useCustomTheme();
+
   const [displayName, setDisplayName] = useState(route.params?.displayName);
   const [email] = useState(route.params?.email); // TODO: add edit email later
   const [displayNameError, setDisplayNameError] = useState('');
@@ -60,8 +63,43 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
     navigation.pop();
   };
 
+  const styles = StyleSheet.create({
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      paddingHorizontal: 16,
+      paddingVertical: 8,
+      borderBottomColor: theme.colors.grey[400],
+      borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+    content: {
+      flex: 1,
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+    },
+    textInput: {
+      marginBottom: 16,
+      fontSize: 16,
+    },
+    discard: {
+      fontSize: 16,
+      color: theme.colors.red[600],
+    },
+    update: {
+      fontSize: 16,
+      color: theme.colors.primary,
+    },
+    error: {
+      color: theme.colors.red[600],
+      marginBottom: 16,
+    },
+  });
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={commonStyles.safeArea}
+      edges={['top', 'left', 'right']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.pop()}>
           <Text style={styles.discard}>{LABEL.DISCARD}</Text>
@@ -88,42 +126,3 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: themeColors.white,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderBottomColor: themeColors.grey[400],
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-  },
-  textInput: {
-    marginBottom: 16,
-    fontSize: 16,
-  },
-  discard: {
-    fontSize: 16,
-    color: themeColors.red[600],
-  },
-  update: {
-    fontSize: 16,
-    color: themeColors.primary,
-  },
-  error: {
-    color: themeColors.red[600],
-    marginBottom: 16,
-  },
-});

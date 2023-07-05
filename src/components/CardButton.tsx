@@ -1,6 +1,6 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {themeColors} from '@app/theme';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface CardButtonProps {
   label: string;
@@ -15,12 +15,39 @@ const CardButton: React.FC<CardButtonProps> = ({
   isRedText = false,
   isDisabled = false,
 }) => {
+  const theme = useCustomTheme();
+
+  const styles = StyleSheet.create({
+    buttonContainer: {
+      marginBottom: 10,
+      backgroundColor: theme.colors.surfaceVariant,
+      borderRadius: 10,
+      overflow: 'hidden', // added to contain the ripple within the View
+    },
+    pressable: {
+      padding: 15,
+    },
+    cardText: {
+      fontWeight: '500',
+      color: theme.colors.grey[900],
+    },
+    redText: {
+      color: theme.colors.red[500],
+    },
+    pressableContainerPressed: {
+      backgroundColor: theme.colors.surfaceVariantPressed,
+    },
+    disabledContainer: {
+      opacity: 0.5,
+    },
+  });
+
   return (
     <View
       style={[styles.buttonContainer, isDisabled && styles.disabledContainer]}>
       <Pressable
         onPress={onPress}
-        android_ripple={{color: themeColors.grey[400]}}
+        android_ripple={{color: theme.colors.grey[300]}}
         style={({pressed}) => [
           styles.pressable,
           pressed && styles.pressableContainerPressed,
@@ -33,30 +60,5 @@ const CardButton: React.FC<CardButtonProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonContainer: {
-    marginBottom: 10,
-    backgroundColor: themeColors.surfaceVariant,
-    borderRadius: 10,
-    overflow: 'hidden', // added to contain the ripple within the View
-  },
-  pressable: {
-    padding: 15,
-  },
-  cardText: {
-    fontWeight: '500',
-    color: themeColors.grey[900],
-  },
-  redText: {
-    color: themeColors.red[500],
-  },
-  pressableContainerPressed: {
-    backgroundColor: themeColors.surfaceVariantDarker,
-  },
-  disabledContainer: {
-    opacity: 0.5,
-  },
-});
 
 export default CardButton;
