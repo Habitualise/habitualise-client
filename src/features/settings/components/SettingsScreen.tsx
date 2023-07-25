@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Pressable, StyleSheet, View} from 'react-native';
 import {Avatar, Card, IconButton, Text} from 'react-native-paper';
 import {axios} from '@app/lib/axios';
 import PaperView from '@app/components/PaperView';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {commonStyles} from '@app/components/styles';
-import {themeColors} from '@app/theme';
 import {LABEL} from '@app/language';
 import CardButton from '@app/components/CardButton';
 import {ACTIONS, DispatchParams} from '@app/context/reducer';
@@ -13,15 +12,20 @@ import {useStore} from '@app/context/StoreContext';
 import {useAuth0} from 'react-native-auth0';
 import CardSwitcher from '@app/components/CardSwitcher';
 import {formatInitials} from '@app/features/settings/utils/formatInitials';
+import {PreferencesContext} from '@app/context/PreferencesContext';
 import Spinner from '@app/components/Spinner';
 import {EditProfileScreenParams} from '@app/features/settings/types';
 import {ContainerLabel} from '@app/components/ContainerLabel';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface SettingsScreenProps {
   navigation: any;
 }
 
 export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
+  const {toggleTheme, isThemeDark} = useContext(PreferencesContext);
+  const theme = useCustomTheme();
+
   const {clearSession, user: userAuth0} = useAuth0();
   const {dispatch, state} = useStore();
   const {userBE, loading} = state;
@@ -54,9 +58,34 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
     }
   };
 
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
-
-  const toggleSwitch = () => setIsDarkMode(previousState => !previousState);
+  const styles = StyleSheet.create({
+    containerLabel: {
+      marginTop: 15,
+      marginBottom: 7,
+      marginLeft: 10,
+      color: theme.colors.grey[800],
+      fontWeight: '400',
+    },
+    title: {
+      fontWeight: '600',
+      fontSize: 20,
+      marginBottom: 20,
+      textAlign: 'center',
+    },
+    profileCard: {
+      marginBottom: 10,
+      borderRadius: 12,
+      overflow: 'hidden',
+    },
+    appVersion: {
+      alignSelf: 'center',
+      fontSize: 12,
+      color: theme.colors.grey[600],
+    },
+    pressableContainerPressed: {
+      backgroundColor: theme.colors.surfaceVariantPressed,
+    },
+  });
 
   return (
     <SafeAreaView
@@ -68,7 +97,7 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
         <View style={styles.profileCard}>
           <Pressable
             onPress={onProfileClick}
-            android_ripple={{color: themeColors.grey[400]}}>
+            android_ripple={{color: theme.colors.grey[400]}}>
             {({pressed}) => (
               <Card
                 style={[pressed && styles.pressableContainerPressed]}
@@ -99,8 +128,8 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
         <ContainerLabel text={LABEL.APP} />
         <CardSwitcher
           label={LABEL.DARK_MODE}
-          onToggleSwitch={toggleSwitch}
-          value={isDarkMode}
+          onToggleSwitch={toggleTheme}
+          value={isThemeDark}
         />
 
         <ContainerLabel text={LABEL.ACCOUNT} />
@@ -120,23 +149,3 @@ export const SettingsScreen = ({navigation}: SettingsScreenProps) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontWeight: '600',
-    fontSize: 20,
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  profileCard: {
-    marginBottom: 10,
-  },
-  appVersion: {
-    alignSelf: 'center',
-    fontSize: 12,
-    color: themeColors.grey[600],
-  },
-  pressableContainerPressed: {
-    backgroundColor: themeColors.surfaceVariantDarker,
-  },
-});

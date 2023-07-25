@@ -1,13 +1,30 @@
-import {themeColors} from '@app/theme';
 import React from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 export const IconItem: React.FC<{
   icon: string;
   selectedIcon: string;
   onIconPress: (icon: string) => void;
 }> = ({icon, selectedIcon, onIconPress}) => {
+  const theme = useCustomTheme();
+
+  const styles = StyleSheet.create({
+    iconButton: {
+      padding: 8,
+      backgroundColor: theme.colors.grey[200],
+      borderRadius: 5,
+      margin: 8,
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex: 1,
+    },
+    iconButtonSelected: {
+      backgroundColor: theme.colors.primary,
+    },
+  });
+
   const isSelected = selectedIcon === icon;
 
   return (
@@ -17,23 +34,8 @@ export const IconItem: React.FC<{
       <MaterialCommunityIcons
         name={icon}
         size={24}
-        color={isSelected ? 'white' : 'black'}
+        color={isSelected ? theme.colors.grey[50] : theme.colors.grey[900]}
       />
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  iconButton: {
-    padding: 8,
-    backgroundColor: themeColors.grey[300],
-    borderRadius: 5,
-    margin: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  iconButtonSelected: {
-    backgroundColor: themeColors.primary,
-  },
-});
