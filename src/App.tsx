@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {
   DarkTheme as NavigationDarkTheme,
   DefaultTheme as NavigationLightTheme,
@@ -10,12 +10,13 @@ import {
   Provider as PaperProvider,
 } from 'react-native-paper';
 import merge from 'deepmerge';
+import {StatusBar} from 'react-native';
+import {MMKVLoader, useMMKVStorage} from 'react-native-mmkv-storage';
 
 import {AuthStack} from '@app/routes/AuthStack';
 import {customDarkThemeColors, customLightThemeColors} from './theme';
 import {reducer, StoreContextProvider} from '@app/context/StoreContext';
 import {PreferencesContext} from '@app/context/PreferencesContext';
-import {StatusBar} from 'react-native';
 
 const PaperLightTheme = {
   ...MD3LightTheme,
@@ -30,15 +31,17 @@ const PaperDarkTheme = {
 const CombinedLightTheme = merge(NavigationLightTheme, PaperLightTheme);
 const CombinedDarkTheme = merge(NavigationDarkTheme, PaperDarkTheme);
 
+const storage = new MMKVLoader().initialize();
+
 export const App = () => {
-  const [isThemeDark, setIsThemeDark] = useState(true);
+  const [isThemeDark, setIsThemeDark] = useMMKVStorage('theme', storage, true);
   StatusBar.setBarStyle(isThemeDark ? 'light-content' : 'dark-content');
 
   let currentTheme = isThemeDark ? CombinedDarkTheme : CombinedLightTheme;
 
   const toggleTheme = useCallback(() => {
     return setIsThemeDark(!isThemeDark);
-  }, [isThemeDark]);
+  }, [isThemeDark, setIsThemeDark]);
 
   const preferences = useMemo(
     () => ({
