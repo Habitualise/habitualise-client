@@ -8,6 +8,16 @@ jest.mock('react-native-auth0', () => ({
   }),
 }));
 
+// Might need to put this into the setupTests.ts file later on
+jest.mock('react-native-mmkv-storage', () => ({
+  MMKVLoader: () => ({
+    initialize: () => ({
+      getArray: (arr: any[]) => arr,
+    }),
+  }),
+  useMMKVStorage: () => [true, () => {}],
+}));
+
 describe('App', () => {
   it('renders correctly', () => {
     const tree = render(<App />).toJSON();
