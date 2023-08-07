@@ -1,15 +1,16 @@
 import {HabitColor} from '@app/context/types';
-import {habitColors} from '@app/theme';
 import tinygradient from 'tinygradient';
+import {HabitColorGradients} from '@app/theme/types';
 
 export const calculateDotColour = (
   colorType: HabitColor,
   consecutiveDaysCompleted: number,
+  habitColorGradients: HabitColorGradients,
 ): string => {
   const gradient = tinygradient([
-    habitColors[colorType].start,
-    habitColors[colorType].middle,
-    habitColors[colorType].end,
+    habitColorGradients[colorType].start,
+    habitColorGradients[colorType].middle,
+    habitColorGradients[colorType].end,
   ]);
 
   const color = gradient.rgbAt(consecutiveDaysCompleted / 14);
