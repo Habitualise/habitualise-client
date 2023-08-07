@@ -1,124 +1,103 @@
-export type CustomThemeColors = {
-  primary: string;
-  onPrimary: string;
-  primaryContainer: string;
-  onPrimaryContainer: string;
-  secondary: string;
-  onSecondary: string;
-  secondaryContainer: string;
-  onSecondaryContainer: string;
-  tertiary: string;
-  onTertiary: string;
-  tertiaryContainer: string;
-  onTertiaryContainer: string;
-  error: string;
-  onError: string;
-  errorContainer: string;
-  onErrorContainer: string;
-  background: string;
-  onBackground: string;
-  surface: string;
-  onSurface: string;
-  surfaceVariant: string;
-  surfaceVariantPressed: string;
-  onSurfaceVariant: string;
-  outline: string;
-  outlineVariant: string;
-  shadow: string;
-  scrim: string;
-  inverseSurface: string;
-  inverseOnSurface: string;
-  inversePrimary: string;
-  elevation: {
-    level0: string;
-    level1: string;
-    level2: string;
-    level3: string;
-    level4: string;
-    level5: string;
+import {HabitColor} from '@app/context/types';
+
+type Transparent = 'transparent';
+type RGB = `rgb(${number}, ${number}, ${number})`; // IMPORTANT: make sure to include spaces between numbers
+type RGBA = `rgba(${number}, ${number}, ${number}, ${
+  | number
+  | (number & string)})`; // The fourth value can be an integer or a float
+
+type RGBColor = RGB | RGBA | Transparent;
+
+type ColorPalette = {
+  50: RGBColor;
+  100: RGBColor;
+  200: RGBColor;
+  300: RGBColor;
+  400: RGBColor;
+  500: RGBColor;
+  600: RGBColor;
+  700: RGBColor;
+  800: RGBColor;
+  900: RGBColor;
+};
+
+type ElevationColors = {
+  level0: RGBColor;
+  level1: RGBColor;
+  level2: RGBColor;
+  level3: RGBColor;
+  level4: RGBColor;
+  level5: RGBColor;
+};
+
+type SurfaceColors = {
+  background: RGBColor;
+  onBackground: RGBColor;
+  surface: RGBColor;
+  onSurface: RGBColor;
+  surfaceVariant: RGBColor;
+  surfaceVariantPressed: RGBColor;
+  onSurfaceVariant: RGBColor;
+  surfaceDisabled: RGBColor;
+  onSurfaceDisabled: RGBColor;
+};
+
+type ThemedColors = {
+  primary: RGBColor;
+  onPrimary: RGBColor;
+  primaryContainer: RGBColor;
+  onPrimaryContainer: RGBColor;
+  secondary: RGBColor;
+  onSecondary: RGBColor;
+  secondaryContainer: RGBColor;
+  onSecondaryContainer: RGBColor;
+  tertiary: RGBColor;
+  onTertiary: RGBColor;
+  tertiaryContainer: RGBColor;
+  onTertiaryContainer: RGBColor;
+};
+
+type ErrorColors = {
+  error: RGBColor;
+  onError: RGBColor;
+  errorContainer: RGBColor;
+  onErrorContainer: RGBColor;
+};
+
+type MiscColors = {
+  outline: RGBColor;
+  outlineVariant: RGBColor;
+  shadow: RGBColor;
+  scrim: RGBColor;
+  inverseSurface: RGBColor;
+  inverseOnSurface: RGBColor;
+  inversePrimary: RGBColor;
+  backdrop: RGBColor;
+  primaryLighter: RGBColor;
+  success: RGBColor;
+  successGreyedOut: RGBColor;
+  white: RGBColor;
+};
+
+export type CustomThemeColors = ThemedColors &
+  SurfaceColors &
+  ErrorColors &
+  MiscColors & {
+    elevation: ElevationColors;
+    grey: ColorPalette;
+    red: ColorPalette;
+    blue: ColorPalette;
+    habitColorGradients: HabitColorGradients;
   };
-  surfaceDisabled: string;
-  onSurfaceDisabled: string;
-  backdrop: string;
-  primaryLighter: string;
-  success: string;
-  successGreyedOut: string;
-  grey: {
-    50: string;
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-    800: string;
-    900: string;
-  };
-  red: {
-    50: string;
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-    800: string;
-    900: string;
-  };
-  blue: {
-    50: string;
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-    800: string;
-    900: string;
-  };
-  white: string;
-  habitColorGradients: HabitColorGradients;
+
+export type HabitColorGradient = {
+  start: RGBColor;
+  middle: RGBColor;
+  end: RGBColor;
 };
 
 export type HabitColorGradients = {
-  blue: {
-    start: string;
-    middle: string;
-    end: string;
-  };
-  green: {
-    start: string;
-    middle: string;
-    end: string;
-  };
-  yellow: {
-    start: string;
-    middle: string;
-    end: string;
-  };
-  orange: {
-    start: string;
-    middle: string;
-    end: string;
-  };
-  red: {
-    start: string;
-    middle: string;
-    end: string;
-  };
-  purple: {
-    start: string;
-    middle: string;
-    end: string;
-  };
-  grey: {
-    start: string;
-    middle: string;
-    end: string;
-  };
+  [key in HabitColor]: HabitColorGradient;
 };
 
 export const customLightThemeColors: CustomThemeColors = {
@@ -142,8 +121,8 @@ export const customLightThemeColors: CustomThemeColors = {
   onBackground: 'rgb(27, 27, 31)',
   surface: 'rgb(254, 251, 255)',
   onSurface: 'rgb(27, 27, 31)',
-  surfaceVariant: 'rgb(240,240,246)',
-  surfaceVariantPressed: 'rgb(231,231,238)',
+  surfaceVariant: 'rgb(240, 240, 246)',
+  surfaceVariantPressed: 'rgb(231, 231, 238)',
   onSurfaceVariant: 'rgb(68, 71, 79)',
   outline: 'rgb(117, 119, 127)',
   outlineVariant: 'rgb(196, 198, 208)',
@@ -170,7 +149,7 @@ export const customLightThemeColors: CustomThemeColors = {
   grey: {
     50: 'rgb(250, 250, 250)',
     100: 'rgb(245, 245, 245)',
-    200: 'rgb(235,236,239)',
+    200: 'rgb(235, 236, 239)',
     300: 'rgb(224, 224, 224)',
     400: 'rgb(189, 189, 189)',
     500: 'rgb(158, 158, 158)',
@@ -232,8 +211,8 @@ export const customLightThemeColors: CustomThemeColors = {
     },
     purple: {
       start: 'rgb(235, 139, 252)',
-      middle: 'rgb(161,57,208)',
-      end: 'rgb(84,19,166)',
+      middle: 'rgb(161, 57, 208)',
+      end: 'rgb(84, 19, 166)',
     },
     grey: {
       start: 'rgb(207, 204, 204)',
@@ -244,7 +223,7 @@ export const customLightThemeColors: CustomThemeColors = {
 };
 
 export const customDarkThemeColors: CustomThemeColors = {
-  primary: 'rgb(183,208,255)',
+  primary: 'rgb(183, 208, 255)',
   onPrimary: 'rgb(0, 38, 129)',
   primaryContainer: 'rgb(15, 59, 174)',
   onPrimaryContainer: 'rgb(220, 225, 255)',
@@ -264,8 +243,8 @@ export const customDarkThemeColors: CustomThemeColors = {
   onBackground: 'rgb(228, 225, 230)',
   surface: 'rgb(27, 27, 31)',
   onSurface: 'rgb(228, 225, 230)',
-  surfaceVariant: 'rgb(54,55,63)',
-  surfaceVariantPressed: 'rgb(40,42,49)', // additional field
+  surfaceVariant: 'rgb(54, 55, 63)',
+  surfaceVariantPressed: 'rgb(40, 42, 49)', // additional field
   onSurfaceVariant: 'rgb(198, 197, 208)',
   outline: 'rgb(144, 144, 154)',
   outlineVariant: 'rgb(69, 70, 79)',
@@ -286,19 +265,19 @@ export const customDarkThemeColors: CustomThemeColors = {
   onSurfaceDisabled: 'rgba(228, 225, 230, 0.38)',
   backdrop: 'rgba(47, 48, 56, 0.4)',
   // additional fields below
-  primaryLighter: 'rgb(145,162,241)',
+  primaryLighter: 'rgb(145, 162, 241)',
   success: 'rgb(45, 181, 106)',
   successGreyedOut: 'rgb(121, 184, 149)',
   grey: {
-    50: 'rgb(25,25,26)',
-    100: 'rgb(34,37,42)',
-    200: 'rgb(68,69,80)',
-    300: 'rgb(89,93,101)',
-    400: 'rgb(125,135,140)',
-    500: 'rgb(157,157,157)',
-    600: 'rgb(175,175,175)',
-    700: 'rgb(194,194,194)',
-    800: 'rgb(213,213,213)',
+    50: 'rgb(25, 25, 26)',
+    100: 'rgb(34, 37, 42)',
+    200: 'rgb(68, 69, 80)',
+    300: 'rgb(89, 93, 101)',
+    400: 'rgb(125, 135, 140)',
+    500: 'rgb(157, 157, 157)',
+    600: 'rgb(175, 175, 175)',
+    700: 'rgb(194, 194, 194)',
+    800: 'rgb(213, 213, 213)',
     900: 'rgb(238, 238, 238)',
   },
   red: {
@@ -354,8 +333,8 @@ export const customDarkThemeColors: CustomThemeColors = {
     },
     purple: {
       start: 'rgb(235, 139, 252)',
-      middle: 'rgb(161,57,208)',
-      end: 'rgb(84,19,166)',
+      middle: 'rgb(161, 57, 208)',
+      end: 'rgb(84, 19, 166)',
     },
     grey: {
       start: 'rgb(207, 204, 204)',
