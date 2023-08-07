@@ -10,7 +10,6 @@ import {LABEL} from '@app/language';
 import {ACTIONS, DispatchParams, useStore} from '@app/context/StoreContext';
 import {Habit, HabitColor} from '@app/context/types';
 import {useCustomTheme} from '@app/theme/useCustomTheme';
-import {habitColors} from '@app/theme';
 import {commonStyles} from '@app/components/styles';
 
 interface AddHabitModalProps {
@@ -185,7 +184,8 @@ export const AddHabitModal: React.FC<AddHabitModalProps> = ({
             mode={'contained'}
             size={42}
             iconColor={
-              habitColors[selectedColor].middle || theme.colors.grey[600]
+              theme.colors.habitColorGradients[selectedColor].middle ||
+              theme.colors.grey[600]
             }
           />
           <TextInput

@@ -3,8 +3,8 @@ import {StyleSheet, View, ViewStyle} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {getBackgroundIconColour} from './utils/getBackgroundIconColour';
-import {habitColors} from '@app/theme';
 import {HabitColor} from '@app/context/types';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface HabitIconProps {
   iconName: string;
@@ -14,7 +14,8 @@ interface HabitIconProps {
 
 export const HabitIcon = (props: HabitIconProps) => {
   const {iconName, colour} = props;
-  const rgbColor = habitColors[colour].middle;
+  const theme = useCustomTheme();
+  const rgbColor = theme.colors.habitColorGradients[colour].middle;
   return (
     <View
       style={[
