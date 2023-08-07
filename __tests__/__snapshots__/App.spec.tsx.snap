@@ -73,7 +73,7 @@ exports[`App renders correctly 1`] = `
           <RNSScreenStackHeaderConfig
             backButtonInCustomView={false}
             backgroundColor="rgb(18, 18, 18)"
-            color="rgb(183,208,255)"
+            color="rgb(183, 208, 255)"
             direction="ltr"
             disableBackButtonMenu={false}
             hidden={true}
@@ -171,7 +171,7 @@ exports[`App renders correctly 1`] = `
                           "writingDirection": "ltr",
                         },
                         {
-                          "color": "rgb(183,208,255)",
+                          "color": "rgb(183, 208, 255)",
                           "fontWeight": "700",
                           "marginBottom": 15,
                           "textAlign": "center",
@@ -200,7 +200,7 @@ your full potential?
                           "writingDirection": "ltr",
                         },
                         {
-                          "color": "rgb(183,208,255)",
+                          "color": "rgb(183, 208, 255)",
                           "lineHeight": 30,
                           "marginBottom": 60,
                           "textAlign": "center",
@@ -253,7 +253,7 @@ today on Habitualise.
                       style={
                         [
                           {
-                            "backgroundColor": "rgb(183,208,255)",
+                            "backgroundColor": "rgb(183, 208, 255)",
                           },
                           {
                             "paddingHorizontal": 120,
@@ -280,7 +280,7 @@ today on Habitualise.
                               "writingDirection": "ltr",
                             },
                             {
-                              "color": "rgb(25,25,26)",
+                              "color": "rgb(25, 25, 26)",
                               "fontWeight": "500",
                             },
                           ]
@@ -425,7 +425,7 @@ today on Habitualise.
                               style={
                                 [
                                   {
-                                    "color": "rgb(183,208,255)",
+                                    "color": "rgb(183, 208, 255)",
                                     "fontSize": 20,
                                   },
                                   undefined,
@@ -473,7 +473,7 @@ today on Habitualise.
                                   undefined,
                                   false,
                                   {
-                                    "color": "rgb(183,208,255)",
+                                    "color": "rgb(183, 208, 255)",
                                     "fontFamily": "System",
                                     "fontSize": 14,
                                     "fontWeight": "500",
