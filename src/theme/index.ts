@@ -107,12 +107,12 @@ export const customLightThemeColors: CustomThemeColors = {
     red: {
       start: 'rgb(250, 159, 152)',
       middle: 'rgb(212, 42, 29)',
-      end: 'rgb(138, 18, 0)',
+      end: 'rgb(171, 23, 0)',
     },
     purple: {
       start: 'rgb(235, 139, 252)',
       middle: 'rgb(161, 57, 208)',
-      end: 'rgb(84, 19, 166)',
+      end: 'rgb(95, 19, 166)',
     },
     grey: {
       start: 'rgb(207, 204, 204)',
@@ -207,39 +207,39 @@ export const customDarkThemeColors: CustomThemeColors = {
   white: 'rgb(255, 255, 255)',
   habitColorGradients: {
     blue: {
-      start: 'rgb(161, 203, 255)',
-      middle: 'rgb(30, 122, 235)',
-      end: 'rgb(0, 92, 204)',
+      start: 'rgb(0, 68, 134)',
+      middle: 'rgb(38, 130, 255)',
+      end: 'rgb(161, 203, 255)',
     },
     green: {
-      start: 'rgb(167, 219, 177)',
+      start: 'rgb(1, 99, 22)',
       middle: 'rgb(31, 156, 58)',
-      end: 'rgb(1, 99, 22)',
+      end: 'rgb(167, 219, 177)',
     },
     yellow: {
-      start: 'rgb(255, 230, 156)',
-      middle: 'rgb(250, 194, 25)',
-      end: 'rgb(224, 170, 2)',
+      start: 'rgb(182, 140, 0)',
+      middle: 'rgb(253, 212, 47)',
+      end: 'rgb(255, 239, 156)',
     },
     orange: {
-      start: 'rgb(247, 179, 119)',
-      middle: 'rgb(255, 138, 36)',
-      end: 'rgb(196, 93, 2)',
+      start: 'rgb(150, 88, 0)',
+      middle: 'rgb(255, 167, 36)',
+      end: 'rgb(253, 210, 122)',
     },
     red: {
-      start: 'rgb(250, 159, 152)',
-      middle: 'rgb(212, 42, 29)',
-      end: 'rgb(138, 18, 0)',
+      start: 'rgb(138, 32, 16)',
+      middle: 'rgb(227, 53, 41)',
+      end: 'rgb(255, 154, 154)',
     },
     purple: {
-      start: 'rgb(235, 139, 252)',
+      start: 'rgb(100, 19, 166)',
       middle: 'rgb(161, 57, 208)',
-      end: 'rgb(84, 19, 166)',
+      end: 'rgb(235, 139, 252)',
     },
     grey: {
-      start: 'rgb(207, 204, 204)',
-      middle: 'rgb(125, 125, 125)',
-      end: 'rgb(89, 88, 88)',
+      start: 'rgb(143, 143, 162)',
+      middle: 'rgb(185, 185, 199)',
+      end: 'rgb(255, 255, 255)',
     },
   },
 };
