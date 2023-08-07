@@ -1,5 +1,5 @@
 import {MD3Theme, useTheme as usePaperTheme} from 'react-native-paper';
-import {CustomThemeColors} from '@app/theme/index';
+import {CustomThemeColors} from '@app/theme/types';
 
 export interface CustomTheme extends MD3Theme {
   colors: CustomThemeColors;

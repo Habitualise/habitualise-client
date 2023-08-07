@@ -1,6 +1,6 @@
 import {HabitColor} from '@app/context/types';
 import tinygradient from 'tinygradient';
-import {HabitColorGradients} from '@app/theme';
+import {HabitColorGradients} from '@app/theme/types';
 
 export const calculateDotColour = (
   colorType: HabitColor,
