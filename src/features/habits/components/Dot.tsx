@@ -35,8 +35,13 @@ export const Dot = (props: DotProps) => {
 
   const {colorType, completed, consecutiveDaysCompleted} = props;
   const dotColour = useMemo(
-    () => calculateDotColour(colorType, consecutiveDaysCompleted),
-    [colorType, consecutiveDaysCompleted],
+    () =>
+      calculateDotColour(
+        colorType,
+        consecutiveDaysCompleted,
+        theme.colors.habitColorGradients,
+      ),
+    [colorType, consecutiveDaysCompleted, theme.colors.habitColorGradients],
   );
 
   return (
