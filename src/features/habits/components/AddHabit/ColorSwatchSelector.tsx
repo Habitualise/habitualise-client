@@ -1,9 +1,8 @@
-// ColorSwatchSelector.tsx
 import {HabitColor} from '@app/context/types';
-import {habitColors} from '@app/theme';
 import React, {useEffect} from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useCustomTheme} from '@app/theme/useCustomTheme';
 
 interface ColorSwatchSelectorProps {
   selectedColor: HabitColor;
@@ -14,7 +13,10 @@ export const ColorSwatchSelector: React.FC<ColorSwatchSelectorProps> = ({
   selectedColor,
   onColorPress,
 }) => {
-  const colorTypes = Object.keys(habitColors) as HabitColor[];
+  const theme = useCustomTheme();
+  const colorTypes = Object.keys(
+    theme.colors.habitColorGradients,
+  ) as HabitColor[];
 
   useEffect(() => {
     if (!selectedColor) {
@@ -30,7 +32,10 @@ export const ColorSwatchSelector: React.FC<ColorSwatchSelectorProps> = ({
           onPress={() => onColorPress(colorType)}
           style={[
             styles.swatch,
-            {backgroundColor: habitColors[colorType].middle},
+            {
+              backgroundColor:
+                theme.colors.habitColorGradients[colorType].middle,
+            },
           ]}>
           {selectedColor === colorType && (
             <MaterialCommunityIcons name="check" size={24} color="white" />
